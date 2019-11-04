@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="wwwroot\lib\" />
+    <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
 </Project>
