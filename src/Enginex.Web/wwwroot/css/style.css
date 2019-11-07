@@ -7474,9 +7474,9 @@ h1, h2, h3, h4, h5,
     text-transform: uppercase;
     font-size: 11px;
     display: block;
-    text-align: center;
+    text-align: right;
     color: #fac564;
-    letter-spacing: 4px; }
+    letter-spacing: 1px; }
 
 .owl-carousel {
   position: relative; }
