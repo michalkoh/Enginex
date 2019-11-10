@@ -1,15 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <AssemblyName>Enginex.Web</AssemblyName>
     <RootNamespace>Enginex.Web</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="wwwroot\lib\" />
-    <Folder Include="wwwroot\css\" />
-  </ItemGroup>
 
 </Project>
