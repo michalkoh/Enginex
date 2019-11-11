@@ -20,6 +20,24 @@ namespace Enginex.Web
             services
                 .AddControllersWithViews()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
+
+            var supportedCultures = new[]
+            {
+                new CultureInfo("sk"),
+                new CultureInfo("en")
+            };
+            services
+                .Configure<RequestLocalizationOptions>(options =>
+                {
+                    options.DefaultRequestCulture = new RequestCulture("sk");
+                    options.SupportedCultures = supportedCultures;
+                    options.SupportedUICultures = supportedCultures;
+                    options.RequestCultureProviders = new List<IRequestCultureProvider>
+                    {
+                        new QueryStringRequestCultureProvider(),
+                        new CookieRequestCultureProvider()
+                    };
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,24 +55,11 @@ namespace Enginex.Web
                 app.UseHsts();
             }
 
-            var supportedCultures = new[]
-            {
-                new CultureInfo("sk-SK"),
-                new CultureInfo("en-US"),
-                new CultureInfo("fr-FR"),
-            };
-
-            app.UseRequestLocalization(new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture("sk-SK"),
-                SupportedCultures = supportedCultures,
-                SupportedUICultures = supportedCultures
-            });
+            app.UseRequestLocalization();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthorization();
-            app.UseRequestLocalization();
 
             app.UseEndpoints(endpoints =>
             {

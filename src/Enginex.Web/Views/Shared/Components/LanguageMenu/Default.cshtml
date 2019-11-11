@@ -1,0 +1,13 @@
+﻿@{
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}
+<form asp-action="SetLanguage" asp-controller="Home" asp-route-returnUrl="@returnUrl" asp-route-culture="sk" method="post">
+    <span>
+        <button type="submit" class="@(ViewBag.CurrentCulture == "sk" ? "btn" : "btn btn-dark")" style="float: right">sk</button>
+    </span>
+</form>
+<form asp-action="SetLanguage" asp-controller="Home" asp-route-returnUrl="@returnUrl" asp-route-culture="en" method="post">
+    <span>
+        <button type="submit" class="@(ViewBag.CurrentCulture == "en" ? "btn" : "btn btn-dark")" style="float: right">en</button>
+    </span>
+</form>

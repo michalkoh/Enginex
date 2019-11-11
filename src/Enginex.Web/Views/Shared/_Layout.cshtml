@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Enginex.Web.Components
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -43,6 +44,7 @@
                     </ul>
                 </div>
             </div>
+            @await Component.InvokeAsync(nameof(LanguageMenu))
         </nav>
         <div>
             @RenderBody()

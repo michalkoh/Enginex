@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Welcome" xml:space="preserve">
-    <value>Welcome</value>
+    <value>Vitajte</value>
   </data>
   <data name="Activity" xml:space="preserve">
-    <value>What we do</value>
+    <value>Čím sa zaoberáme</value>
     <comment>Activity</comment>
   </data>
   <data name="ImportExport" xml:space="preserve">
@@ -129,35 +129,34 @@
     <comment>ImportExport</comment>
   </data>
   <data name="RetailWholesale" xml:space="preserve">
-    <value>retail &amp; wholesale</value>
+    <value>maloobchod &amp; veľkoobchod</value>
     <comment>RetailWholesale</comment>
   </data>
   <data name="Service" xml:space="preserve">
-    <value>service</value>
+    <value>servis</value>
     <comment>Service</comment>
   </data>
   <data name="Our portfolio" xml:space="preserve">
-    <value>Our portfolio</value>
+    <value>Naše portfólio</value>
     <comment>Our portfolio</comment>
   </data>
   <data name="metalworking machines" xml:space="preserve">
-    <value>metalworking machines</value>
+    <value>kovoobrábacie stroje</value>
     <comment>metalworking machines</comment>
   </data>
   <data name="engineering products" xml:space="preserve">
-    <value>engineering products</value>
+    <value>strojárske výrobky</value>
     <comment>engineering products</comment>
   </data>
-  <data name="spare parts" xml:space="preserve">
-    <value>spare parts</value>
-    <comment>spare parts</comment>
-  </data>
   <data name="forklifts" xml:space="preserve">
-    <value>forklifts BALKANCAR (battery and diesel)</value>
+    <value>batériové a dieselové vysokozdvižné vozíky BALKANCAR</value>
     <comment>forklifts BALKANCAR (battery and diesel)</comment>
   </data>
+  <data name="spare parts" xml:space="preserve">
+    <value>náhradné diely</value>
+    <comment>spare parts</comment>
+  </data>
   <data name="special purpose vehicles" xml:space="preserve">
-    <value>special purpose vehicles</value>
-    <comment>special purpose vehicles</comment>
+    <value>účelové automobily</value>
   </data>
 </root>
