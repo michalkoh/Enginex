@@ -57,6 +57,7 @@ namespace Enginex.Web
 
             app.UseRequestLocalization();
             app.UseHttpsRedirection();
+            app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthorization();
