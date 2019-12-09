@@ -12,7 +12,7 @@ pool:
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
-  buildConfiguration: 'Debug'
+  buildConfiguration: 'Release'
 
 steps:
 - task: NuGetToolInstaller@1
@@ -26,12 +26,12 @@ steps:
     command: 'build'
     arguments: '-c $(buildConfiguration) --no-restore'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: '**/*Tests.csproj'
-    arguments: '-c $(buildConfiguration) --no-build --no-restore'
-    publishTestResults: false
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'test'
+#     projects: '**/*Tests.csproj'
+#     arguments: '-c $(buildConfiguration) --no-build --no-restore'
+#     publishTestResults: false
 
 - task: DotNetCoreCLI@2
   inputs:
