@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Enginex.Application</AssemblyName>
+    <RootNamespace>Enginex.Application</RootNamespace>
+  </PropertyGroup>
+
+</Project>
