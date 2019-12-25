@@ -136,27 +136,27 @@
     <value>service</value>
     <comment>Service</comment>
   </data>
-  <data name="Our portfolio" xml:space="preserve">
+  <data name="OurPortfolio" xml:space="preserve">
     <value>Our portfolio</value>
     <comment>Our portfolio</comment>
   </data>
-  <data name="metalworking machines" xml:space="preserve">
+  <data name="MetalworkingMachines" xml:space="preserve">
     <value>metalworking machines</value>
     <comment>metalworking machines</comment>
   </data>
-  <data name="engineering products" xml:space="preserve">
+  <data name="EngineeringProducts" xml:space="preserve">
     <value>engineering products</value>
     <comment>engineering products</comment>
   </data>
-  <data name="spare parts" xml:space="preserve">
+  <data name="SpareParts" xml:space="preserve">
     <value>spare parts</value>
     <comment>spare parts</comment>
   </data>
-  <data name="forklifts" xml:space="preserve">
+  <data name="Forklifts" xml:space="preserve">
     <value>forklifts BALKANCAR (battery and diesel)</value>
     <comment>forklifts BALKANCAR (battery and diesel)</comment>
   </data>
-  <data name="special purpose vehicles" xml:space="preserve">
+  <data name="SpecialPurposeVehicles" xml:space="preserve">
     <value>special purpose vehicles</value>
     <comment>special purpose vehicles</comment>
   </data>

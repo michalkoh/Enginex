@@ -36,10 +36,13 @@
             </button>
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a asp-controller="Home" asp-action="Index" class="nav-link">@Localizer["Home"]</a></li>
-                    <li class="nav-item"><a href="menu.html" class="nav-link">@Localizer["Products"]</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-controller="About" asp-action="Index">@Localizer["About"]</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">@Localizer["Contact"]</a></li>
+                @{
+                    var controller = ViewContext.RouteData.Values["Controller"].ToString();
+                }
+                    <li class="nav-item @(controller == "Home" ? "active" : "")"><a asp-controller="Home" asp-action="Index" class="nav-link">@Localizer["Home"]</a></li>
+                    <li class="nav-item @(controller == "Offer" ? "active" : "")"><a href="menu.html" class="nav-link">@Localizer["Offer"]</a></li>
+                    <li class="nav-item @(controller == "About" ? "active" : "")"><a asp-controller="About" asp-action="Index" class="nav-link">@Localizer["About"]</a></li>
+                    <li class="nav-item @(controller == "Contact" ? "active" : "")"><a asp-controller="Contact" asp-action="Index" class="nav-link">@Localizer["Contact"]</a></li>
                 </ul>
             </div>
         </div>
@@ -65,7 +68,8 @@
     <script src="~/lib/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script src="~/lib/timepicker/jquery.timepicker.min.js"></script>
     <script src="~/lib/scrollax/scrollax.min.js"></script>
-    @*<script src="js/google-map.js"></script>*@
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

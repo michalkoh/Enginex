@@ -117,16 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About" xml:space="preserve">
-    <value>About us</value>
-  </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Contact</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="Offer" xml:space="preserve">
-    <value>Our offer</value>
+  <data name="AboutCompany" xml:space="preserve">
+    <value>Spoločnosť ENGINEX, s.r.o. Košice bola založená v roku 1993. Počas svojho vývoja prešla viacerými komoditnými aj personálnymi zmenami.
+
+V súčasnosti jej hlavnou činnosťou je obchod s používanými kovoobrábacimi a tvárniacimi strojmi. Dodávky sú uskutočňované podľa požiadavky zákaznika s eventuálnou možnosťou GO, repasu, renovácie strojov s možnosťou montáže, uvedenia do prevádzky alebo zaškolenia obsluhy.</value>
   </data>
 </root>

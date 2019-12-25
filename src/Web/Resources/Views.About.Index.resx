@@ -117,16 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About" xml:space="preserve">
-    <value>About us</value>
-  </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Contact</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="Offer" xml:space="preserve">
-    <value>Our offer</value>
+  <data name="AboutCompany" xml:space="preserve">
+    <value>Company ENGINEX, s.r.o. Košice was founded in 1993. During its development, it underwent several commodity and personnel changes.
+
+At present, its main business is trade in used metalworking and forming machines. Deliveries are carried out according to the customer's requirements with the eventual possibility of GO, overhaul, refurbishment of machines with the possibility of assembly, commissioning or operator training.</value>
   </data>
 </root>

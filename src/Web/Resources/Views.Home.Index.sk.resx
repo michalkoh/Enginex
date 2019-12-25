@@ -136,27 +136,27 @@
     <value>servis</value>
     <comment>Service</comment>
   </data>
-  <data name="Our portfolio" xml:space="preserve">
+  <data name="OurPortfolio" xml:space="preserve">
     <value>Naše portfólio</value>
     <comment>Our portfolio</comment>
   </data>
-  <data name="metalworking machines" xml:space="preserve">
+  <data name="MetalworkingMachines" xml:space="preserve">
     <value>kovoobrábacie stroje</value>
     <comment>metalworking machines</comment>
   </data>
-  <data name="engineering products" xml:space="preserve">
+  <data name="EngineeringProducts" xml:space="preserve">
     <value>strojárske výrobky</value>
     <comment>engineering products</comment>
   </data>
-  <data name="forklifts" xml:space="preserve">
+  <data name="Forklifts" xml:space="preserve">
     <value>batériové a dieselové vysokozdvižné vozíky BALKANCAR</value>
     <comment>forklifts BALKANCAR (battery and diesel)</comment>
   </data>
-  <data name="spare parts" xml:space="preserve">
+  <data name="SpareParts" xml:space="preserve">
     <value>náhradné diely</value>
     <comment>spare parts</comment>
   </data>
-  <data name="special purpose vehicles" xml:space="preserve">
+  <data name="SpecialPurposeVehicles" xml:space="preserve">
     <value>účelové automobily</value>
   </data>
 </root>
