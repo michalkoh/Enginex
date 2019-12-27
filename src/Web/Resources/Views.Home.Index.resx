@@ -152,10 +152,6 @@
     <value>spare parts</value>
     <comment>spare parts</comment>
   </data>
-  <data name="Forklifts" xml:space="preserve">
-    <value>forklifts BALKANCAR (battery and diesel)</value>
-    <comment>forklifts BALKANCAR (battery and diesel)</comment>
-  </data>
   <data name="SpecialPurposeVehicles" xml:space="preserve">
     <value>special purpose vehicles</value>
     <comment>special purpose vehicles</comment>

@@ -148,10 +148,6 @@
     <value>strojárske výrobky</value>
     <comment>engineering products</comment>
   </data>
-  <data name="Forklifts" xml:space="preserve">
-    <value>batériové a dieselové vysokozdvižné vozíky BALKANCAR</value>
-    <comment>forklifts BALKANCAR (battery and diesel)</comment>
-  </data>
   <data name="SpareParts" xml:space="preserve">
     <value>náhradné diely</value>
     <comment>spare parts</comment>
