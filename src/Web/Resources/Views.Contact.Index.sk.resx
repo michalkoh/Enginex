@@ -123,7 +123,19 @@
   <data name="ContactInfo" xml:space="preserve">
     <value>Kontaktné informácie</value>
   </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Napíšte nám</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Správa</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Meno</value>
+  </data>
   <data name="Phone" xml:space="preserve">
     <value>Tel.</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Odoslať</value>
   </data>
 </root>
