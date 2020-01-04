@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,13 @@ namespace Enginex.Web
             services
                 .AddControllersWithViews()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
+
+            services
+                .Configure<CookiePolicyOptions>(options =>
+                {
+                    options.CheckConsentNeeded = context => true;
+                    options.MinimumSameSitePolicy = SameSiteMode.None;
+                });
 
             var supportedCultures = new[]
             {
@@ -59,6 +67,7 @@ namespace Enginex.Web
             app.UseHttpsRedirection();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
             app.UseRouting();
             app.UseAuthorization();
 
