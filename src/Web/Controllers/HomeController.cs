@@ -14,6 +14,11 @@ namespace Enginex.Web.Controllers
             return View();
         }
 
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult SetLanguage(string culture, string returnUrl)
         {

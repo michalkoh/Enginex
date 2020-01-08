@@ -7973,8 +7973,7 @@ h1, h2, h3, h4, h5,
 
 .ftco-appointment {
   width: 100%;
-  position: relative;
-  background: #000; }
+  position: relative; }
   .ftco-appointment .overlay {
     position: absolute;
     top: 0;
@@ -8206,7 +8205,7 @@ textarea.form-control {
 
 .ftco-footer {
   font-size: 16px;
-  padding: 7em 0;
+  padding: 4em 0;
   background: #101315; }
   .ftco-footer .ftco-footer-logo {
     text-transform: uppercase;

@@ -9,9 +9,10 @@
 @if (showBanner)
 {
     <div id="cookieConsent" class="alert alert-primary alert-dismissible fade show" role="alert">
-        Use this space to summarize your privacy and cookie use policy. <a asp-page="/Privacy" class="alert-link">Learn More</a>
+        @Localizer["CookieConsentInfo"] 
+        <a asp-controller="Home" asp-action="Privacy" class="alert-link">@Localizer["MoreInfo"]</a>
         <button type="button" class="btn btn-dark float-md-right" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
-            Accept
+            @Localizer["Accept"]
         </button>
     </div>
     <script>
