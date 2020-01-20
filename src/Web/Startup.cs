@@ -1,3 +1,4 @@
+using Enginex.Application;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,25 +17,26 @@ namespace Enginex.Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services
+                .AddApplication()
+                .AddLocalization(options => options.ResourcesPath = "Resources");
 
             services
                 .AddControllersWithViews()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
-
-            services
-                .Configure<CookiePolicyOptions>(options =>
-                {
-                    options.CheckConsentNeeded = context => true;
-                    options.MinimumSameSitePolicy = SameSiteMode.None;
-                });
 
             var supportedCultures = new[]
             {
                 new CultureInfo("sk"),
                 new CultureInfo("en")
             };
+
             services
+                .Configure<CookiePolicyOptions>(options =>
+                {
+                    options.CheckConsentNeeded = context => true;
+                    options.MinimumSameSitePolicy = SameSiteMode.None;
+                })
                 .Configure<RequestLocalizationOptions>(options =>
                 {
                     options.DefaultRequestCulture = new RequestCulture("sk");
