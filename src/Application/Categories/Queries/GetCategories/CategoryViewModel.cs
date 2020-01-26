@@ -2,7 +2,7 @@
 using Enginex.Application.Common.Mappings;
 using Enginex.Domain.Entities;
 
-namespace Enginex.Application.Categories.Queries
+namespace Enginex.Application.Categories.Queries.GetCategories
 {
     public class CategoryViewModel : IMapFrom<Category>
     {

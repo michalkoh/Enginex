@@ -1,19 +1,9 @@
-﻿<section class="ftco-section ftco-menu">
-    <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-12 nav-link-wrap">
-                <div class="nav ftco-animate nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Kovoobrábacie stroje </a>
+﻿@using Enginex.Web.Components
 
-                    <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Tvárniace stroje</a>
+<section class="ftco-section ftco-menu">
 
-                    <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Stroje na ozubenie</a>
+    @await Component.InvokeAsync(nameof(CategoryMenu))
 
-                    <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Ostatné stroje a príslušenstvo</a>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="container-wrap">
         <div class="row no-gutters d-flex">
             <div class="col-lg-4 d-flex ftco-animate">

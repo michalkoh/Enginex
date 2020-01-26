@@ -6,7 +6,7 @@ namespace Enginex.Domain
 {
     public interface IRepository
     {
-        Task<IList<Category>> GetCategoriesAsync();
+        Task<IEnumerable<Category>> GetCategoriesAsync();
 
         Task<IPage<Product>> GetProductsAsync(IPageArgument pageArgument);
     }

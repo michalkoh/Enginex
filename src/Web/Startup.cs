@@ -1,4 +1,5 @@
 using Enginex.Application;
+using Enginex.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -19,6 +20,7 @@ namespace Enginex.Web
         {
             services
                 .AddApplication()
+                .AddPersistence()
                 .AddLocalization(options => options.ResourcesPath = "Resources");
 
             services

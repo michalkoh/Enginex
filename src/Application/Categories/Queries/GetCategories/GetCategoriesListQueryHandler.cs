@@ -1,11 +1,14 @@
-﻿using MediatR;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Enginex.Domain;
+using Enginex.Domain.Entities;
+using MediatR;
 
-namespace Enginex.Application.Categories.Queries
+namespace Enginex.Application.Categories.Queries.GetCategories
 {
     public class GetCategoriesListQueryHandler : IRequestHandler<GetCategoriesListQuery, CategoriesListViewModel>
     {
@@ -20,8 +23,10 @@ namespace Enginex.Application.Categories.Queries
 
         public async Task<CategoriesListViewModel> Handle(GetCategoriesListQuery request, CancellationToken cancellationToken)
         {
-            //var categories = await this.repository.GetCategoriesAsync().ProjectTo<CategoryViewModel>
-            throw new NotImplementedException();
+            var categories = await this.repository.GetCategoriesAsync();
+            var categoriesViewModels = this.mapper.Map<IEnumerable<Category>, IEnumerable<CategoryViewModel>>(categories);
+
+            return new CategoriesListViewModel(categoriesViewModels);
         }
     }
 }
