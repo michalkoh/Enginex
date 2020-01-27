@@ -36,7 +36,7 @@ namespace Enginex.Web
             services
                 .Configure<CookiePolicyOptions>(options =>
                 {
-                    options.CheckConsentNeeded = context => true;
+                    options.CheckConsentNeeded = context => false;
                     options.MinimumSameSitePolicy = SameSiteMode.None;
                 })
                 .Configure<RequestLocalizationOptions>(options =>
@@ -46,7 +46,6 @@ namespace Enginex.Web
                     options.SupportedUICultures = supportedCultures;
                     options.RequestCultureProviders = new List<IRequestCultureProvider>
                     {
-                        new QueryStringRequestCultureProvider(),
                         new CookieRequestCultureProvider()
                     };
                 });

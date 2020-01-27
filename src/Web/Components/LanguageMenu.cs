@@ -18,10 +18,6 @@ namespace Enginex.Web.Components
                     currentCulture = culture.Value;
                 }
             }
-            else if (HttpContext.Request.Query.ContainsKey("culture"))
-            {
-                currentCulture = HttpContext.Request.Query["culture"];
-            }
 
             ViewBag.CurrentCulture = currentCulture;
             return View();

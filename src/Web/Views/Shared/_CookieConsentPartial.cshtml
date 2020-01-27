@@ -2,24 +2,33 @@
 
 @{
     var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
-    var showBanner = !consentFeature?.CanTrack ?? false;
+    var showBanner = !consentFeature?.HasConsent ?? false;
     var cookieString = consentFeature?.CreateConsentCookie();
 }
 
 @if (showBanner)
 {
-    <div id="cookieConsent" class="alert alert-primary alert-dismissible fade show" role="alert">
-        @Localizer["CookieConsentInfo"] 
-        <a asp-controller="Home" asp-action="Privacy" class="alert-link">@Localizer["MoreInfo"]</a>
-        <button type="button" class="btn btn-dark float-md-right" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
-            @Localizer["Accept"]
-        </button>
+    <div class="alert alert-dismissible text-center cookiealert" role="alert">
+        <div id="cookieConsent">
+            @Localizer["CookieConsentInfo"]
+            <a asp-controller="Home" asp-action="Privacy" class="alert-link">@Localizer["MoreInfo"].</a>
+            <button type="button" class="btn btn-primary btn-sm" aria-label="Close" data-cookie-string="@cookieString">
+                OK
+            </button>
+        </div>
     </div>
+
     <script>
         (function () {
             var button = document.querySelector("#cookieConsent button[data-cookie-string]");
+            var cookieAlert = document.querySelector(".cookiealert");
+            cookieAlert.offsetHeight; // Force browser to trigger reflow (https://stackoverflow.com/a/39451131)
+
+            cookieAlert.classList.add("show");
+
             button.addEventListener("click", function (event) {
                 document.cookie = button.dataset.cookieString;
+                cookieAlert.classList.remove("show");
             }, false);
         })();
     </script>
