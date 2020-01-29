@@ -1,20 +1,21 @@
-﻿using AutoMapper;
-using Enginex.Application.Common.Mappings;
-using Enginex.Domain.Entities;
+﻿using Enginex.Domain.Entities;
 
 namespace Enginex.Application.Categories.Queries.GetCategories
 {
-    public class CategoryViewModel : IMapFrom<Category>
+    public class CategoryViewModel
     {
-        public string Name { get; set; }
-
-        public void Mapping(Profile profile)
+        public static CategoryViewModel Empty = new CategoryViewModel(string.Empty);
+        
+        public CategoryViewModel(string name)
         {
-            profile.CreateMap<Category, CategoryViewModel>()
-                .ConvertUsing(c =>
-                System.Threading.Thread.CurrentThread.CurrentCulture == new System.Globalization.CultureInfo("en") ? 
-                    new CategoryViewModel() { Name = c.NameEn } :
-                    new CategoryViewModel() { Name = c.NameSk });
+            Name = name;
+        }
+
+        public string Name { get; }
+
+        public static CategoryViewModel MapFrom(Category category)
+        {
+
         }
     }
 }

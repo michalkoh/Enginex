@@ -26,7 +26,7 @@ namespace Enginex.Persistence
                 },
                 new Category()
                 {
-                    NameSk = "Ostatné strojis a príslušenstvo",
+                    NameSk = "Ostatné stroje a príslušenstvo",
                 }
             };
 

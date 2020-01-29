@@ -10,9 +10,8 @@
 {
     <div class="alert alert-dismissible text-center cookiealert" role="alert">
         <div id="cookieConsent">
-            @Localizer["CookieConsentInfo"]
-            <a asp-controller="Home" asp-action="Privacy" class="alert-link">@Localizer["MoreInfo"].</a>
-            <button type="button" class="btn btn-primary btn-sm" aria-label="Close" data-cookie-string="@cookieString">
+            @Localizer["CookiesInfo"]<a asp-controller="Home" asp-action="Privacy" class="alert-link">cookies</a>. @Localizer["CookiesAgreement"]
+            <button type="button" class="btn btn-primary btn-sm ml-3" aria-label="Close" data-cookie-string="@cookieString">
                 OK
             </button>
         </div>

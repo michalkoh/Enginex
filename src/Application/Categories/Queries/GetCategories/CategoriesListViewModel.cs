@@ -9,6 +9,8 @@ namespace Enginex.Application.Categories.Queries.GetCategories
             Categories = categories;
         }
 
-        private IEnumerable<CategoryViewModel> Categories { get; }
+        public CategoryViewModel SelectedCategory { get; set; }
+
+        public IEnumerable<CategoryViewModel> Categories { get; }
     }
 }

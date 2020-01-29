@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CookieConsentInfo" xml:space="preserve">
-    <value>Tieto stránky používajú cookies. Prehliadaním týchto stránok s používaním cookies súhlasíte.</value>
+  <data name="CookiesAgreement" xml:space="preserve">
+    <value>Prehliadaním týchto stránok s používaním cookies súhlasíte.</value>
   </data>
-  <data name="MoreInfo" xml:space="preserve">
-    <value>Viac info</value>
+  <data name="CookiesInfo" xml:space="preserve">
+    <value>Tieto stránky používajú </value>
   </data>
 </root>

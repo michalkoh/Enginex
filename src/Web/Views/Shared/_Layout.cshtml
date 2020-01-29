@@ -50,11 +50,11 @@
             @await Component.InvokeAsync(nameof(LanguageMenu))
         </nav>
         <div>
-            <partial name="_CookieConsentPartial" />
             @RenderBody()
+            <partial name="_CookieConsentPartial" />
         </div>
 
-    <footer class="ftco-footer ftco-section img">
+        <footer class="ftco-footer ftco-section img">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">
