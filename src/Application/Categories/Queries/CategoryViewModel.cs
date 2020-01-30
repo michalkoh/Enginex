@@ -1,6 +1,4 @@
-﻿using Enginex.Domain.Entities;
-
-namespace Enginex.Application.Categories.Queries.GetCategories
+﻿namespace Enginex.Application.Categories.Queries
 {
     public class CategoryViewModel
     {
@@ -12,10 +10,5 @@ namespace Enginex.Application.Categories.Queries.GetCategories
         }
 
         public string Name { get; }
-
-        public static CategoryViewModel MapFrom(Category category)
-        {
-
-        }
     }
 }

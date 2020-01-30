@@ -1,6 +1,6 @@
 ﻿namespace Enginex.Application.Localization
 {
-    public enum Culture
+    internal enum Culture
     {
         Slovak,
 

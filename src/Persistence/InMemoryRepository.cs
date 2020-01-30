@@ -15,18 +15,22 @@ namespace Enginex.Persistence
                 new Category()
                 {
                     NameSk = "Kovoobrábacie stroje",
+                    NameEn = "Metalworking machines"
                 },
                 new Category()
                 {
                     NameSk = "Tvárniace stroje",
+                    NameEn = "Forming machines"
                 },
                 new Category()
                 {
                     NameSk = "Stroje na ozubenie",
+                    NameEn = "Gear machinery"
                 },
                 new Category()
                 {
                     NameSk = "Ostatné stroje a príslušenstvo",
+                    NameEn = "Other machinery and accessories"
                 }
             };
 

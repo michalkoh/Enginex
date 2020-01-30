@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Enginex.Application.Categories.Queries.GetCategories
+namespace Enginex.Application.Categories.Queries
 {
     public class CategoriesListViewModel
     {

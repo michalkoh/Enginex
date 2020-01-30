@@ -1,23 +1,22 @@
-﻿using Enginex.Domain;
+﻿using Enginex.Application.Categories.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Enginex.Web.Components
 {
     public class CategoryMenu : ViewComponent
     {
-        private readonly IRepository repository;
+        private readonly IMediator mediator;
 
-        public CategoryMenu(IRepository repository)
+        public CategoryMenu(IMediator mediator)
         {
-            this.repository = repository;
+            this.mediator = mediator;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var categories = await this.repository.GetCategoriesAsync();
-            return View(categories.Select(c => c.NameSk));
+            return View(await this.mediator.Send(new GetCategoriesListQuery()));
         }
     }
 }

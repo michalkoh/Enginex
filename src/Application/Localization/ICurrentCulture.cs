@@ -1,6 +1,6 @@
 ﻿namespace Enginex.Application.Localization
 {
-    public interface ICurrentCulture
+    internal interface ICurrentCulture
     {
         Culture Culture { get; }
     }
