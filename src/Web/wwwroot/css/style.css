@@ -7984,10 +7984,10 @@ h1, h2, h3, h4, h5,
     opacity: 0; }
 
 .appointment {
-  padding: 20px !important; }
+  padding: 10px !important; }
   @media (min-width: 768px) {
     .appointment {
-      padding: 7% 12% 7% 5% !important; } }
+      padding: 2% 12% 7% 5% !important; } }
   .appointment h3 {
     color: #fff; }
 

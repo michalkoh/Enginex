@@ -138,4 +138,10 @@
   <data name="Send" xml:space="preserve">
     <value>Odoslať</value>
   </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Predmet</value>
+  </data>
+  <data name="YourEmail" xml:space="preserve">
+    <value>Váš Email</value>
+  </data>
 </root>
