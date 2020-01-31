@@ -155,4 +155,7 @@
   <data name="SpecialPurposeVehicles" xml:space="preserve">
     <value>účelové automobily</value>
   </data>
+  <data name="OurOffer" xml:space="preserve">
+    <value>Naša ponuka</value>
+  </data>
 </root>

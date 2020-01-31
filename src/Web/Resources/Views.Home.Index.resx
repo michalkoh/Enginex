@@ -156,4 +156,7 @@
     <value>special purpose vehicles</value>
     <comment>special purpose vehicles</comment>
   </data>
+  <data name="OurOffer" xml:space="preserve">
+    <value>Our offer</value>
+  </data>
 </root>
