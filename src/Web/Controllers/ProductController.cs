@@ -1,18 +1,14 @@
-﻿using System;
+﻿using Enginex.Application.Products.Queries;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Enginex.Web.Controllers
 {
     public class ProductController : BaseController
     {
-        public IActionResult Index()
+        public async Task<IActionResult> List(int? categoryId)
         {
-            throw new NotImplementedException();
-        }
-
-        public IActionResult List()
-        {
-            return View();
+            return View(await Mediator.Send(new GetProductsQuery(categoryId)));
         }
     }
 }

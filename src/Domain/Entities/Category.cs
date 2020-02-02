@@ -2,8 +2,18 @@
 {
     public class Category : Entity
     {
-        public string NameSk { get; set; }
+        public Category(int id, string nameSk, string nameEn) : this()
+        {
+            NameSk = nameSk;
+            NameEn = nameEn;
+        }
 
-        public string NameEn { get; set; }
+        private Category()
+        {
+        }
+
+        public string NameSk { get; }
+
+        public string NameEn { get; }
     }
 }

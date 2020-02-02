@@ -12,7 +12,7 @@ namespace Enginex.Application.Categories.Queries
 
         public CategoryViewModel Map(Category category)
         {
-            return new CategoryViewModel(Map(category, c => c.NameSk, c => c.NameEn));
+            return new CategoryViewModel(category.Id, MapWithTranslation(category, c => c.NameSk, c => c.NameEn));
         }
     }
 }

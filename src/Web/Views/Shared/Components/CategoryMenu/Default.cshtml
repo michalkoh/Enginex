@@ -1,4 +1,4 @@
-﻿@model Enginex.Application.Categories.Queries.CategoriesListViewModel
+﻿@model Enginex.Application.Categories.Queries.CategoriesViewModel
 
 <div class="container">
     <div class="row justify-content-center mb-5">
@@ -6,20 +6,14 @@
             <div class="nav ftco-animate nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 @foreach (var category in Model.Categories)
                 {
-                    <a class="nav-link" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">@category.Name</a>
+                    <a class="nav-link @(Model.SelectedCategory?.Id == category.Id ? "active" : "")" role="tab"
+                       asp-controller="Product"
+                       asp-action="List"
+                       asp-route-categoryId="@category.Id">
+                        @category.Name
+                    </a>
                 }
             </div>
         </div>
     </div>
 </div>
-
-        @*@foreach (var category in Model)
-        {
-            <a class="btn btn-block @(ViewBag.SelectedCategory == category ? "btn-primary" : "btn-secondary")"
-               asp-controller="Product"
-               asp-action="List"
-               asp-route-category="@category"
-               asp-route-page="1">
-                @category
-            </a>
-        }*@

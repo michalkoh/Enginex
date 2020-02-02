@@ -2,14 +2,33 @@
 {
     public class Product : Entity
     {
-        public string NameSk { get; set; }
+        public Product(int id, string nameSk, string nameEn, string type) : this()
+        {
+            Id = id;
+            NameSk = nameSk;
+            NameEn = nameEn;
+            Type = type;
+        }
 
-        public string NameEn { get; set; }
+        public Product(int id, string nameSk, string nameEn, string type, string descriptionSk, string descriptionEn) 
+            : this(id, nameSk, nameEn, type)
+        {
+            DescriptionSk = descriptionSk;
+            DescriptionEn = descriptionEn;
+        }
 
-        public string Type { get; set; }
+        private Product()
+        {
+        }
 
-        public string DescriptionSk { get; set; }
+        public string NameSk { get; }
 
-        public string DescriptionEn { get; set; }
+        public string NameEn { get; }
+
+        public string Type { get; }
+
+        public string? DescriptionSk { get; }
+
+        public string? DescriptionEn { get; }
     }
 }

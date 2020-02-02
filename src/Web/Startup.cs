@@ -77,6 +77,11 @@ namespace Enginex.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    "category",
+                    "product/list/{categoryId?}",
+                    defaults: new { controller = "Product", action = "List" });
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });

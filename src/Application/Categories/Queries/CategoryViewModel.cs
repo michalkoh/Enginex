@@ -2,12 +2,13 @@
 {
     public class CategoryViewModel
     {
-        public static CategoryViewModel Empty = new CategoryViewModel(string.Empty);
-        
-        public CategoryViewModel(string name)
+        public CategoryViewModel(int id, string name)
         {
+            Id = id;
             Name = name;
         }
+
+        public int Id { get; }
 
         public string Name { get; }
     }

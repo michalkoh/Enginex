@@ -12,7 +12,7 @@ namespace Enginex.Application.Mapping
             this.currentCulture = currentCulture;
         }
 
-        protected T Map<T>(TSource source, Func<TSource, T> getSk, Func<TSource, T> getEn)
+        protected T MapWithTranslation<T>(TSource source, Func<TSource, T> getSk, Func<TSource, T> getEn)
         {
             return this.currentCulture.Culture == Culture.Slovak ? getSk(source) : getEn(source);
         }

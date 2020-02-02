@@ -16,7 +16,17 @@ namespace Enginex.Web.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(await this.mediator.Send(new GetCategoriesListQuery()));
+            return View(await this.mediator.Send(new GetCategoriesQuery(ParseCategoryId())));
+        }
+
+        private int? ParseCategoryId()
+        {
+            if (int.TryParse((string)RouteData.Values["categoryId"], out var categoryId))
+            {
+                return categoryId;
+            }
+
+            return null;
         }
     }
 }

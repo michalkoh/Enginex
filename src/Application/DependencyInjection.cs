@@ -1,10 +1,11 @@
-﻿using Enginex.Application.Mapping;
+﻿using Enginex.Application.Categories.Queries;
+using Enginex.Application.Localization;
+using Enginex.Application.Mapping;
+using Enginex.Application.Products.Queries;
 using Enginex.Domain.Entities;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using Enginex.Application.Categories.Queries;
-using Enginex.Application.Localization;
 
 namespace Enginex.Application
 {
@@ -15,6 +16,7 @@ namespace Enginex.Application
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddTransient<ICurrentCulture, CurrentCulture>();
             services.AddTransient<IMapper<Category, CategoryViewModel>, CategoryViewModelMapper>();
+            services.AddTransient<IMapper<Product, ProductViewModel>, ProductViewModelMapper>();
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
             return services;
