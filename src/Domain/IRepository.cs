@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Enginex.Domain.Entities;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Enginex.Domain.Entities;
 
 namespace Enginex.Domain
 {
@@ -8,6 +8,6 @@ namespace Enginex.Domain
     {
         Task<IEnumerable<Category>> GetCategoriesAsync();
 
-        Task<IPage<Product>> GetProductsAsync(IPageArgument pageArgument);
+        Task<IEnumerable<Product>> GetProductsAsync(ISpecification<Product> specification);
     }
 }
