@@ -16,6 +16,7 @@ namespace Enginex.Application.Products.Queries
                 product.Id,
                 MapWithTranslation(product, p => p.NameSk, p => p.NameEn),
                 product.Type,
+                product.ImagePath,
                 MapWithTranslation(product, p => p.DescriptionSk, p => p.DescriptionEn));
         }
     }

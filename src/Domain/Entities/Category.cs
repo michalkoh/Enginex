@@ -4,6 +4,7 @@
     {
         public Category(int id, string nameSk, string nameEn) : this()
         {
+            Id = id;
             NameSk = nameSk;
             NameEn = nameEn;
         }

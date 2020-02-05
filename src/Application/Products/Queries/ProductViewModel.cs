@@ -2,11 +2,12 @@
 {
     public class ProductViewModel
     {
-        public ProductViewModel(int id, string name, string type, string? description)
+        public ProductViewModel(int id, string name, string type, string imagePath, string? description)
         {
             Id = id;
             Name = name;
             Type = type;
+            ImagePath = imagePath;
             Description = description;
         }
 
@@ -15,6 +16,8 @@
         public string Name { get; }
 
         public string Type { get; }
+
+        public string ImagePath { get; }
 
         public string? Description { get; }
     }

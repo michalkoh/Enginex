@@ -4,11 +4,11 @@ using Enginex.Domain.Entities;
 
 namespace Enginex.Domain.Specifications
 {
-    public class SelectedCategorySpecificationBase : SpecificationBase<Product>
+    public class SelectedCategorySpecification : SpecificationBase<Product>
     {
         private readonly int? categoryId;
 
-        public SelectedCategorySpecificationBase(int? categoryId)
+        public SelectedCategorySpecification(int? categoryId)
         {
             this.categoryId = categoryId;
         }

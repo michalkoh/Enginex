@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace Enginex.Application.Categories.Queries
 {
-    public class GetCategoriesQueryHandler : IRequestHandler<GetCategoriesQuery, CategoriesViewModel>
+    public class GetCategoriesListQueryHandler : IRequestHandler<GetCategoriesListQuery, CategoriesListViewModel>
     {
         private readonly IRepository repository;
         private readonly IMapper<Category, CategoryViewModel> mapper;
 
-        public GetCategoriesQueryHandler(IRepository repository, IMapper<Category, CategoryViewModel> mapper)
+        public GetCategoriesListQueryHandler(IRepository repository, IMapper<Category, CategoryViewModel> mapper)
         {
             this.repository = repository;
             this.mapper = mapper;
         }
 
-        public async Task<CategoriesViewModel> Handle(GetCategoriesQuery request, CancellationToken cancellationToken)
+        public async Task<CategoriesListViewModel> Handle(GetCategoriesListQuery request, CancellationToken cancellationToken)
         {
             var categories = await this.repository.GetCategoriesAsync();
             var categoriesViewModels = categories.Select(c => this.mapper.Map(c));
@@ -30,7 +30,7 @@ namespace Enginex.Application.Categories.Queries
                 selectedCategoryViewModel = this.mapper.Map(selectedCategory);
             }
 
-            return new CategoriesViewModel(categoriesViewModels, selectedCategoryViewModel);
+            return new CategoriesListViewModel(categoriesViewModels, selectedCategoryViewModel);
         }
     }
 }

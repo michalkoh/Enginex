@@ -2,11 +2,11 @@
 
 namespace Enginex.Application.Categories.Queries
 {
-    public class GetCategoriesQuery : IRequest<CategoriesViewModel>
+    public class GetCategoriesListQuery : IRequest<CategoriesListViewModel>
     {
         public int? SelectedCategoryId { get; }
 
-        public GetCategoriesQuery(int? selectedCategoryId)
+        public GetCategoriesListQuery(int? selectedCategoryId)
         {
             SelectedCategoryId = selectedCategoryId;
         }

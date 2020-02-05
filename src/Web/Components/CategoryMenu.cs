@@ -16,7 +16,7 @@ namespace Enginex.Web.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(await this.mediator.Send(new GetCategoriesQuery(ParseCategoryId())));
+            return View(await this.mediator.Send(new GetCategoriesListQuery(ParseCategoryId())));
         }
 
         private int? ParseCategoryId()

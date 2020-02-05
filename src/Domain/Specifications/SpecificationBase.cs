@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace Enginex.Domain.Specifications
 {
-    public abstract class SpecificationBase<T>
+    public abstract class SpecificationBase<T> : ISpecification<T>
     {
         public abstract Expression<Func<T, bool>> ToExpression();
 
