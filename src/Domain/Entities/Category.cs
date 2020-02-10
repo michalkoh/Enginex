@@ -2,19 +2,16 @@
 {
     public class Category : Entity
     {
-        public Category(int id, string nameSk, string nameEn) : this()
+        public Category(int id, LocalString name) : this()
         {
             Id = id;
-            NameSk = nameSk;
-            NameEn = nameEn;
+            Name = name;
         }
 
         private Category()
         {
         }
 
-        public string NameSk { get; }
-
-        public string NameEn { get; }
+        public LocalString Name { get; }
     }
 }

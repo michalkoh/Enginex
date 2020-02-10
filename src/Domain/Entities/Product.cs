@@ -2,39 +2,33 @@
 {
     public class Product : Entity
     {
-        public Product(int id, int categoryId, string nameSk, string nameEn, string type, string imagePath) : this()
+        public Product(int id, LocalString name, string type, string imagePath, Category category) : this()
         {
             Id = id;
-            CategoryId = categoryId;
-            NameSk = nameSk;
-            NameEn = nameEn;
+            Name = name;
             Type = type;
             ImagePath = imagePath;
+            Category = category;
         }
 
-        public Product(int id, int categoryId, string nameSk, string nameEn, string type, string imagePath, string descriptionSk, string descriptionEn) 
-            : this(id, categoryId, nameSk, nameEn, type, imagePath)
+        public Product(int id, LocalString name, string type, string imagePath, Category category, LocalString description) 
+            : this(id, name, type, imagePath, category)
         {
-            DescriptionSk = descriptionSk;
-            DescriptionEn = descriptionEn;
+            Description = description;
         }
 
         private Product()
         {
         }
 
-        public int CategoryId { get; }
-
-        public string NameSk { get; }
-
-        public string NameEn { get; }
+        public LocalString Name { get; }
 
         public string Type { get; }
 
-        public string? DescriptionSk { get; }
-
-        public string? DescriptionEn { get; }
+        public LocalString? Description { get; }
 
         public string ImagePath { get; }
+
+        public virtual Category Category { get; }
     }
 }

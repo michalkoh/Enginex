@@ -4,20 +4,27 @@ using Enginex.Domain.Entities;
 
 namespace Enginex.Application.Products.Queries
 {
-    internal class ProductViewModelMapper : LocalizableMapperBase<Product>, IMapper<Product, ProductViewModel>
+    internal class ProductViewModelMapper : IMapper<Product, ProductViewModel>
     {
-        public ProductViewModelMapper(ICurrentCulture currentCulture) : base(currentCulture)
+        private readonly ICurrentCulture currentCulture;
+
+        public ProductViewModelMapper(ICurrentCulture currentCulture)
         {
+            this.currentCulture = currentCulture;
         }
 
         public ProductViewModel Map(Product product)
         {
-            return new ProductViewModel(
-                product.Id,
-                MapWithTranslation(product, p => p.NameSk, p => p.NameEn),
-                product.Type,
-                product.ImagePath,
-                MapWithTranslation(product, p => p.DescriptionSk, p => p.DescriptionEn));
+            return new ProductViewModel()
+            {
+                Id = product.Id,
+                Name = product.Name.Translate(this.currentCulture),
+                Type = product.Type,
+                CategoryId = product.Category.Id,
+                CategoryName = product.Category.Name.Translate(this.currentCulture),
+                Description = product.Description?.Translate(this.currentCulture),
+                ImagePath = product.ImagePath
+            };
         }
     }
 }

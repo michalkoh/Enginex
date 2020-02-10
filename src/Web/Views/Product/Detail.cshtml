@@ -15,17 +15,23 @@
                                         <div class="text w-100">
                                             <h2 class="text-center">@Model.Name</h2>
                                             <div class="row">
-                                                <div class="col-3"><p>Type:</p></div>
+                                                <div class="col-3"><p>@Localizer["Type"]:</p></div>
                                                 <div class="col float-left"><p>@Model.Type</p></div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-3"><p>Description:</p></div>
+                                                <div class="col-3"><p>@Localizer["Description"]:</p></div>
                                                 <div class="col float-left"><p>@Model.Description</p></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3"><p>@Localizer["Category"]:</p></div>
+                                                <div class="col float-left">
+                                                    <a asp-controller="Product" asp-action="List" asp-route-categoryId="@Model.CategoryId">@Model.CategoryName</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mt-lg-5 ftco-animate">
-                                        <h4 class="mb-3">@Localizer["Viac info"]</h4>
+                                        <h4 class="mb-3">@Localizer["MoreInfo"]</h4>
                                         <form action="#" class="contact-form">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" placeholder="@Localizer["YourEmail"]">

@@ -2,23 +2,26 @@
 {
     public class ProductViewModel
     {
-        public ProductViewModel(int id, string name, string type, string imagePath, string? description)
+        public ProductViewModel()
         {
-            Id = id;
-            Name = name;
-            Type = type;
-            ImagePath = imagePath;
-            Description = description;
+            CategoryName = string.Empty;
+            Name = string.Empty;
+            Type = string.Empty;
+            ImagePath = string.Empty;
         }
 
         public int Id { get; set; }
 
-        public string Name { get; }
+        public int CategoryId { get; set; }
 
-        public string Type { get; }
+        public string CategoryName { get; set; }
 
-        public string ImagePath { get; }
+        public string Name { get; set; }
 
-        public string? Description { get; }
+        public string Type { get; set; }
+
+        public string ImagePath { get; set; }
+
+        public string? Description { get; set; }
     }
 }

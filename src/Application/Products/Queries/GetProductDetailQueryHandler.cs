@@ -21,7 +21,6 @@ namespace Enginex.Application.Products.Queries
         public async Task<ProductViewModel> Handle(GetProductDetailQuery request, CancellationToken cancellationToken)
         {
             var product = await this.repository.GetProductAsync(request.ProductId);
-
             return this.mapper.Map(product);
         }
     }

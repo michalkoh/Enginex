@@ -17,7 +17,7 @@ namespace Enginex.Domain.Specifications
         {
             if (this.categoryId.HasValue)
             {
-                return p => p.CategoryId == this.categoryId;
+                return p => p.Category.Id == this.categoryId;
             }
 
             return p => true;
