@@ -9,6 +9,6 @@ namespace Enginex.Application.Products.Queries
             ProductId = productId;
         }
 
-        public int ProductId { get; set; }
+        public int ProductId { get; }
     }
 }

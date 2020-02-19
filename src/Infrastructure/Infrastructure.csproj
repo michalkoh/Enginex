@@ -2,13 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>Enginex.Persistence</AssemblyName>
-    <RootNamespace>Enginex.Persistence</RootNamespace>
+    <AssemblyName>Enginex.Infrastructure</AssemblyName>
+    <RootNamespace>Enginex.Infrastructure</RootNamespace>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.5.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.1" />
   </ItemGroup>
 
   <ItemGroup>

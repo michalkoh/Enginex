@@ -1,10 +1,12 @@
 using Enginex.Application;
-using Enginex.Persistence;
+using Enginex.Infrastructure;
+using Enginex.Infrastructure.Email;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Collections.Generic;
@@ -14,16 +16,21 @@ namespace Enginex.Web
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services
                 .AddApplication()
-                .AddPersistence()
-                .AddLocalization(options => options.ResourcesPath = "Resources");
-
-            services
+                .AddInfrastructure()
+                .AddLocalization(options => options.ResourcesPath = "Resources")
                 .AddControllersWithViews()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
 
@@ -48,7 +55,8 @@ namespace Enginex.Web
                     {
                         new CookieRequestCultureProvider()
                     };
-                });
+                })
+                .Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

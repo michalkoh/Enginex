@@ -51,6 +51,11 @@
             @await Component.InvokeAsync(nameof(LanguageMenu))
         </nav>
         <div>
+            @if (TempData["message"] != null)
+            {
+                <div class="alert alert-primary text-center">@TempData["Message"]</div>
+            }
+
             @RenderBody()
             <partial name="_CookieConsentPartial" />
         </div>

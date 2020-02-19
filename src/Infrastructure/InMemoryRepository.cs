@@ -1,10 +1,10 @@
-﻿using Enginex.Domain;
-using Enginex.Domain.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Enginex.Domain;
+using Enginex.Domain.Entities;
 
-namespace Enginex.Persistence
+namespace Enginex.Infrastructure
 {
     public class InMemoryRepository : IRepository
     {
