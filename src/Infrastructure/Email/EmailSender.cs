@@ -1,10 +1,11 @@
 ﻿using Enginex.Domain;
 using MailKit.Net.Smtp;
+using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using System;
+using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
-using MailKit.Security;
 
 namespace Enginex.Infrastructure.Email
 {
@@ -19,6 +20,7 @@ namespace Enginex.Infrastructure.Email
 
         public async Task SendEmailAsync(string email, string subject, string message)
         {
+            Contract.Requires(!string.IsNullOrEmpty(email));
             try
             {
                 var mimeMessage = new MimeMessage();
@@ -28,18 +30,15 @@ namespace Enginex.Infrastructure.Email
 
                 mimeMessage.Body = new TextPart("html")
                 {
-                    Text = message
+                    Text = message,
                 };
 
                 using (var client = new SmtpClient())
                 {
-                    // For demo-purposes, accept all SSL certificates (in case the server supports STARTTLS)
-                    // lient.ServerCertificateValidationCallback = (s, c, h, e) => true;
-
                     await client.ConnectAsync(this.emailSettings.MailServer, this.emailSettings.MailPort, SecureSocketOptions.SslOnConnect);
 
-                    //await client.ConnectAsync(this.emailSettings.MailServer, this.emailSettings.MailPort, true);
-                    //await client.ConnectAsync(this.emailSettings.MailServer);
+                    ////await client.ConnectAsync(this.emailSettings.MailServer, this.emailSettings.MailPort, true);
+                    ////await client.ConnectAsync(this.emailSettings.MailServer);
 
                     // Note: only needed if the SMTP server requires authentication
                     await client.AuthenticateAsync(this.emailSettings.Sender, this.emailSettings.Password);
@@ -52,6 +51,5 @@ namespace Enginex.Infrastructure.Email
                 throw new InvalidOperationException(ex.Message);
             }
         }
-
     }
 }

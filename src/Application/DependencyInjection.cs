@@ -17,7 +17,7 @@ namespace Enginex.Application
             services.AddTransient<ICurrentCulture, CurrentCulture>();
             services.AddTransient<IMapper<Category, CategoryViewModel>, CategoryViewModelMapper>();
             services.AddTransient<IMapper<Product, ProductViewModel>, ProductViewModelMapper>();
-            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+            ////services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
             return services;
         }

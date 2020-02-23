@@ -14,6 +14,8 @@
             English = string.Empty;
         }
 
+        public static LocalString Empty { get; } = new LocalString();
+
         public string Slovak { get; set; }
 
         public string English { get; set; }

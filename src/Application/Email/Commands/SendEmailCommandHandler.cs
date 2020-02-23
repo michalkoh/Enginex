@@ -1,8 +1,7 @@
-﻿using MediatR;
-using System;
+﻿using Enginex.Domain;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using Enginex.Domain;
 
 namespace Enginex.Application.Email.Commands
 {
