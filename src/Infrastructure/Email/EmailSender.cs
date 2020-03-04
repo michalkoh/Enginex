@@ -21,11 +21,13 @@ namespace Enginex.Infrastructure.Email
         public async Task SendEmailAsync(string email, string subject, string message)
         {
             Contract.Requires(!string.IsNullOrEmpty(email));
+
             try
             {
                 var mimeMessage = new MimeMessage();
-                mimeMessage.From.Add(new MailboxAddress(this.emailSettings.SenderName, this.emailSettings.Sender));
-                mimeMessage.To.Add(new MailboxAddress(email));
+                mimeMessage.From.Add(new MailboxAddress(this.emailSettings.SenderName, this.emailSettings.Login));
+                mimeMessage.From.Add(new MailboxAddress(email));
+                mimeMessage.To.Add(new MailboxAddress(this.emailSettings.To));
                 mimeMessage.Subject = subject;
 
                 mimeMessage.Body = new TextPart("html")
@@ -36,12 +38,7 @@ namespace Enginex.Infrastructure.Email
                 using (var client = new SmtpClient())
                 {
                     await client.ConnectAsync(this.emailSettings.MailServer, this.emailSettings.MailPort, SecureSocketOptions.SslOnConnect);
-
-                    ////await client.ConnectAsync(this.emailSettings.MailServer, this.emailSettings.MailPort, true);
-                    ////await client.ConnectAsync(this.emailSettings.MailServer);
-
-                    // Note: only needed if the SMTP server requires authentication
-                    await client.AuthenticateAsync(this.emailSettings.Sender, this.emailSettings.Password);
+                    await client.AuthenticateAsync(this.emailSettings.Login, this.emailSettings.Password);
                     await client.SendAsync(mimeMessage);
                     await client.DisconnectAsync(true);
                 }

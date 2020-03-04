@@ -1,4 +1,4 @@
-﻿@model Enginex.Application.Email.Commands.SendEmailCommand
+﻿@model Enginex.Web.ViewModels.SendEmailCommandViewModel
 
 <section class="contact-section">
     <div class="container mt-5">
@@ -14,9 +14,11 @@
                                 <p><span>@Localizer["Address"]:</span></p>
                             </div>
                             <div class="col-md-9">
-                                <p><a href="https://maps.google.com/maps?q=Kuku%C4%8D%C3%ADnova%2023%2C%20kosice&t=&z=17&ie=UTF8&" target="_blank">
-                                    Kukučínova 23, 040 01 Košice, SVK
-                                </a></p>
+                                <p>
+                                    <a href="https://maps.google.com/maps?q=Kuku%C4%8D%C3%ADnova%2023%2C%20kosice&t=&z=17&ie=UTF8&" target="_blank">
+                                        Kukučínova 23, 040 01 Košice, SVK
+                                    </a>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -59,10 +61,20 @@
     </div>
 </section>
 
+<script src="https://www.google.com/recaptcha/api.js?render=6Lf039sUAAAAAG5ZJugKssan2d7v2oQ4wIrfCJ3v"></script>
+<script>
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6Lf039sUAAAAAG5ZJugKssan2d7v2oQ4wIrfCJ3v', { action: 'contact_us' }).then(function (token) {
+            $("#CaptchaToken").val(token);
+        });
+    });
+</script>
+
 <section class="ftco-appointment">
     <div class="container-wrap">
         <div class="row no-gutters d-md-flex align-items-center">
             <div class="col-md-6 d-flex align-self-stretch">
+
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" src="https://maps.google.com/maps?q=Kuku%C4%8D%C3%ADnova%2023%2C%20kosice&t=&z=17&ie=UTF8&iwloc=&output=embed" scrolling="no" marginheight="0" marginwidth="0" allowfullscreen></iframe>
                 </div>
@@ -93,6 +105,7 @@
                         <textarea asp-for="Message" cols="30" rows="7" class="form-control" placeholder="@Localizer["Message"]"></textarea>
                     </div>
                     <div class="form-group">
+                        <input type="hidden" asp-for="CaptchaToken" />
                         <input type="submit" value="@Localizer["Send"]" class="btn btn-primary py-3 px-5">
                     </div>
                 </form>

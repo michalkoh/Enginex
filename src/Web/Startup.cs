@@ -1,5 +1,6 @@
 using Enginex.Application;
 using Enginex.Infrastructure;
+using Enginex.Infrastructure.Captcha;
 using Enginex.Infrastructure.Email;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -56,7 +57,8 @@ namespace Enginex.Web
                         new CookieRequestCultureProvider()
                     };
                 })
-                .Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+                .Configure<EmailSettings>(Configuration.GetSection("EmailSettings"))
+                .Configure<GoogleCaptchaSettings>(Configuration.GetSection("GoogleCaptchaSettings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

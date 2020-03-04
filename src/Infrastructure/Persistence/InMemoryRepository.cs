@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Enginex.Domain;
 using Enginex.Domain.Entities;
 
-namespace Enginex.Infrastructure
+namespace Enginex.Infrastructure.Persistence
 {
     public class InMemoryRepository : IRepository
     {

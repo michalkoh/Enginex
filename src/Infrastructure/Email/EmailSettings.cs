@@ -6,7 +6,8 @@
         {
             MailServer = string.Empty;
             SenderName = string.Empty;
-            Sender = string.Empty;
+            To = string.Empty;
+            Login = string.Empty;
             Password = string.Empty;
         }
 
@@ -16,7 +17,9 @@
 
         public string SenderName { get; set; }
 
-        public string Sender { get; set; }
+        public string To { get; set; }
+
+        public string Login { get; set; }
 
         public string Password { get; set; }
     }

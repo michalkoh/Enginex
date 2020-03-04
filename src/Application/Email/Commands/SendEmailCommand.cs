@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using System.ComponentModel.DataAnnotations;
 
 namespace Enginex.Application.Email.Commands
 {
@@ -12,6 +13,7 @@ namespace Enginex.Application.Email.Commands
             Message = string.Empty;
         }
 
+        [Required]
         public string Email { get; set; }
 
         public string Name { get; set; }

@@ -1,5 +1,7 @@
 ﻿using Enginex.Domain;
+using Enginex.Infrastructure.Captcha;
 using Enginex.Infrastructure.Email;
+using Enginex.Infrastructure.Persistence;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Enginex.Infrastructure
@@ -10,7 +12,8 @@ namespace Enginex.Infrastructure
         {
             services
                 .AddTransient<IRepository, InMemoryRepository>()
-                .AddSingleton<IEmailSender, EmailSender>();
+                .AddSingleton<IEmailSender, EmailSender>()
+                .AddSingleton<ICaptcha, GoogleCaptcha>();
 
             return services;
         }

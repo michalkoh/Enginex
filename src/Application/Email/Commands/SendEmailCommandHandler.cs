@@ -1,4 +1,5 @@
-﻿using Enginex.Domain;
+﻿using System;
+using Enginex.Domain;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Enginex.Application.Email.Commands
 
         public async Task<Unit> Handle(SendEmailCommand request, CancellationToken cancellationToken)
         {
-            await this.emailSender.SendEmailAsync(request.Email, request.Subject, $"{request.Message}\n\nName: {request.Name}");
+            await this.emailSender.SendEmailAsync(request.Email, request.Subject, $"{request.Message}{request.Name} {request.Email}");
             return Unit.Value;
         }
     }
