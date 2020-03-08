@@ -120,4 +120,7 @@
   <data name="EmailSent" xml:space="preserve">
     <value>Email has been sent.</value>
   </data>
+  <data name="InvalidCaptcha" xml:space="preserve">
+    <value>Failed to send an email message due to invalid CAPTCHA.</value>
+  </data>
 </root>

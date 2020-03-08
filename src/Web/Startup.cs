@@ -33,7 +33,8 @@ namespace Enginex.Web
                 .AddInfrastructure()
                 .AddLocalization(options => options.ResourcesPath = "Resources")
                 .AddControllersWithViews()
-                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
 
             var supportedCultures = new[]
             {

@@ -61,15 +61,6 @@
     </div>
 </section>
 
-<script src="https://www.google.com/recaptcha/api.js?render=6Lf039sUAAAAAG5ZJugKssan2d7v2oQ4wIrfCJ3v"></script>
-<script>
-    grecaptcha.ready(function () {
-        grecaptcha.execute('6Lf039sUAAAAAG5ZJugKssan2d7v2oQ4wIrfCJ3v', { action: 'contact_us' }).then(function (token) {
-            $("#CaptchaToken").val(token);
-        });
-    });
-</script>
-
 <section class="ftco-appointment">
     <div class="container-wrap">
         <div class="row no-gutters d-md-flex align-items-center">
@@ -113,3 +104,12 @@
         </div>
     </div>
 </section>
+
+<script src="https://www.google.com/recaptcha/api.js?render=6Lf039sUAAAAAG5ZJugKssan2d7v2oQ4wIrfCJ3v"></script>
+<script>
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6Lf039sUAAAAAG5ZJugKssan2d7v2oQ4wIrfCJ3v', { action: 'contact_us' }).then(function (token) {
+            $("#CaptchaToken").val(token);
+        });
+    });
+</script>

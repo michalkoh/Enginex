@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EmailSent" xml:space="preserve">
-    <value>Email bol odoslaný.</value>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Email address is invalid.</value>
   </data>
-  <data name="InvalidCaptcha" xml:space="preserve">
-    <value>Odoslanie emailovej správy bolo neúspešné kvôli nesprávnemu CAPTCHA kódu.</value>
+  <data name="RequiredField" xml:space="preserve">
+    <value>Required field.</value>
   </data>
 </root>

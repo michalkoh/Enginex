@@ -1,5 +1,4 @@
-﻿using Enginex.Application.Email.Commands;
-using Enginex.Domain;
+﻿using Enginex.Domain;
 using Enginex.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -24,27 +23,21 @@ namespace Enginex.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> SendEmail(SendEmailCommandViewModel sendEmailCommandViewModel)
         {
             if (ModelState.IsValid)
             {
                 if (await this.captcha.IsValid(sendEmailCommandViewModel.CaptchaToken, HttpContext.Connection.RemoteIpAddress.ToString()))
                 {
-                    var command = new SendEmailCommand()
-                    {
-                        Email = sendEmailCommandViewModel.Email ?? string.Empty,
-                        Name = sendEmailCommandViewModel.Name ?? string.Empty,
-                        Subject = sendEmailCommandViewModel.Subject ?? string.Empty,
-                        Message = sendEmailCommandViewModel.Message ?? string.Empty
-                    };
-
+                    var command = sendEmailCommandViewModel.ToCommand();
                     await Mediator.Send(command);
-                    TempData["Message"] = this.localizer["EmailSent"].Value;
+                    ConfirmationMessage(this.localizer["EmailSent"]);
                     return RedirectToAction(nameof(Index));
                 }
                 else
                 {
-                    ModelState.AddModelError("CaptchaToken", "The captcha is not valid");
+                    ErrorMessage(this.localizer["InvalidCaptcha"]);
                 }
             }
 
