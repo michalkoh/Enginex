@@ -1,9 +1,9 @@
-﻿@model Enginex.Application.Products.Queries.ProductViewModel
+﻿@model Enginex.Web.ViewModels.ProductViewModel
 
 <section class="ftco-menu">
     <div class="container-fluid">
         <div class="row d-md-flex">
-            <div class="col-lg-5 ftco-animate img f-menu-img mb-5 mb-md-0" style="background-image: url('@Url.Content(Model.ImagePath)');">
+            <div class="col-lg-5 ftco-animate img f-menu-img mb-5 mb-md-0" style="background-image: url('@Url.Content(Model.Product.ImagePath)');">
             </div>
             <div class="col-lg-7 ftco-animate p-md-5">
                 <div class="row">
@@ -13,33 +13,36 @@
                                 <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
                                     <div class="menu-wrap">
                                         <div class="text w-100">
-                                            <h2 class="text-center">@Model.Name</h2>
+                                            <h2 class="text-center">@Model.Product.Name</h2>
                                             <div class="row">
                                                 <div class="col-3"><p>@Localizer["Type"]:</p></div>
-                                                <div class="col float-left"><p>@Model.Type</p></div>
+                                                <div class="col float-left"><p>@Model.Product.Type</p></div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><p>@Localizer["Description"]:</p></div>
-                                                <div class="col float-left"><p>@Model.Description</p></div>
+                                                <div class="col float-left"><p>@Model.Product.Description</p></div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-3"><p>@Localizer["Category"]:</p></div>
                                                 <div class="col float-left">
-                                                    <a asp-controller="Product" asp-action="List" asp-route-categoryId="@Model.CategoryId">@Model.CategoryName</a>
+                                                    <a asp-controller="Product" asp-action="List" asp-route-categoryId="@Model.Product.CategoryId">@Model.Product.CategoryName</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mt-lg-5 ftco-animate">
                                         <h4 class="mb-3">@Localizer["MoreInfo"]</h4>
-                                        <form action="#" class="contact-form">
+                                        <form asp-action="SendEmail" method="post" class="contact-form">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="@Localizer["YourEmail"]">
+                                                <div><span asp-validation-for="@Model.Contact.Email" class="text-danger"></span></div>
+                                                <input asp-for="@Model.Contact.Email" class="form-control" placeholder="@Localizer["YourEmail"]">
                                             </div>
                                             <div class="form-group">
-                                                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="@Localizer["Message"]"></textarea>
+                                                <div><span asp-validation-for="@Model.Contact.Message" class="text-danger"></span></div>
+                                                <textarea asp-for="@Model.Contact.Message" cols="30" rows="7" class="form-control" placeholder="@Localizer["Message"]"></textarea>
                                             </div>
                                             <div class="form-group">
+                                                <input type="hidden" asp-for="@Model.Contact.CaptchaToken" />
                                                 <input type="submit" value="@Localizer["Send"]" class="btn btn-white btn-outline-white">
                                             </div>
                                         </form>
@@ -53,3 +56,12 @@
         </div>
     </div>
 </section>
+
+<script src="https://www.google.com/recaptcha/api.js?render=6Lf039sUAAAAAG5ZJugKssan2d7v2oQ4wIrfCJ3v"></script>
+<script>
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6Lf039sUAAAAAG5ZJugKssan2d7v2oQ4wIrfCJ3v', { action: 'contact_us' }).then(function (token) {
+            $("#CaptchaToken").val(token);
+        });
+    });
+</script>

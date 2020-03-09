@@ -4,18 +4,18 @@ using Enginex.Domain.Entities;
 
 namespace Enginex.Application.Categories.Queries
 {
-    internal class CategoryViewModelMapper : IMapper<Category, CategoryViewModel>
+    internal class CategoryDtoMapper : IMapper<Category, CategoryDto>
     {
         private readonly ICurrentCulture currentCulture;
 
-        public CategoryViewModelMapper(ICurrentCulture currentCulture)
+        public CategoryDtoMapper(ICurrentCulture currentCulture)
         {
             this.currentCulture = currentCulture;
         }
 
-        public CategoryViewModel Map(Category category)
+        public CategoryDto Map(Category category)
         {
-            return new CategoryViewModel()
+            return new CategoryDto()
             {
                 Id = category.Id,
                 Name = category.Name.Translate(this.currentCulture)

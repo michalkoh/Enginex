@@ -3,13 +3,13 @@ using System.Linq;
 
 namespace Enginex.Application.Products.Queries
 {
-    public class ProductsListViewModel
+    public class ProductsListDto
     {
-        public ProductsListViewModel(IEnumerable<ProductViewModel> products)
+        public ProductsListDto(IEnumerable<ProductDto> products)
         {
             Products = products.ToList();
         }
 
-        public IList<ProductViewModel> Products { get; }
+        public IList<ProductDto> Products { get; }
     }
 }

@@ -17,8 +17,8 @@ namespace Enginex.Application
             services
                 .AddMediatR(Assembly.GetExecutingAssembly())
                 .AddTransient<ICurrentCulture, CurrentCulture>()
-                .AddTransient<IMapper<Category, CategoryViewModel>, CategoryViewModelMapper>()
-                .AddTransient<IMapper<Product, ProductViewModel>, ProductViewModelMapper>()
+                .AddTransient<IMapper<Category, CategoryDto>, CategoryDtoMapper>()
+                .AddTransient<IMapper<Product, ProductDto>, ProductDtoMapper>()
                 .AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>))
                 .AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 

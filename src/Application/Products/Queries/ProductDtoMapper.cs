@@ -4,18 +4,18 @@ using Enginex.Domain.Entities;
 
 namespace Enginex.Application.Products.Queries
 {
-    internal class ProductViewModelMapper : IMapper<Product, ProductViewModel>
+    internal class ProductDtoMapper : IMapper<Product, ProductDto>
     {
         private readonly ICurrentCulture currentCulture;
 
-        public ProductViewModelMapper(ICurrentCulture currentCulture)
+        public ProductDtoMapper(ICurrentCulture currentCulture)
         {
             this.currentCulture = currentCulture;
         }
 
-        public ProductViewModel Map(Product product)
+        public ProductDto Map(Product product)
         {
-            return new ProductViewModel()
+            return new ProductDto()
             {
                 Id = product.Id,
                 Name = product.Name.Translate(this.currentCulture),

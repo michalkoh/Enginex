@@ -19,18 +19,18 @@ namespace Enginex.Web.Controllers
 
         public ViewResult Index()
         {
-            return View(new SendEmailCommandViewModel());
+            return View(new ContactViewModel());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SendEmail(SendEmailCommandViewModel sendEmailCommandViewModel)
+        public async Task<IActionResult> SendEmail(ContactViewModel contactViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (await this.captcha.IsValid(sendEmailCommandViewModel.CaptchaToken, HttpContext.Connection.RemoteIpAddress.ToString()))
+                if (await this.captcha.IsValid(contactViewModel.CaptchaToken, HttpContext.Connection.RemoteIpAddress.ToString()))
                 {
-                    var command = sendEmailCommandViewModel.ToCommand();
+                    var command = contactViewModel.ToCommand();
                     await Mediator.Send(command);
                     ConfirmationMessage(this.localizer["EmailSent"]);
                     return RedirectToAction(nameof(Index));
@@ -41,7 +41,7 @@ namespace Enginex.Web.Controllers
                 }
             }
 
-            return View(nameof(Index), sendEmailCommandViewModel);
+            return View(nameof(Index), contactViewModel);
         }
     }
 }

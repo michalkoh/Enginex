@@ -1,8 +1,8 @@
 ﻿namespace Enginex.Application.Products.Queries
 {
-    public class ProductViewModel
+    public class ProductDto
     {
-        public ProductViewModel()
+        public ProductDto()
         {
             CategoryName = string.Empty;
             Name = string.Empty;

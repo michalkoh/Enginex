@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Enginex.Web.ViewModels
 {
-    public class SendEmailCommandViewModel
+    public class ContactViewModel
     {
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
         [EmailAddress(ErrorMessageResourceName = "InvalidEmail", ErrorMessageResourceType = typeof(ValidationResources))]
@@ -25,7 +25,7 @@ namespace Enginex.Web.ViewModels
         {
             return new SendEmailCommand()
             {
-                Email = string.Empty,
+                Email = Email ?? string.Empty,
                 Name = Name ?? string.Empty,
                 Subject = Subject ?? string.Empty,
                 Message = Message ?? string.Empty

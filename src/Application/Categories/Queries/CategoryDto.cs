@@ -1,8 +1,8 @@
 ﻿namespace Enginex.Application.Categories.Queries
 {
-    public class CategoryViewModel
+    public class CategoryDto
     {
-        public CategoryViewModel()
+        public CategoryDto()
         {
             Name = string.Empty;
         }
