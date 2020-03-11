@@ -2,15 +2,15 @@
 
 namespace Enginex.Web.ViewModels
 {
-    public class ProductViewModel
+    public class ProductDetailViewModel
     {
-        public ProductViewModel()
+        public ProductDetailViewModel()
         {
             Product = new ProductDto();
             Contact = new ContactViewModel();
         }
 
-        public ProductViewModel(ProductDto product, ContactViewModel contact)
+        public ProductDetailViewModel(ProductDto product, ContactViewModel contact)
         {
             Product = product;
             Contact = contact;

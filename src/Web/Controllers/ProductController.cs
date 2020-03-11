@@ -23,24 +23,28 @@ namespace Enginex.Web.Controllers
             return View(await Mediator.Send(new GetProductsListQuery(categoryId)));
         }
 
-        public async Task<IActionResult> Detail(int id, ProductViewModel productViewModel)
+        public async Task<IActionResult> Detail(int id)
         {
             var product = await Mediator.Send(new GetProductDetailQuery(id));
-            return View(new ProductViewModel(product, new ContactViewModel()));
+            var contact = new ContactViewModel()
+            {
+                Name = "Info k produktu",
+            };
+            return View(new ProductDetailViewModel(product, contact));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SendEmail(ProductViewModel productViewModel)
+        public async Task<IActionResult> MoreInfo(ProductDetailViewModel detailViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (await this.captcha.IsValid(productViewModel.Contact.CaptchaToken, HttpContext.Connection.RemoteIpAddress.ToString()))
+                if (await this.captcha.IsValid(detailViewModel.Contact.CaptchaToken, HttpContext.Connection.RemoteIpAddress.ToString()))
                 {
-                    var command = productViewModel.Contact.ToCommand();
+                    var command = detailViewModel.Contact.ToCommand();
                     await Mediator.Send(command);
                     ConfirmationMessage(this.localizer["EmailSent"]);
-                    return RedirectToAction(nameof(Detail));
+                    return RedirectToAction(nameof(Detail), detailViewModel.Product.Id);
                 }
                 else
                 {
@@ -48,7 +52,7 @@ namespace Enginex.Web.Controllers
                 }
             }
 
-            return View(nameof(Detail), productViewModel);
+            return View(nameof(Detail), detailViewModel);
         }
     }
 }

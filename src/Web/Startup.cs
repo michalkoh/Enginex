@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -58,6 +59,7 @@ namespace Enginex.Web
                         new CookieRequestCultureProvider()
                     };
                 })
+                .Configure<RouteOptions>(options => options.LowercaseUrls = true)
                 .Configure<EmailSettings>(Configuration.GetSection("EmailSettings"))
                 .Configure<GoogleCaptchaSettings>(Configuration.GetSection("GoogleCaptchaSettings"));
         }
