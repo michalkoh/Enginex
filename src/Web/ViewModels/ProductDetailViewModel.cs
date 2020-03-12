@@ -1,4 +1,5 @@
 ﻿using Enginex.Application.Products.Queries;
+using Enginex.Application.Request.Commands;
 
 namespace Enginex.Web.ViewModels
 {
@@ -7,17 +8,27 @@ namespace Enginex.Web.ViewModels
         public ProductDetailViewModel()
         {
             Product = new ProductDto();
-            Contact = new ContactViewModel();
+            Request = new RequestViewModel();
         }
 
-        public ProductDetailViewModel(ProductDto product, ContactViewModel contact)
+        public ProductDetailViewModel(ProductDto product)
+            : this()
         {
             Product = product;
-            Contact = contact;
         }
 
         public ProductDto Product { get; set; }
 
-        public ContactViewModel Contact { get; set; }
+        public RequestViewModel Request { get; set; }
+
+        public SendRequestCommand ToCommand()
+        {
+            return new SendRequestCommand()
+            {
+                ProductId = Product.Id,
+                Email = Request.Email ?? string.Empty,
+                Message = Request.Message ?? string.Empty
+            };
+        }
     }
 }

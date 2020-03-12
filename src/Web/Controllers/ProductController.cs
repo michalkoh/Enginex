@@ -9,10 +9,10 @@ namespace Enginex.Web.Controllers
 {
     public class ProductController : BaseController
     {
-        private readonly IStringLocalizer<ContactController> localizer;
+        private readonly IStringLocalizer<ProductController> localizer;
         private readonly ICaptcha captcha;
 
-        public ProductController(IStringLocalizer<ContactController> localizer, ICaptcha captcha)
+        public ProductController(IStringLocalizer<ProductController> localizer, ICaptcha captcha)
         {
             this.localizer = localizer;
             this.captcha = captcha;
@@ -25,25 +25,20 @@ namespace Enginex.Web.Controllers
 
         public async Task<IActionResult> Detail(int id)
         {
-            var product = await Mediator.Send(new GetProductDetailQuery(id));
-            var contact = new ContactViewModel()
-            {
-                Name = "Info k produktu",
-            };
-            return View(new ProductDetailViewModel(product, contact));
+            return View(new ProductDetailViewModel(await Mediator.Send(new GetProductDetailQuery(id))));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> MoreInfo(ProductDetailViewModel detailViewModel)
+        public async Task<IActionResult> Detail(ProductDetailViewModel detailViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (await this.captcha.IsValid(detailViewModel.Contact.CaptchaToken, HttpContext.Connection.RemoteIpAddress.ToString()))
+                if (await this.captcha.IsValid(detailViewModel.Request.CaptchaToken, HttpContext.Connection.RemoteIpAddress.ToString()))
                 {
-                    var command = detailViewModel.Contact.ToCommand();
+                    var command = detailViewModel.ToCommand();
                     await Mediator.Send(command);
-                    ConfirmationMessage(this.localizer["EmailSent"]);
+                    ConfirmationMessage(this.localizer["RequestSent"]);
                     return RedirectToAction(nameof(Detail), detailViewModel.Product.Id);
                 }
                 else
@@ -52,7 +47,7 @@ namespace Enginex.Web.Controllers
                 }
             }
 
-            return View(nameof(Detail), detailViewModel);
+            return View(detailViewModel);
         }
     }
 }
