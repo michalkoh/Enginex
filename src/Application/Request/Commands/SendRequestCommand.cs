@@ -8,6 +8,7 @@ namespace Enginex.Application.Request.Commands
         {
             Email = string.Empty;
             Message = string.Empty;
+            ProductUrl = string.Empty;
         }
 
         public string Email { get; set; }
@@ -15,5 +16,7 @@ namespace Enginex.Application.Request.Commands
         public string Message { get; set; }
 
         public int ProductId { get; set; }
+
+        public string ProductUrl { get; set; }
     }
 }

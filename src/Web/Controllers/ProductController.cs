@@ -1,6 +1,7 @@
 ﻿using Enginex.Application.Products.Queries;
 using Enginex.Domain;
 using Enginex.Web.ViewModels;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using System.Threading.Tasks;
@@ -36,7 +37,7 @@ namespace Enginex.Web.Controllers
             {
                 if (await this.captcha.IsValid(detailViewModel.Request.CaptchaToken, HttpContext.Connection.RemoteIpAddress.ToString()))
                 {
-                    var command = detailViewModel.ToCommand();
+                    var command = detailViewModel.ToCommand(Request.GetDisplayUrl());
                     await Mediator.Send(command);
                     ConfirmationMessage(this.localizer["RequestSent"]);
                     return RedirectToAction(nameof(Detail), detailViewModel.Product.Id);
