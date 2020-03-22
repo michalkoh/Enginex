@@ -45,6 +45,13 @@
                         <li class="nav-item @(controller == "Product" ? "active" : "")"><a asp-controller="Product" asp-action="List" asp-route-categoryId="" class="nav-link">@Localizer["Offer"]</a></li>
                         <li class="nav-item @(controller == "About" ? "active" : "")"><a asp-controller="About" asp-action="Index" class="nav-link">@Localizer["About"]</a></li>
                         <li class="nav-item @(controller == "Contact" ? "active" : "")"><a asp-controller="Contact" asp-action="Index" class="nav-link">@Localizer["Contact"]</a></li>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+                                <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">
+                                    <li class="nav-item"><a class="dropdown-item nav-link" href="#pk">Produkty</a></li>
+                                    <li class="nav-item"><a class="dropdown-item nav-link" href="#pk">Kategórie</a></li>
+                                </ul>
+                        </div>
                     </ul>
                 </div>
             </div>

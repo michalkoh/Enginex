@@ -1,20 +1,15 @@
-﻿using Enginex.Application.Products.Queries;
+﻿using System;
+using Enginex.Application.Products.Queries;
 using Enginex.Application.Request.Commands;
 
 namespace Enginex.Web.ViewModels
 {
-    public class ProductDetailViewModel
+    public class ProductRequestViewModel
     {
-        public ProductDetailViewModel()
+        public ProductRequestViewModel()
         {
-            Product = new ProductDto();
+            Product = ProductDto.Null;
             Request = new RequestViewModel();
-        }
-
-        public ProductDetailViewModel(ProductDto product)
-            : this()
-        {
-            Product = product;
         }
 
         public ProductDto Product { get; set; }
@@ -23,6 +18,12 @@ namespace Enginex.Web.ViewModels
 
         public SendRequestCommand ToCommand(string productUrl)
         {
+            if (Product is null)
+            {
+                // TODO what exception?
+                throw new InvalidOperationException("Mapping to command failed.");
+            }
+
             return new SendRequestCommand()
             {
                 ProductId = Product.Id,

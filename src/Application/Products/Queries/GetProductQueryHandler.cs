@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace Enginex.Application.Products.Queries
 {
-    public class GetProductDetailQueryHandler : IRequestHandler<GetProductDetailQuery, ProductDto>
+    public class GetProductQueryHandler : IRequestHandler<GetProductQuery, ProductDto>
     {
         private readonly IRepository repository;
         private readonly IMapper<Product, ProductDto> mapper;
 
-        public GetProductDetailQueryHandler(IRepository repository, IMapper<Product, ProductDto> mapper)
+        public GetProductQueryHandler(IRepository repository, IMapper<Product, ProductDto> mapper)
         {
             this.repository = repository;
             this.mapper = mapper;
         }
 
-        public async Task<ProductDto> Handle(GetProductDetailQuery request, CancellationToken cancellationToken)
+        public async Task<ProductDto> Handle(GetProductQuery request, CancellationToken cancellationToken)
         {
             var product = await this.repository.GetProductAsync(request.ProductId);
             return this.mapper.Map(product);

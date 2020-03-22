@@ -15,16 +15,14 @@ namespace Enginex.Application.Products.Queries
 
         public ProductDto Map(Product product)
         {
-            return new ProductDto()
-            {
-                Id = product.Id,
-                Name = product.Name.Translate(this.currentCulture),
-                Type = product.Type,
-                CategoryId = product.Category.Id,
-                CategoryName = product.Category.Name.Translate(this.currentCulture),
-                Description = product.Description?.Translate(this.currentCulture),
-                ImagePath = product.ImagePath
-            };
+            return new ProductDto(
+                product.Id,
+                product.Name.Translate(this.currentCulture),
+                product.Type,
+                product.Description?.Translate(this.currentCulture),
+                product.ImagePath,
+                product.Category.Id,
+                product.Category.Name.Translate(this.currentCulture));
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Enginex.Application.Categories.Queries;
+using Enginex.Web.ViewModels;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -16,17 +17,16 @@ namespace Enginex.Web.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(await this.mediator.Send(new GetCategoriesListQuery(ParseCategoryId())));
+            return View(new CategoryListViewModel()
+            {
+                Categories = await this.mediator.Send(new GetCategoryListQuery()),
+                SelectedCategoryId = ParseSelectedCategoryId()
+            });
         }
 
-        private int? ParseCategoryId()
+        private int? ParseSelectedCategoryId()
         {
-            if (int.TryParse((string)RouteData.Values["categoryId"], out var categoryId))
-            {
-                return categoryId;
-            }
-
-            return null;
+            return int.TryParse((string)RouteData.Values["categoryId"], out var categoryId) ? (int?)categoryId : null;
         }
     }
 }

@@ -2,13 +2,14 @@
 {
     public class CategoryDto
     {
-        public CategoryDto()
+        public CategoryDto(int id, string name)
         {
-            Name = string.Empty;
+            Id = id;
+            Name = name;
         }
 
-        public int Id { get; set; }
+        public int Id { get; }
 
-        public string Name { get; set; }
+        public string Name { get; }
     }
 }

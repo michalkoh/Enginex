@@ -2,26 +2,31 @@
 {
     public class ProductDto
     {
-        public ProductDto()
+        public ProductDto(int id, string name, string type, string? description, string imagePath, int categoryId, string categoryName)
         {
-            CategoryName = string.Empty;
-            Name = string.Empty;
-            Type = string.Empty;
-            ImagePath = string.Empty;
+            Id = id;
+            Name = name;
+            Type = type;
+            Description = description;
+            ImagePath = imagePath;
+            CategoryId = categoryId;
+            CategoryName = categoryName;
         }
 
-        public int Id { get; set; }
+        public static ProductDto Null { get; } = new ProductDto(0, string.Empty, string.Empty, null, string.Empty, 0, string.Empty);
 
-        public int CategoryId { get; set; }
+        public int Id { get; }
 
-        public string CategoryName { get; set; }
+        public string Name { get; }
 
-        public string Name { get; set; }
+        public string Type { get; }
 
-        public string Type { get; set; }
+        public string ImagePath { get; }
 
-        public string ImagePath { get; set; }
+        public string? Description { get; }
 
-        public string? Description { get; set; }
+        public int CategoryId { get; }
+
+        public string CategoryName { get; }
     }
 }

@@ -2,9 +2,9 @@
 
 namespace Enginex.Application.Products.Queries
 {
-    public class GetProductDetailQuery : IRequest<ProductDto>
+    public class GetProductQuery : IRequest<ProductDto>
     {
-        public GetProductDetailQuery(int productId)
+        public GetProductQuery(int productId)
         {
             ProductId = productId;
         }

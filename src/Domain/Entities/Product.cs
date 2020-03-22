@@ -28,8 +28,6 @@
             Category = Category.Empty;
         }
 
-        public static Product Null { get; } = new Product();
-
         public LocalString Name { get; }
 
         public string Type { get; }

@@ -1,4 +1,4 @@
-﻿@model Enginex.Application.Categories.Queries.CategoriesListDto
+﻿@model Enginex.Web.ViewModels.CategoryListViewModel
 
 <div class="container">
     <div class="row justify-content-center mb-5">
@@ -6,7 +6,7 @@
             <div class="nav ftco-animate nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 @foreach (var category in Model.Categories)
                 {
-                    <a class="nav-link @(Model.SelectedCategory?.Id == category.Id ? "active" : "")" role="tab"
+                    <a class="nav-link @(Model.SelectedCategoryId == category.Id ? "active" : "")" role="tab"
                        asp-controller="Product"
                        asp-action="List"
                        asp-route-categoryId="@category.Id">

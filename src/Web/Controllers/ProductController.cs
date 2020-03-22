@@ -21,26 +21,32 @@ namespace Enginex.Web.Controllers
 
         public async Task<IActionResult> List(int? categoryId)
         {
-            return View(await Mediator.Send(new GetProductsListQuery(categoryId)));
+            return View(new ProductListViewModel()
+            {
+                Products = await Mediator.Send(new GetProductListQuery(categoryId))
+            });
         }
 
         public async Task<IActionResult> Detail(int id)
         {
-            return View(new ProductDetailViewModel(await Mediator.Send(new GetProductDetailQuery(id))));
+            return View(new ProductRequestViewModel()
+            {
+                Product = await Mediator.Send(new GetProductQuery(id))
+            });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Detail(ProductDetailViewModel detailViewModel)
+        public async Task<IActionResult> Detail(ProductRequestViewModel requestViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (await this.captcha.IsValid(detailViewModel.Request.CaptchaToken, HttpContext.Connection.RemoteIpAddress.ToString()))
+                if (await this.captcha.IsValid(requestViewModel.Request.CaptchaToken, HttpContext.Connection.RemoteIpAddress.ToString()))
                 {
-                    var command = detailViewModel.ToCommand(Request.GetDisplayUrl());
+                    var command = requestViewModel.ToCommand(Request.GetDisplayUrl());
                     await Mediator.Send(command);
                     ConfirmationMessage(this.localizer["RequestSent"]);
-                    return RedirectToAction(nameof(Detail), detailViewModel.Product.Id);
+                    return RedirectToAction(nameof(Detail), requestViewModel.Product.Id);
                 }
                 else
                 {
@@ -48,7 +54,7 @@ namespace Enginex.Web.Controllers
                 }
             }
 
-            return View(detailViewModel);
+            return View(requestViewModel);
         }
     }
 }

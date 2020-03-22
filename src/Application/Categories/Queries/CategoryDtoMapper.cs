@@ -15,11 +15,7 @@ namespace Enginex.Application.Categories.Queries
 
         public CategoryDto Map(Category category)
         {
-            return new CategoryDto()
-            {
-                Id = category.Id,
-                Name = category.Name.Translate(this.currentCulture)
-            };
+            return new CategoryDto(category.Id, category.Name.Translate(this.currentCulture));
         }
     }
 }
