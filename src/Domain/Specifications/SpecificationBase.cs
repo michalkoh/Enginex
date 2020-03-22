@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+using Enginex.Domain.Data;
 
 namespace Enginex.Domain.Specifications
 {

@@ -1,6 +1,6 @@
 ﻿using Enginex.Application.Products.Queries;
 using Enginex.Domain;
-using Enginex.Web.ViewModels;
+using Enginex.Web.ViewModels.Product;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -19,6 +19,7 @@ namespace Enginex.Web.Controllers
             this.captcha = captcha;
         }
 
+        [HttpGet]
         public async Task<IActionResult> List(int? categoryId)
         {
             return View(new ProductListViewModel()
@@ -27,6 +28,7 @@ namespace Enginex.Web.Controllers
             });
         }
 
+        [HttpGet]
         public async Task<IActionResult> Detail(int id)
         {
             return View(new ProductRequestViewModel()

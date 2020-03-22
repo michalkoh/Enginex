@@ -1,21 +1,20 @@
 ﻿using Enginex.Application.Localization;
 using Enginex.Application.Mapping;
-using Enginex.Domain.Entities;
 
 namespace Enginex.Application.Products.Queries
 {
-    internal class ProductDtoMapper : IMapper<Product, ProductDto>
+    internal class ProductMapper : IMapper<Domain.Entities.Product, Product>
     {
         private readonly ICurrentCulture currentCulture;
 
-        public ProductDtoMapper(ICurrentCulture currentCulture)
+        public ProductMapper(ICurrentCulture currentCulture)
         {
             this.currentCulture = currentCulture;
         }
 
-        public ProductDto Map(Product product)
+        public Product Map(Domain.Entities.Product product)
         {
-            return new ProductDto(
+            return new Product(
                 product.Id,
                 product.Name.Translate(this.currentCulture),
                 product.Type,

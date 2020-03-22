@@ -1,6 +1,5 @@
 ﻿using Enginex.Application.Mapping;
-using Enginex.Domain;
-using Enginex.Domain.Entities;
+using Enginex.Domain.Data;
 using Enginex.Domain.Specifications;
 using MediatR;
 using System.Collections.Generic;
@@ -10,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace Enginex.Application.Products.Queries
 {
-    public class GetProductListQueryHandler : IRequestHandler<GetProductListQuery, IReadOnlyList<ProductDto>>
+    public class GetProductListQueryHandler : IRequestHandler<GetProductListQuery, IReadOnlyList<Product>>
     {
         private readonly IRepository repository;
-        private readonly IMapper<Product, ProductDto> mapper;
+        private readonly IMapper<Domain.Entities.Product, Product> mapper;
 
-        public GetProductListQueryHandler(IRepository repository, IMapper<Product, ProductDto> mapper)
+        public GetProductListQueryHandler(IRepository repository, IMapper<Domain.Entities.Product, Product> mapper)
         {
             this.repository = repository;
             this.mapper = mapper;
         }
 
-        public async Task<IReadOnlyList<ProductDto>> Handle(GetProductListQuery request, CancellationToken cancellationToken)
+        public async Task<IReadOnlyList<Product>> Handle(GetProductListQuery request, CancellationToken cancellationToken)
         {
-            var products = await this.repository.GetProductsAsync(new SelectedCategorySpecification(request.CategoryId));
+            var products = await this.repository.GetProductsAsync(new ProductsInCategory(request.CategoryId));
             return products.Select(this.mapper.Map).ToList().AsReadOnly();
         }
     }

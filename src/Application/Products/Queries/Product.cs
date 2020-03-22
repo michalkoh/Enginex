@@ -1,8 +1,8 @@
 ﻿namespace Enginex.Application.Products.Queries
 {
-    public class ProductDto
+    public class Product
     {
-        public ProductDto(int id, string name, string type, string? description, string imagePath, int categoryId, string categoryName)
+        public Product(int id, string name, string type, string? description, string imagePath, int categoryId, string categoryName)
         {
             Id = id;
             Name = name;
@@ -13,7 +13,7 @@
             CategoryName = categoryName;
         }
 
-        public static ProductDto Null { get; } = new ProductDto(0, string.Empty, string.Empty, null, string.Empty, 0, string.Empty);
+        public static Product Null { get; } = new Product(0, string.Empty, string.Empty, null, string.Empty, 0, string.Empty);
 
         public int Id { get; }
 

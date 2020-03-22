@@ -1,5 +1,5 @@
 ﻿using Enginex.Application.Categories.Queries;
-using Enginex.Web.ViewModels;
+using Enginex.Web.ViewModels.Category;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

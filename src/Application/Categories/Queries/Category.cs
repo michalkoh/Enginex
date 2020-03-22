@@ -1,8 +1,8 @@
 ﻿namespace Enginex.Application.Categories.Queries
 {
-    public class CategoryDto
+    public class Category
     {
-        public CategoryDto(int id, string name)
+        public Category(int id, string name)
         {
             Id = id;
             Name = name;

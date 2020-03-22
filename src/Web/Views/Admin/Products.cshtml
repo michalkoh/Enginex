@@ -1,0 +1,21 @@
+﻿@model Enginex.Web.ViewModels.Admin.ProductEditListViewModel
+
+<table class="table table-striped table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Názov</th>
+        <th scope="col">Typ</th>
+        <th scope="col">Popis</th>
+    </tr>
+    </thead>
+    <tbody>    
+    @foreach (var product in Model.Products)
+    {
+        <tr>
+            <td>@product.Name.Slovak</td>
+            <td>@product.Type</td>
+            <td>@product.Description?.Slovak</td>
+        </tr>
+    }
+    </tbody>
+</table>

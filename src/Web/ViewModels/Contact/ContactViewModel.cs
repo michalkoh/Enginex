@@ -1,8 +1,8 @@
-﻿using Enginex.Application.Email.Commands;
+﻿using System.ComponentModel.DataAnnotations;
+using Enginex.Application.Email.Commands;
 using Enginex.Web.Resources;
-using System.ComponentModel.DataAnnotations;
 
-namespace Enginex.Web.ViewModels
+namespace Enginex.Web.ViewModels.Contact
 {
     public class ContactViewModel
     {

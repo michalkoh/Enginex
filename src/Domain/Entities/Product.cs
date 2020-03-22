@@ -36,6 +36,6 @@
 
         public string ImagePath { get; }
 
-        public virtual Category Category { get; }
+        public Category Category { get; }
     }
 }

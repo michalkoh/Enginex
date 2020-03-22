@@ -1,8 +1,8 @@
-﻿using Enginex.Domain.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Enginex.Domain.Entities;
 
-namespace Enginex.Domain
+namespace Enginex.Domain.Data
 {
     public interface IRepository
     {

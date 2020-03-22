@@ -1,4 +1,5 @@
 ﻿using Enginex.Domain;
+using Enginex.Domain.Data;
 using Enginex.Infrastructure.Captcha;
 using Enginex.Infrastructure.Email;
 using Enginex.Infrastructure.Persistence;

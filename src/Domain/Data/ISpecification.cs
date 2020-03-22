@@ -1,4 +1,4 @@
-﻿namespace Enginex.Domain
+﻿namespace Enginex.Domain.Data
 {
     public interface ISpecification<in T>
     {

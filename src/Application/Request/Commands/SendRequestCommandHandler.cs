@@ -1,4 +1,5 @@
 ﻿using Enginex.Domain;
+using Enginex.Domain.Data;
 using Enginex.Domain.Entities;
 using MediatR;
 using System.Threading;
@@ -22,7 +23,7 @@ namespace Enginex.Application.Request.Commands
             var product = await this.repository.GetProductAsync(request.ProductId);
             if (product is null)
             {
-                throw new BusinessException($"Product not found (Id: {request.ProductId}).");
+                throw new BusinessException($"Produkt (Id:{request.ProductId}) nebol nájdený.");
             }
 
             await this.emailSender.SendEmailAsync(request.Email, FormatSubject(product), FormatMessage(product, request));
@@ -31,7 +32,7 @@ namespace Enginex.Application.Request.Commands
 
         private static string FormatSubject(Product product)
         {
-            return $"Požiadavka zakaznika: {product.Name.Slovak}, {product.Type}";
+            return $"Požiadavka zákazníka: {product.Name.Slovak}, {product.Type}";
         }
 
         private static string FormatMessage(Product product, SendRequestCommand request)

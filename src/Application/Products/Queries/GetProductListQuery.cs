@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Enginex.Application.Products.Queries
 {
-    public class GetProductListQuery : IRequest<IReadOnlyList<ProductDto>>
+    public class GetProductListQuery : IRequest<IReadOnlyList<Product>>
     {
         public GetProductListQuery(int? categoryId)
         {

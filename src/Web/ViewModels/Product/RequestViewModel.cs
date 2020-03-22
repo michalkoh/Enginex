@@ -1,7 +1,7 @@
-﻿using Enginex.Web.Resources;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using Enginex.Web.Resources;
 
-namespace Enginex.Web.ViewModels
+namespace Enginex.Web.ViewModels.Product
 {
     public class RequestViewModel
     {

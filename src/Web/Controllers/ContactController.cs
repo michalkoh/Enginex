@@ -1,5 +1,5 @@
 ﻿using Enginex.Domain;
-using Enginex.Web.ViewModels;
+using Enginex.Web.ViewModels.Contact;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using System.Threading.Tasks;
