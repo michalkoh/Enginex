@@ -1,10 +1,9 @@
 ﻿using Enginex.Domain.Data;
 using MediatR;
-using System.Collections.Generic;
 
 namespace Enginex.Application.Products.Queries
 {
-    public class GetProductEditListQuery : IRequest<IReadOnlyList<ProductEdit>>
+    public class GetProductEditListQuery : IRequest<Page<ProductEdit>>
     {
         public GetProductEditListQuery(PageArgument pageArgument)
         {

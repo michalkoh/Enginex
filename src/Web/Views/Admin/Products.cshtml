@@ -1,21 +1,45 @@
 ﻿@model Enginex.Web.ViewModels.Admin.ProductEditListViewModel
 
-<table class="table table-striped table-dark">
-    <thead>
-    <tr>
-        <th scope="col">Názov</th>
-        <th scope="col">Typ</th>
-        <th scope="col">Popis</th>
-    </tr>
-    </thead>
-    <tbody>    
-    @foreach (var product in Model.Products)
-    {
-        <tr>
-            <td>@product.Name.Slovak</td>
-            <td>@product.Type</td>
-            <td>@product.Description?.Slovak</td>
-        </tr>
-    }
-    </tbody>
-</table>
+<section>
+    <div class="container mt-5">
+        <div class="row block-9">
+            <div class="col-lg-12 contact-info ftco-animate">
+                <div class="row">
+                    <div class="col-md-12 mb-4">
+                        <h3>Produkty</h3>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="m-2"><a href="#">Pridať nový produkt</a></div>
+                    <table class="table table-dark table-hover table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Názov</th>
+                            <th scope="col">Typ</th>
+                            <th scope="col">Popis</th>
+                            <th scope="col">Upraviť</th>
+                            <th scope="col">Zmazať</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var product in Model.Products)
+                        {
+                            <tr>
+                                <td>@product.Name.Slovak</td>
+                                <td>@product.Type</td>
+                                <td>@product.Description?.Slovak</td>
+                                <td><a href="#">Upraviť</a></td>
+                                <td><a href="#">Zmazať</a></td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                    <div page-model="@Model.PagingInfo" page-action="List" class="btn-group m-1"
+                         page-class-enabled="true" page-class="btn" page-class-normal="btn-dark" page-class-selected="btn-primary">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
