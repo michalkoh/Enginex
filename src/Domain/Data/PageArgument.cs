@@ -2,7 +2,7 @@
 {
     public struct PageArgument
     {
-        private const int DefaultPageSize = 2;
+        private const int DefaultPageSize = 20;
 
         public PageArgument(int page)
             : this(page, DefaultPageSize)

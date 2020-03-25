@@ -3,14 +3,14 @@
 <section>
     <div class="container mt-5">
         <div class="row block-9">
-            <div class="col-lg-12 contact-info ftco-animate">
+            <div class="col-lg-12 ftco-animate">
                 <div class="row">
                     <div class="col-md-12 mb-4">
                         <h3>Produkty</h3>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <div class="m-2"><a href="#">Pridať nový produkt</a></div>
+                    <div class="m-2"><a asp-controller="Admin" asp-action="EditProduct">Pridať nový produkt</a></div>
                     <table class="table table-dark table-hover table-sm">
                         <thead>
                         <tr>
@@ -28,13 +28,13 @@
                                 <td>@product.Name.Slovak</td>
                                 <td>@product.Type</td>
                                 <td>@product.Description?.Slovak</td>
-                                <td><a href="#">Upraviť</a></td>
+                                <td><a asp-controller="Admin" asp-action="EditProduct" asp-route-id="@product.Id">Upraviť</a></td>
                                 <td><a href="#">Zmazať</a></td>
                             </tr>
                         }
                         </tbody>
                     </table>
-                    <div page-model="@Model.PagingInfo" page-action="List" class="btn-group m-1"
+                    <div page-model="@Model.PagingInfo" page-action="products" class="btn-group"
                          page-class-enabled="true" page-class="btn" page-class-normal="btn-dark" page-class-selected="btn-primary">
                     </div>
                 </div>

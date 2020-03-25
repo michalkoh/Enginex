@@ -10,9 +10,9 @@ namespace Enginex.Web.Controllers
     public class AdminController : BaseController
     {
         [HttpGet]
-        public async Task<IActionResult> Products(int? categoryId)
+        public async Task<IActionResult> Products(int? categoryId, int? page)
         {
-            var pageArgument = new PageArgument(1);
+            var pageArgument = new PageArgument(page ?? 1);
             var productPage = await Mediator.Send(new GetProductEditListQuery(pageArgument));
             return View(new ProductEditListViewModel()
             {
@@ -24,6 +24,18 @@ namespace Enginex.Web.Controllers
                     TotalCount = productPage.TotalCount
                 }
             });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditProduct(int? id)
+        {
+            if (id.HasValue)
+            {
+                var product = await Mediator.Send(new GetProductEditQuery(id.Value));
+                return View(new ProductEditViewModel(product));
+            }
+
+            return View(new ProductEditViewModel());
         }
     }
 }
