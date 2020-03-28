@@ -4,7 +4,7 @@ namespace Enginex.Application.Products.Queries
 {
     public class ProductEdit
     {
-        public ProductEdit(int id, LocalString name, string type, LocalString? description, string imagePath, int categoryId)
+        public ProductEdit(int id, LocalString name, string type, LocalString description, string imagePath, int categoryId)
         {
             Id = id;
             Name = name;
@@ -20,7 +20,7 @@ namespace Enginex.Application.Products.Queries
 
         public string Type { get; }
 
-        public LocalString? Description { get; }
+        public LocalString Description { get; }
 
         public string ImagePath { get; }
 

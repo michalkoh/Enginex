@@ -1,7 +1,9 @@
-﻿using Enginex.Application.Products.Queries;
+﻿using Enginex.Application.Categories.Queries;
+using Enginex.Application.Products.Queries;
 using Enginex.Domain.Data;
 using Enginex.Web.ViewModels;
 using Enginex.Web.ViewModels.Admin;
+using Enginex.Web.ViewModels.Category;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -27,15 +29,38 @@ namespace Enginex.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> EditProduct(int? id)
+        public async Task<IActionResult> EditProduct(int id)
         {
-            if (id.HasValue)
+            var product = await Mediator.Send(new GetProductEditQuery(id));
+            var categories = await Mediator.Send(new GetCategoryListQuery());
+            return View(new ProductEditViewModel()
             {
-                var product = await Mediator.Send(new GetProductEditQuery(id.Value));
-                return View(new ProductEditViewModel(product));
-            }
+                Id = product.Id,
+                Name = product.Name,
+                Type = product.Type,
+                Description = product.Description,
+                ImagePath = product.ImagePath,
+                CategoryViewModel = new CategoryListViewModel()
+                {
+                    Categories = categories,
+                    SelectedCategoryId = product.CategoryId
+                }
+            });
+        }
 
-            return View(new ProductEditViewModel());
+        [HttpPost]
+        public async Task<IActionResult> EditProduct(ProductEditViewModel productEditViewModel)
+        {
+            var categories = await Mediator.Send(new GetCategoryListQuery());
+            await Task.Delay(500);
+            return View(new ProductEditViewModel()
+            {
+                CategoryViewModel = new CategoryListViewModel()
+                {
+                    Categories = categories,
+                    SelectedCategoryId = productEditViewModel.CategoryViewModel.SelectedCategoryId
+                }
+            });
         }
     }
 }

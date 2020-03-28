@@ -10,7 +10,13 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <form asp-action="SendEmail" method="post" class="contact-form">
+                    <form asp-action="EditProduct" method="post" class="contact-form">
+                        <div class="form-group">
+                            <label asp-for="CategoryViewModel.SelectedCategoryId">Kategória</label>
+                            <div><span asp-validation-for="CategoryViewModel.SelectedCategoryId" class="text-danger"></span></div>
+                            <select asp-for="CategoryViewModel.SelectedCategoryId" class="custom-select"
+                                    asp-items="@(new SelectList(Model.CategoryViewModel.Categories,"Id","Name"))"></select>
+                        </div>
                         <div class="form-group">
                             <label asp-for="Name.Slovak">Názov (sk)</label>
                             <div><span asp-validation-for="Name.Slovak" class="text-danger"></span></div>
@@ -25,6 +31,16 @@
                             <label asp-for="Type">Typ</label>
                             <div><span asp-validation-for="Type" class="text-danger"></span></div>
                             <input asp-for="Type" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description.Slovak">Popis (sk)</label>
+                            <div><span asp-validation-for="Description.Slovak" class="text-danger"></span></div>
+                            <textarea asp-for="Description.Slovak" rows="3" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description.English">Popis (en)</label>
+                            <div><span asp-validation-for="Description.English" class="text-danger"></span></div>
+                            <textarea asp-for="Description.English" rows="3" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Uložiť" class="btn btn-primary py-3 px-5">

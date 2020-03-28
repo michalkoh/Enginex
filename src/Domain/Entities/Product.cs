@@ -32,7 +32,7 @@
 
         public string Type { get; }
 
-        public LocalString? Description { get; }
+        public LocalString Description { get; }
 
         public string ImagePath { get; }
 

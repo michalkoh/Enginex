@@ -1,34 +1,29 @@
-﻿using Enginex.Application.Products.Queries;
-using Enginex.Domain;
+﻿using Enginex.Domain;
+using Enginex.Web.ViewModels.Category;
 
 namespace Enginex.Web.ViewModels.Admin
 {
     public class ProductEditViewModel
     {
-        public ProductEditViewModel(ProductEdit product)
-        {
-            Name = product.Name;
-            Type = product.Type;
-            Description = product.Description;
-            ImagePath = product.ImagePath;
-            CategoryId = product.CategoryId;
-        }
-
         public ProductEditViewModel()
         {
             Name = LocalString.Empty;
             Type = string.Empty;
+            Description = LocalString.Empty;
             ImagePath = string.Empty;
+            CategoryViewModel = new CategoryListViewModel();
         }
 
-        public LocalString Name { get; }
+        public int Id { get; set; }
 
-        public string Type { get; }
+        public LocalString Name { get; set; }
 
-        public LocalString? Description { get; }
+        public string Type { get; set; }
 
-        public string ImagePath { get; }
+        public LocalString Description { get; set; }
 
-        public int CategoryId { get; }
+        public string ImagePath { get; set; }
+
+        public CategoryListViewModel CategoryViewModel { get; set; }
     }
 }

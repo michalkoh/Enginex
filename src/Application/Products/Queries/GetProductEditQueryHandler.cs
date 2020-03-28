@@ -1,9 +1,8 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Enginex.Application.Mapping;
+﻿using Enginex.Application.Mapping;
 using Enginex.Domain.Data;
 using MediatR;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Enginex.Application.Products.Queries
 {
