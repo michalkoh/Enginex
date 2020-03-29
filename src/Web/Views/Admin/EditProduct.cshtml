@@ -18,14 +18,14 @@
                                     asp-items="@(new SelectList(Model.CategoryViewModel.Categories,"Id","Name"))"></select>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Name.Slovak">Názov (sk)</label>
-                            <div><span asp-validation-for="Name.Slovak" class="text-danger"></span></div>
-                            <input asp-for="Name.Slovak" class="form-control">
+                            <label asp-for="NameSlovak">Názov (sk)</label>
+                            <div><span asp-validation-for="NameSlovak" class="text-danger"></span></div>
+                            <input asp-for="NameSlovak" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label asp-for="Name.English">Názov (en)</label>
-                            <div><span asp-validation-for="Name.English" class="text-danger"></span></div>
-                            <input asp-for="Name.English" class="form-control">
+                            <label asp-for="NameEnglish">Názov (en)</label>
+                            <div><span asp-validation-for="NameEnglish" class="text-danger"></span></div>
+                            <input asp-for="NameEnglish" class="form-control">
                         </div>
                         <div class="form-group">
                             <label asp-for="Type">Typ</label>
@@ -33,14 +33,14 @@
                             <input asp-for="Type" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label asp-for="Description.Slovak">Popis (sk)</label>
-                            <div><span asp-validation-for="Description.Slovak" class="text-danger"></span></div>
-                            <textarea asp-for="Description.Slovak" rows="3" class="form-control"></textarea>
+                            <label asp-for="DescriptionSlovak">Popis (sk)</label>
+                            <div><span asp-validation-for="DescriptionSlovak" class="text-danger"></span></div>
+                            <textarea asp-for="DescriptionSlovak" rows="3" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Description.English">Popis (en)</label>
-                            <div><span asp-validation-for="Description.English" class="text-danger"></span></div>
-                            <textarea asp-for="Description.English" rows="3" class="form-control"></textarea>
+                            <label asp-for="DescriptionEnglish">Popis (en)</label>
+                            <div><span asp-validation-for="DescriptionEnglish" class="text-danger"></span></div>
+                            <textarea asp-for="DescriptionEnglish" rows="3" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Uložiť" class="btn btn-primary py-3 px-5">

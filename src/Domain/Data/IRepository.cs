@@ -6,6 +6,8 @@ namespace Enginex.Domain.Data
 {
     public interface IRepository
     {
+        Task<Category> GetCategoryAsync(int id);
+
         Task<IEnumerable<Category>> GetCategoriesAsync();
 
         Task<Product> GetProductAsync(int id);

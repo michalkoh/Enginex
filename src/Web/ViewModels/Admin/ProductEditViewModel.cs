@@ -1,5 +1,4 @@
-﻿using Enginex.Domain;
-using Enginex.Web.ViewModels.Category;
+﻿using Enginex.Web.ViewModels.Category;
 
 namespace Enginex.Web.ViewModels.Admin
 {
@@ -7,20 +6,26 @@ namespace Enginex.Web.ViewModels.Admin
     {
         public ProductEditViewModel()
         {
-            Name = LocalString.Empty;
+            NameSlovak = string.Empty;
+            NameEnglish = string.Empty;
             Type = string.Empty;
-            Description = LocalString.Empty;
+            DescriptionSlovak = string.Empty;
+            DescriptionEnglish = string.Empty;
             ImagePath = string.Empty;
             CategoryViewModel = new CategoryListViewModel();
         }
 
         public int Id { get; set; }
 
-        public LocalString Name { get; set; }
+        public string NameSlovak { get; set; }
+
+        public string NameEnglish { get; set; }
 
         public string Type { get; set; }
 
-        public LocalString Description { get; set; }
+        public string DescriptionSlovak { get; set; }
+
+        public string DescriptionEnglish { get; set; }
 
         public string ImagePath { get; set; }
 

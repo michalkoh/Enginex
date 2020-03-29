@@ -1,4 +1,5 @@
-﻿using Enginex.Application.Categories.Queries;
+﻿using System;
+using Enginex.Application.Categories.Queries;
 using Enginex.Application.Products.Queries;
 using Enginex.Domain.Data;
 using Enginex.Web.ViewModels;
@@ -36,9 +37,11 @@ namespace Enginex.Web.Controllers
             return View(new ProductEditViewModel()
             {
                 Id = product.Id,
-                Name = product.Name,
+                NameSlovak = product.Name.Slovak,
+                NameEnglish = product.Name.English,
                 Type = product.Type,
-                Description = product.Description,
+                DescriptionSlovak = product.Description.Slovak,
+                DescriptionEnglish = product.Description.English,
                 ImagePath = product.ImagePath,
                 CategoryViewModel = new CategoryListViewModel()
                 {
@@ -61,6 +64,30 @@ namespace Enginex.Web.Controllers
                     SelectedCategoryId = productEditViewModel.CategoryViewModel.SelectedCategoryId
                 }
             });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Categories()
+        {
+            return View(await Mediator.Send(new GetCategoryEditListQuery()));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditCategory(int id)
+        {
+            var category = await Mediator.Send(new GetCategoryEditQuery(id));
+            return View(new CategoryEditViewModel()
+            {
+                Id = category.Id,
+                NameSlovak = category.Name.Slovak,
+                NameEnglish = category.Name.English
+            });
+        }
+
+        [HttpPost]
+        public Task<IActionResult> EditCategory(CategoryEditViewModel categoryEditViewModel)
+        {
+            throw new NotImplementedException();
         }
     }
 }
