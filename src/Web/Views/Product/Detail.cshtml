@@ -44,12 +44,6 @@
                                             <div class="form-group">
                                                 <input type="hidden" asp-for="@Model.Request.CaptchaToken" />
                                                 <input type="hidden" asp-for="@Model.Product.Id" />
-                                                <input type="hidden" asp-for="@Model.Product.Name" />
-                                                <input type="hidden" asp-for="@Model.Product.Type" />
-                                                <input type="hidden" asp-for="@Model.Product.ImagePath" />
-                                                <input type="hidden" asp-for="@Model.Product.Description" />
-                                                <input type="hidden" asp-for="@Model.Product.CategoryId" />
-                                                <input type="hidden" asp-for="@Model.Product.CategoryName" />
                                                 <input type="submit" value="@Localizer["Send"]" class="btn btn-white btn-outline-white">
                                             </div>
                                         </form>

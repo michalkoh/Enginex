@@ -56,6 +56,7 @@ namespace Enginex.Web.Controllers
                 }
             }
 
+            requestViewModel.Product = await Mediator.Send(new GetProductQuery(requestViewModel.Product.Id));
             return View(requestViewModel);
         }
     }

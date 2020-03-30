@@ -20,7 +20,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Categories\Commands\" />
     <Folder Include="Products\Commands\" />
   </ItemGroup>
 

@@ -85,8 +85,13 @@ namespace Enginex.Web.Controllers
         }
 
         [HttpPost]
-        public Task<IActionResult> EditCategory(CategoryEditViewModel categoryEditViewModel)
+        public Task<IActionResult> EditCategory(CategoryEditViewModel categoryModel)
         {
+            if (categoryModel.Id == 0)
+            {
+                var createCategoryCommand = categoryModel.ToCreateCommand();
+            }
+
             throw new NotImplementedException();
         }
     }
