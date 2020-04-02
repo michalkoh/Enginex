@@ -28,14 +28,14 @@
             Category = Category.Empty;
         }
 
-        public LocalString Name { get; }
+        public LocalString Name { get; private set; }
 
-        public string Type { get; }
+        public string Type { get; private set; }
 
-        public LocalString Description { get; }
+        public LocalString Description { get; private set; }
 
-        public string ImagePath { get; }
+        public string ImagePath { get; private set; }
 
-        public Category Category { get; }
+        public Category Category { get; private set; }
     }
 }

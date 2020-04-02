@@ -16,6 +16,6 @@
 
         public static Category Empty { get; } = new Category();
 
-        public LocalString Name { get; }
+        public LocalString Name { get; private set; }
     }
 }
