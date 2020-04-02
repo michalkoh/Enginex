@@ -1,13 +1,14 @@
-﻿using Enginex.Domain.Data;
-using Enginex.Domain.Entities;
+﻿using Enginex.Domain.Entities;
+using System;
+using System.Linq.Expressions;
 
 namespace Enginex.Domain.Specifications
 {
-    public class AllProducts : ISpecification<Product>
+    public class AllProducts : SpecificationBase<Product>
     {
-        public bool IsSatisfiedBy(Product entity)
+        public override Expression<Func<Product, bool>> ToExpression()
         {
-            return true;
+            return p => true;
         }
     }
 }

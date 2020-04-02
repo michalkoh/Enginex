@@ -1,7 +1,12 @@
-﻿namespace Enginex.Domain.Data
+﻿using System;
+using System.Linq.Expressions;
+
+namespace Enginex.Domain.Data
 {
-    public interface ISpecification<in T>
+    public interface ISpecification<T>
     {
+        Expression<Func<T, bool>> ToExpression();
+
         bool IsSatisfiedBy(T entity);
     }
 }

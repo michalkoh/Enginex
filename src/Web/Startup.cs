@@ -18,12 +18,12 @@ namespace Enginex.Web
 {
     public class Startup
     {
+        private readonly IConfiguration configuration;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -31,7 +31,7 @@ namespace Enginex.Web
         {
             services
                 .AddApplication()
-                .AddInfrastructure()
+                .AddInfrastructure(this.configuration)
                 .AddLocalization(options => options.ResourcesPath = "Resources")
                 .AddControllersWithViews()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
@@ -60,8 +60,8 @@ namespace Enginex.Web
                     };
                 })
                 .Configure<RouteOptions>(options => options.LowercaseUrls = true)
-                .Configure<EmailSettings>(Configuration.GetSection("EmailSettings"))
-                .Configure<GoogleCaptchaSettings>(Configuration.GetSection("GoogleCaptchaSettings"));
+                .Configure<EmailSettings>(this.configuration.GetSection("EmailSettings"))
+                .Configure<GoogleCaptchaSettings>(this.configuration.GetSection("GoogleCaptchaSettings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
