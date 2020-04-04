@@ -16,8 +16,21 @@ namespace Enginex.Application.Email.Commands
 
         public async Task<Unit> Handle(SendEmailCommand request, CancellationToken cancellationToken)
         {
-            await this.emailSender.SendEmailAsync(request.Email, request.Subject, $"{request.Message}{request.Name} {request.Email}");
+            await this.emailSender.SendEmailAsync(request.Email, request.Subject, FormatMessage(request));
             return Unit.Value;
+        }
+
+        private static string FormatMessage(SendEmailCommand request)
+        {
+            return $@"
+{request.Message}
+<br /><br/>
+Meno: {request.Name}<br/>
+Mail: <a href=""mailto:{request.Email}"">{request.Email}</a><br/>
+<br/>
+
+---------------------------------------------------<br/>
+DÔLEŽITÉ: Na túto správu neodpovedajte priamo, ale použite mail: <a href=""mailto:{request.Email}"">{request.Email}</a>";
         }
     }
 }
