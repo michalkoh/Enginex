@@ -73,6 +73,24 @@ namespace Enginex.Web.Controllers
         }
 
         [HttpGet]
+        public IActionResult CreateCategory()
+        {
+            return View(new CategoryEditViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCategory(CategoryEditViewModel categoryModel)
+        {
+            if (ModelState.IsValid)
+            {
+                await Mediator.Send(categoryModel.ToCreateCommand());
+                return RedirectToAction(nameof(Categories));
+            }
+
+            return View();
+        }
+
+        [HttpGet]
         public async Task<IActionResult> EditCategory(int id)
         {
             var category = await Mediator.Send(new GetCategoryEditQuery(id));
@@ -85,14 +103,34 @@ namespace Enginex.Web.Controllers
         }
 
         [HttpPost]
-        public Task<IActionResult> EditCategory(CategoryEditViewModel categoryModel)
+        public async Task<IActionResult> EditCategory(CategoryEditViewModel categoryModel)
         {
-            if (categoryModel.Id == 0)
+            if (ModelState.IsValid)
             {
-                var createCategoryCommand = categoryModel.ToCreateCommand();
+                await Mediator.Send(categoryModel.ToEditCommand());
+                return RedirectToAction(nameof(Categories));
             }
 
-            throw new NotImplementedException();
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            var category = await Mediator.Send(new GetCategoryEditQuery(id));
+            return View(new CategoryEditViewModel()
+            {
+                Id = category.Id,
+                NameSlovak = category.Name.Slovak,
+                NameEnglish = category.Name.English
+            });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteCategory(CategoryEditViewModel categoryModel)
+        {
+            await Mediator.Send(categoryModel.ToDeleteCommand());
+            return RedirectToAction(nameof(Categories));
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Enginex.Application.Mapping;
+using Enginex.Domain;
 using Enginex.Domain.Data;
 using MediatR;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,6 +21,11 @@ namespace Enginex.Application.Categories.Queries
         public async Task<CategoryEdit> Handle(GetCategoryEditQuery request, CancellationToken cancellationToken)
         {
             var category = await this.repository.GetCategoryAsync(request.CategoryId);
+
+            if (category is null)
+            {
+                throw new BusinessException("Kategória neexistuje.");
+            }
 
             return this.mapper.Map(category);
         }

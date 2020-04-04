@@ -1,5 +1,7 @@
-﻿using Enginex.Application.Categories.Commands;
+﻿using System.ComponentModel.DataAnnotations;
+using Enginex.Application.Categories.Commands;
 using Enginex.Domain;
+using Enginex.Web.Resources;
 
 namespace Enginex.Web.ViewModels.Admin
 {
@@ -13,8 +15,10 @@ namespace Enginex.Web.ViewModels.Admin
 
         public int Id { get; set; }
 
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
         public string NameSlovak { get; set; }
 
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
         public string NameEnglish { get; set; }
 
         public CreateCategoryCommand ToCreateCommand()
@@ -25,6 +29,11 @@ namespace Enginex.Web.ViewModels.Admin
         public EditCategoryCommand ToEditCommand()
         {
             return new EditCategoryCommand(Id, new LocalString(NameSlovak, NameEnglish));
+        }
+
+        public DeleteCategoryCommand ToDeleteCommand()
+        {
+            return new DeleteCategoryCommand(Id);
         }
     }
 }

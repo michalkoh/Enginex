@@ -31,6 +31,31 @@ namespace Enginex.Infrastructure.Persistence
             };
         }
 
+        public Task AddCategoryAsync(Category category)
+        {
+            this.categories.Add(category);
+            return Task.CompletedTask;
+        }
+
+        public Task UpdateCategoryAsync(Category category)
+        {
+            var foundCategory = this.categories.Single(c => c.Id == category.Id);
+            var index = this.categories.IndexOf(foundCategory);
+            this.categories[index] = category;
+            return Task.CompletedTask;
+        }
+
+        public Task DeleteCategoryAsync(Category category)
+        {
+            var categoryToDelete = this.categories.SingleOrDefault(c => c.Id == category.Id);
+            if (categoryToDelete != null!)
+            {
+                this.categories.Remove(categoryToDelete);
+            }
+
+            return Task.CompletedTask;
+        }
+
         public Task<Category> GetCategoryAsync(int id)
         {
             return Task.FromResult(this.categories.SingleOrDefault(c => c.Id == id));

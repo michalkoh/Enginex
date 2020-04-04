@@ -3,9 +3,14 @@
     public class Category : Entity
     {
         public Category(int id, LocalString name)
-            : this()
+            : this(name)
         {
             Id = id;
+        }
+
+        public Category(LocalString name)
+            : this()
+        {
             Name = name;
         }
 
@@ -17,5 +22,11 @@
         public static Category Empty { get; } = new Category();
 
         public LocalString Name { get; private set; }
+
+        public void Update(LocalString name)
+        {
+            // TODO Guard
+            Name = name;
+        }
     }
 }

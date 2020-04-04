@@ -16,6 +16,25 @@ namespace Enginex.Infrastructure.Persistence
             this.context = context;
         }
 
+        public async Task AddCategoryAsync(Category category)
+        {
+            // TODO Gruad argument
+            this.context.Categories.Add(category);
+            await this.context.SaveChangesAsync();
+        }
+
+        public async Task UpdateCategoryAsync(Category category)
+        {
+            this.context.Categories.Update(category);
+            await this.context.SaveChangesAsync();
+        }
+
+        public async Task DeleteCategoryAsync(Category category)
+        {
+            this.context.Categories.Remove(category);
+            await this.context.SaveChangesAsync();
+        }
+
         public async Task<Category> GetCategoryAsync(int id)
         {
             return await this.context.Categories.FindAsync(id);
