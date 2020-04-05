@@ -73,19 +73,19 @@ namespace Enginex.Web
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
+                //// app.UseExceptionHandler("/Error");
 
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                //// app.UseHsts();
             }
 
             app.UseRequestLocalization();
-            app.UseHttpsRedirection();
-            app.UseStatusCodePages();
+            ////app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseRouting();
-            app.UseAuthorization();
+            ////app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
