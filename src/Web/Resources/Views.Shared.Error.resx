@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NotFound" xml:space="preserve">
-    <value>The requested page does not exist.</value>
+  <data name="Error" xml:space="preserve">
+    <value>An unexpected error has occurred.</value>
   </data>
-  <data name="NotFoundDescription" xml:space="preserve">
-    <value>We are sorry but the requested page does not exist. Go to</value>
+  <data name="ErrorDescription" xml:space="preserve">
+    <value>An error has occured while processing your request:</value>
   </data>
-  <data name="NotFoundHomePage" xml:space="preserve">
-    <value>the home page.</value>
+  <data name="ErrorSupportNotified" xml:space="preserve">
+    <value>The support team is notified and we are working on the fix.</value>
   </data>
 </root>

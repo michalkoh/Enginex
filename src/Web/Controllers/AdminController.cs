@@ -55,7 +55,6 @@ namespace Enginex.Web.Controllers
         public async Task<IActionResult> EditProduct(ProductEditViewModel productEditViewModel)
         {
             var categories = await Mediator.Send(new GetCategoryListQuery());
-            await Task.Delay(500);
             return View(new ProductEditViewModel()
             {
                 CategoryViewModel = new CategoryListViewModel()

@@ -121,7 +121,7 @@
     <value>Požadovaná stránka neexistuje.</value>
   </data>
   <data name="NotFoundDescription" xml:space="preserve">
-    <value>Ľutujeme, no Vami požadovaná stránka neexistuje. Návrat na </value>
+    <value>Ľutujeme, no Vami požadovaná stránka neexistuje. Prejsť na </value>
   </data>
   <data name="NotFoundHomePage" xml:space="preserve">
     <value>hlavnú stránku.</value>

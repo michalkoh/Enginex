@@ -4,11 +4,13 @@
             <div class="col-lg-12 ftco-animate">
                 <div class="row">
                     <div class="col-md-12 mb-4">
-                        <h3>@Localizer["NotFound"]</h3>
+                        <h3>@Localizer["Error"]</h3>
                     </div>
                 </div>
                 <div class="mb-5">
-                    <span>@Localizer["NotFoundDescription"]<a asp-controller="Home" asp-action="Index">@Localizer["NotFoundHomePage"]</a></span>
+                    <span>@Localizer["ErrorDescription"]</span><br /><br />
+                    <span class="text-danger">@ViewBag.ErrorMessage</span><br /><br />
+                    <span>@Localizer["ErrorSupportNotified"]</span>
                 </div>
             </div>
         </div>
