@@ -1,4 +1,6 @@
-﻿using Enginex.Web.ViewModels.Category;
+﻿using System.Collections.Generic;
+using Enginex.Application.Products.Queries;
+using Enginex.Web.ViewModels.Category;
 
 namespace Enginex.Web.ViewModels.Admin
 {
@@ -13,6 +15,23 @@ namespace Enginex.Web.ViewModels.Admin
             DescriptionEnglish = string.Empty;
             ImagePath = string.Empty;
             CategoryViewModel = new CategoryListViewModel();
+        }
+
+        public ProductEditViewModel(ProductEdit product, IReadOnlyList<Application.Categories.Queries.Category> categories)
+            : this()
+        {
+            Id = product.Id;
+            NameSlovak = product.Name.Slovak;
+            NameEnglish = product.Name.English;
+            Type = product.Type;
+            DescriptionSlovak = product.Description.Slovak;
+            DescriptionEnglish = product.Description.English;
+            ImagePath = product.ImagePath;
+            CategoryViewModel = new CategoryListViewModel()
+            {
+                Categories = categories,
+                SelectedCategoryId = product.CategoryId
+            };
         }
 
         public int Id { get; set; }

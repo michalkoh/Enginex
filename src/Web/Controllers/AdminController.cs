@@ -1,8 +1,6 @@
-﻿using System;
-using Enginex.Application.Categories.Queries;
+﻿using Enginex.Application.Categories.Queries;
 using Enginex.Application.Products.Queries;
 using Enginex.Domain.Data;
-using Enginex.Web.ViewModels;
 using Enginex.Web.ViewModels.Admin;
 using Enginex.Web.ViewModels.Category;
 using Microsoft.AspNetCore.Mvc;
@@ -17,16 +15,7 @@ namespace Enginex.Web.Controllers
         {
             var pageArgument = new PageArgument(page ?? 1);
             var productPage = await Mediator.Send(new GetProductEditListQuery(pageArgument));
-            return View(new ProductEditListViewModel()
-            {
-                Products = productPage.Items,
-                PagingInfo = new PagingInfo
-                {
-                    CurrentPage = pageArgument.Page,
-                    ItemsPerPage = pageArgument.Size,
-                    TotalCount = productPage.TotalCount
-                }
-            });
+            return View(new ProductEditListViewModel(productPage, pageArgument));
         }
 
         [HttpGet]
@@ -34,21 +23,7 @@ namespace Enginex.Web.Controllers
         {
             var product = await Mediator.Send(new GetProductEditQuery(id));
             var categories = await Mediator.Send(new GetCategoryListQuery());
-            return View(new ProductEditViewModel()
-            {
-                Id = product.Id,
-                NameSlovak = product.Name.Slovak,
-                NameEnglish = product.Name.English,
-                Type = product.Type,
-                DescriptionSlovak = product.Description.Slovak,
-                DescriptionEnglish = product.Description.English,
-                ImagePath = product.ImagePath,
-                CategoryViewModel = new CategoryListViewModel()
-                {
-                    Categories = categories,
-                    SelectedCategoryId = product.CategoryId
-                }
-            });
+            return View(new ProductEditViewModel(product, categories));
         }
 
         [HttpPost]
@@ -68,7 +43,8 @@ namespace Enginex.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Categories()
         {
-            return View(await Mediator.Send(new GetCategoryEditListQuery()));
+            var categories = await Mediator.Send(new GetCategoryEditListQuery());
+            return View(new CategoryEditListViewModel(categories));
         }
 
         [HttpGet]
@@ -93,12 +69,7 @@ namespace Enginex.Web.Controllers
         public async Task<IActionResult> EditCategory(int id)
         {
             var category = await Mediator.Send(new GetCategoryEditQuery(id));
-            return View(new CategoryEditViewModel()
-            {
-                Id = category.Id,
-                NameSlovak = category.Name.Slovak,
-                NameEnglish = category.Name.English
-            });
+            return View(new CategoryEditViewModel(category));
         }
 
         [HttpPost]
@@ -117,12 +88,7 @@ namespace Enginex.Web.Controllers
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var category = await Mediator.Send(new GetCategoryEditQuery(id));
-            return View(new CategoryEditViewModel()
-            {
-                Id = category.Id,
-                NameSlovak = category.Name.Slovak,
-                NameEnglish = category.Name.English
-            });
+            return View(new CategoryEditViewModel(category));
         }
 
         [HttpPost]

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Enginex.Application.Categories.Commands;
+using Enginex.Application.Categories.Queries;
 using Enginex.Domain;
 using Enginex.Web.Resources;
 
@@ -11,6 +12,14 @@ namespace Enginex.Web.ViewModels.Admin
         {
             NameSlovak = string.Empty;
             NameEnglish = string.Empty;
+        }
+
+        public CategoryEditViewModel(CategoryEdit category)
+            : this()
+        {
+            Id = category.Id;
+            NameSlovak = category.Name.Slovak;
+            NameEnglish = category.Name.English;
         }
 
         public int Id { get; set; }
