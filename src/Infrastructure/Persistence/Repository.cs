@@ -16,6 +16,16 @@ namespace Enginex.Infrastructure.Persistence
             this.context = context;
         }
 
+        public async Task<Category> GetCategoryAsync(int id)
+        {
+            return await this.context.Categories.FindAsync(id);
+        }
+
+        public async Task<IEnumerable<Category>> GetCategoriesAsync()
+        {
+            return await this.context.Categories.ToListAsync();
+        }
+
         public async Task AddCategoryAsync(Category category)
         {
             // TODO Gruad argument
@@ -35,16 +45,6 @@ namespace Enginex.Infrastructure.Persistence
             await this.context.SaveChangesAsync();
         }
 
-        public async Task<Category> GetCategoryAsync(int id)
-        {
-            return await this.context.Categories.FindAsync(id);
-        }
-
-        public async Task<IEnumerable<Category>> GetCategoriesAsync()
-        {
-            return await this.context.Categories.ToListAsync();
-        }
-
         public async Task<Product> GetProductAsync(int id)
         {
             return await this.context.Products.FindAsync(id);
@@ -53,6 +53,25 @@ namespace Enginex.Infrastructure.Persistence
         public async Task<IEnumerable<Product>> GetProductsAsync(ISpecification<Product> specification)
         {
             return await this.context.Products.Where(specification.ToExpression()).ToListAsync();
+        }
+
+        public async Task AddProductAsync(Product product)
+        {
+            // TODO Gruad argument
+            this.context.Products.Add(product);
+            await this.context.SaveChangesAsync();
+        }
+
+        public async Task UpdateProductAsync(Product product)
+        {
+            this.context.Products.Update(product);
+            await this.context.SaveChangesAsync();
+        }
+
+        public async Task DeleteProductAsync(Product product)
+        {
+            this.context.Products.Remove(product);
+            await this.context.SaveChangesAsync();
         }
     }
 }

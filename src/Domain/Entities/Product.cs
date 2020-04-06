@@ -2,25 +2,24 @@
 {
     public class Product : Entity
     {
-        public Product(int id, LocalString name, string type, string imagePath, Category category)
-            : this()
+        public Product(int id, LocalString name, string type, string imagePath, LocalString description, Category category)
+            : this(name, type, imagePath, description, category)
         {
             Id = id;
+        }
+
+        public Product(LocalString name, string type, string imagePath, LocalString description, Category category)
+            : this()
+        {
             Name = name;
             Type = type;
             ImagePath = imagePath;
-            Category = category;
-        }
-
-        public Product(int id, LocalString name, string type, string imagePath, Category category, LocalString description)
-            : this(id, name, type, imagePath, category)
-        {
             Description = description;
+            Category = category;
         }
 
         private Product()
         {
-            Id = 0;
             Name = LocalString.Empty;
             Type = string.Empty;
             ImagePath = string.Empty;

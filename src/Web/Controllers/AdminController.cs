@@ -19,6 +19,25 @@ namespace Enginex.Web.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> CreateProduct()
+        {
+            var categories = await Mediator.Send(new GetCategoryListQuery());
+            return View(new ProductEditViewModel(categories));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCategory(ProductEditViewModel productModel)
+        {
+            if (ModelState.IsValid)
+            {
+                await Mediator.Send(productModel.ToCreateCommand());
+                return RedirectToAction(nameof(Categories));
+            }
+
+            return View();
+        }
+
+        [HttpGet]
         public async Task<IActionResult> EditProduct(int id)
         {
             var product = await Mediator.Send(new GetProductEditQuery(id));
@@ -30,14 +49,7 @@ namespace Enginex.Web.Controllers
         public async Task<IActionResult> EditProduct(ProductEditViewModel productEditViewModel)
         {
             var categories = await Mediator.Send(new GetCategoryListQuery());
-            return View(new ProductEditViewModel()
-            {
-                CategoryViewModel = new CategoryListViewModel()
-                {
-                    Categories = categories,
-                    SelectedCategoryId = productEditViewModel.CategoryViewModel.SelectedCategoryId
-                }
-            });
+            return View(new ProductEditViewModel());
         }
 
         [HttpGet]
