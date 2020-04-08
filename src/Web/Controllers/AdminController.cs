@@ -2,7 +2,6 @@
 using Enginex.Application.Products.Queries;
 using Enginex.Domain.Data;
 using Enginex.Web.ViewModels.Admin;
-using Enginex.Web.ViewModels.Category;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -26,15 +25,16 @@ namespace Enginex.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCategory(ProductEditViewModel productModel)
+        public async Task<IActionResult> CreateProduct(ProductEditViewModel productModel)
         {
             if (ModelState.IsValid)
             {
                 await Mediator.Send(productModel.ToCreateCommand());
-                return RedirectToAction(nameof(Categories));
+                return RedirectToAction(nameof(Products));
             }
 
-            return View();
+            productModel.Categories = await Mediator.Send(new GetCategoryListQuery());
+            return View(productModel);
         }
 
         [HttpGet]
@@ -74,7 +74,7 @@ namespace Enginex.Web.Controllers
                 return RedirectToAction(nameof(Categories));
             }
 
-            return View();
+            return View(categoryModel);
         }
 
         [HttpGet]
@@ -93,7 +93,7 @@ namespace Enginex.Web.Controllers
                 return RedirectToAction(nameof(Categories));
             }
 
-            return View();
+            return View(categoryModel);
         }
 
         [HttpGet]

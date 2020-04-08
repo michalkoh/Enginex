@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <form asp-action="CreateProduct" method="post" class="contact-form">
+                    <form enctype="multipart/form-data" asp-action="CreateProduct" method="post" class="contact-form">
                         <div class="form-group">
                             <label asp-for="SelectedCategoryId">Kategória</label>
                             <div><span asp-validation-for="SelectedCategoryId" class="text-danger"></span></div>
@@ -43,6 +43,14 @@
                             <textarea asp-for="DescriptionEnglish" rows="3" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
+                            <label asp-for="Image">Foto</label>
+                            <div><span asp-validation-for="Image" class="text-danger"></span></div>
+                            <div class="custom-file">
+                                <input asp-for="Image" class="form-control custom-file-input">
+                                <label class="custom-file-label">Vybrať súbor...</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <input type="submit" value="Uložiť" class="btn btn-primary py-3 px-5">
                         </div>
                     </form>
@@ -51,3 +59,14 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
+    </script>
+}

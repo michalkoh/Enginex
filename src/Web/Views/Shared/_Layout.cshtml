@@ -98,5 +98,9 @@
         <script src="~/lib/timepicker/jquery.timepicker.min.js"></script>
         <script src="~/lib/scrollax/scrollax.min.js"></script>
         <script src="~/js/main.js"></script>
+        @if (IsSectionDefined("Scripts"))
+        {
+            @RenderSection("Scripts", required: false)
+        }
     </body>
 </html>

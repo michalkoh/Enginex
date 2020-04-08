@@ -3,6 +3,7 @@ using Enginex.Application.Products.Queries;
 using Enginex.Web.Resources;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace Enginex.Web.ViewModels.Admin
 {
@@ -13,9 +14,7 @@ namespace Enginex.Web.ViewModels.Admin
             NameSlovak = string.Empty;
             NameEnglish = string.Empty;
             Type = string.Empty;
-            DescriptionSlovak = string.Empty;
-            DescriptionEnglish = string.Empty;
-            ImagePath = string.Empty;
+            Image = null!;
             Categories = new List<Application.Categories.Queries.Category>(0);
         }
 
@@ -28,7 +27,7 @@ namespace Enginex.Web.ViewModels.Admin
             Type = product.Type;
             DescriptionSlovak = product.Description.Slovak;
             DescriptionEnglish = product.Description.English;
-            ImagePath = product.ImagePath;
+            Image = null!;
             SelectedCategoryId = product.CategoryId;
         }
 
@@ -49,12 +48,12 @@ namespace Enginex.Web.ViewModels.Admin
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
         public string Type { get; set; }
 
-        public string DescriptionSlovak { get; set; }
+        public string? DescriptionSlovak { get; set; }
 
-        public string DescriptionEnglish { get; set; }
+        public string? DescriptionEnglish { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
-        public string ImagePath { get; set; }
+        public IFormFile Image { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
         public int? SelectedCategoryId { get; set; }
@@ -66,8 +65,8 @@ namespace Enginex.Web.ViewModels.Admin
             return new CreateProductCommand(
                 new Domain.LocalString(NameSlovak, NameEnglish),
                 Type,
-                ImagePath,
-                new Domain.LocalString(DescriptionSlovak, DescriptionEnglish),
+                Image.FileName,
+                new Domain.LocalString(DescriptionSlovak ?? string.Empty, DescriptionEnglish ?? string.Empty),
                 SelectedCategoryId.GetValueOrDefault());
         }
     }
