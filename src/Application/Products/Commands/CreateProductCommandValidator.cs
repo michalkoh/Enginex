@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace Enginex.Application.Products.Commands
 {
@@ -27,10 +24,6 @@ namespace Enginex.Application.Products.Commands
 
             RuleFor(c => c.Description.English)
                 .MaximumLength(2000);
-
-            RuleFor(c => c.ImagePath)
-                .MaximumLength(60)
-                .NotEmpty();
 
             RuleFor(c => c.CategoryId)
                 .NotEmpty();

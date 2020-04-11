@@ -41,10 +41,10 @@ namespace Enginex.Infrastructure.Persistence.EntityConfigurations
                         .HasMaxLength(2000);
                 });
 
-            builder.Property(p => p.ImagePath)
+            builder.Property(p => p.Image)
                 .IsRequired()
-                .HasColumnName("ImagePath")
-                .HasMaxLength(60);
+                .HasColumnName("Image")
+                .HasMaxLength(100);
         }
     }
 }

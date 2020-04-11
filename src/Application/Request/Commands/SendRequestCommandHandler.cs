@@ -4,6 +4,7 @@ using Enginex.Domain.Entities;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Localization;
 
 namespace Enginex.Application.Request.Commands
 {
@@ -11,11 +12,13 @@ namespace Enginex.Application.Request.Commands
     {
         private readonly IRepository repository;
         private readonly IEmailSender emailSender;
+        private readonly IStringLocalizer<SharedResource> localizer;
 
-        public SendRequestCommandHandler(IRepository repository, IEmailSender emailSender)
+        public SendRequestCommandHandler(IRepository repository, IEmailSender emailSender, IStringLocalizer<SharedResource> localizer)
         {
             this.repository = repository;
             this.emailSender = emailSender;
+            this.localizer = localizer;
         }
 
         public async Task<Unit> Handle(SendRequestCommand request, CancellationToken cancellationToken)
@@ -23,7 +26,7 @@ namespace Enginex.Application.Request.Commands
             var product = await this.repository.GetProductAsync(request.ProductId);
             if (product is null)
             {
-                throw new BusinessException($"Produkt (Id:{request.ProductId}) nebol nájdený.");
+                throw new BusinessException(this.localizer["ProductNotFound", request.ProductId]);
             }
 
             await this.emailSender.SendEmailAsync(request.Email, FormatSubject(product), FormatMessage(product, request));

@@ -23,7 +23,13 @@ namespace Enginex.Application.Products.Queries
         {
             var products = (await this.repository.GetProductsAsync(new AllProducts())).ToList();
             return new Page<ProductEdit>(
-                products.OrderBy(p => p.Name.Slovak).ThenBy(p => p.Id).GetPage(request.PageArgument).Select(this.mapper.Map).ToList().AsReadOnly(),
+                products
+                    .OrderBy(p => p.Name.Slovak)
+                    .ThenBy(p => p.Id)
+                    .GetPage(request.PageArgument)
+                    .Select(this.mapper.Map)
+                    .ToList()
+                    .AsReadOnly(),
                 products.Count);
         }
     }

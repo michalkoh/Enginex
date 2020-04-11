@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="GoToHomePage" xml:space="preserve">
+    <value>Back to the home page.</value>
+  </data>
   <data name="NotFound" xml:space="preserve">
     <value>The requested page does not exist.</value>
   </data>
   <data name="NotFoundDescription" xml:space="preserve">
-    <value>We are sorry but the requested page does not exist. Go to</value>
-  </data>
-  <data name="NotFoundHomePage" xml:space="preserve">
-    <value>the home page.</value>
+    <value>We are sorry but the requested page does not exist.</value>
   </data>
 </root>

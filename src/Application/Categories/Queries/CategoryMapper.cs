@@ -1,4 +1,5 @@
-﻿using Enginex.Application.Localization;
+﻿using Dawn;
+using Enginex.Application.Localization;
 using Enginex.Application.Mapping;
 
 namespace Enginex.Application.Categories.Queries
@@ -14,6 +15,8 @@ namespace Enginex.Application.Categories.Queries
 
         public Category Map(Domain.Entities.Category category)
         {
+            Guard.Argument(category, nameof(category)).NotNull();
+
             return new Category(category.Id, category.Name.Translate(this.currentCulture));
         }
     }

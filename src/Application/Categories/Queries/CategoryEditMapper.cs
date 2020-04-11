@@ -1,4 +1,5 @@
-﻿using Enginex.Application.Mapping;
+﻿using Dawn;
+using Enginex.Application.Mapping;
 
 namespace Enginex.Application.Categories.Queries
 {
@@ -6,6 +7,8 @@ namespace Enginex.Application.Categories.Queries
     {
         public CategoryEdit Map(Domain.Entities.Category category)
         {
+            Guard.Argument(category, nameof(category)).NotNull();
+
             return new CategoryEdit(category.Id, category.Name);
         }
     }

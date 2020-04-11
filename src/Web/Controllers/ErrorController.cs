@@ -16,7 +16,7 @@ namespace Enginex.Web.Controllers
         {
             // TODO log and send mail
             var exceptionDetails = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
-            ViewBag.ErrorMessage = exceptionDetails.Error.Message;
+            ViewBag.ErrorMessage = exceptionDetails?.Error?.Message;
             return View("Error");
         }
     }

@@ -2,6 +2,7 @@
 using Enginex.Application.Products.Queries;
 using Enginex.Domain.Data;
 using Enginex.Web.ViewModels.Admin;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -9,6 +10,13 @@ namespace Enginex.Web.Controllers
 {
     public class AdminController : BaseController
     {
+        private readonly IWebHostEnvironment environment;
+
+        public AdminController(IWebHostEnvironment environment)
+        {
+            this.environment = environment;
+        }
+
         [HttpGet]
         public async Task<IActionResult> Products(int? categoryId, int? page)
         {
@@ -29,7 +37,7 @@ namespace Enginex.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                await Mediator.Send(productModel.ToCreateCommand());
+                await Mediator.Send(productModel.ToCreateCommand(this.environment.WebRootPath));
                 return RedirectToAction(nameof(Products));
             }
 

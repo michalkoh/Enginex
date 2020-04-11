@@ -1,9 +1,10 @@
-﻿using Enginex.Application.Products.Commands;
+﻿using Enginex.Application.FileUpload;
+using Enginex.Application.Products.Commands;
 using Enginex.Application.Products.Queries;
 using Enginex.Web.Resources;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
 
 namespace Enginex.Web.ViewModels.Admin
 {
@@ -60,12 +61,12 @@ namespace Enginex.Web.ViewModels.Admin
 
         public IReadOnlyList<Application.Categories.Queries.Category> Categories { get; set; }
 
-        public CreateProductCommand ToCreateCommand()
+        public CreateProductCommand ToCreateCommand(string imageRootFolder)
         {
             return new CreateProductCommand(
                 new Domain.LocalString(NameSlovak, NameEnglish),
                 Type,
-                Image.FileName,
+                new ImageFileUpload(new Infrastructure.FileUpload.FormFile(Image), imageRootFolder),
                 new Domain.LocalString(DescriptionSlovak ?? string.Empty, DescriptionEnglish ?? string.Empty),
                 SelectedCategoryId.GetValueOrDefault());
         }

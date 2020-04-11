@@ -117,16 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Error" xml:space="preserve">
-    <value>Vyskytla sa neočakávaná chyba.</value>
+  <data name="CategoryNotFound" xml:space="preserve">
+    <value>Kategória (Id: {0}) neexistuje.</value>
   </data>
-  <data name="ErrorDescription" xml:space="preserve">
-    <value>Pri spracovaní vašej žiadosti došlo k neočakávanej chybe: </value>
+  <data name="MaxCategoryCountReached" xml:space="preserve">
+    <value>Maximálny povolený počet kategórií je {0}.</value>
   </data>
-  <data name="ErrorSupportNotified" xml:space="preserve">
-    <value>Tím podpory bol informovaný a pracuje na jej oprave.</value>
-  </data>
-  <data name="GoToHomePage" xml:space="preserve">
-    <value>Návrat na hlavnú stránku.</value>
+  <data name="ProductNotFound" xml:space="preserve">
+    <value>Produkt (Id: {0}) neexistuje.</value>
   </data>
 </root>

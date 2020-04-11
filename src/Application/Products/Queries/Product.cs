@@ -2,13 +2,13 @@
 {
     public class Product
     {
-        public Product(int id, string name, string type, string? description, string imagePath, int categoryId, string categoryName)
+        public Product(int id, string name, string type, string? description, string image, int categoryId, string categoryName)
         {
             Id = id;
             Name = name;
             Type = type;
             Description = description;
-            ImagePath = imagePath;
+            Image = image;
             CategoryId = categoryId;
             CategoryName = categoryName;
         }
@@ -21,7 +21,7 @@
 
         public string Type { get; }
 
-        public string ImagePath { get; }
+        public string Image { get; }
 
         public string? Description { get; }
 

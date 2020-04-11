@@ -1,4 +1,5 @@
-﻿using Enginex.Application.Mapping;
+﻿using Dawn;
+using Enginex.Application.Mapping;
 
 namespace Enginex.Application.Products.Queries
 {
@@ -6,12 +7,14 @@ namespace Enginex.Application.Products.Queries
     {
         public ProductEdit Map(Domain.Entities.Product product)
         {
+            Guard.Argument(product, nameof(product)).NotNull();
+
             return new ProductEdit(
                 product.Id,
                 product.Name,
                 product.Type,
                 product.Description,
-                product.ImagePath,
+                product.Image,
                 product.Category.Id);
         }
     }

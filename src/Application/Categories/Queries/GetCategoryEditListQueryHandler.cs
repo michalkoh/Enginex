@@ -22,7 +22,11 @@ namespace Enginex.Application.Categories.Queries
         public async Task<IReadOnlyList<CategoryEdit>> Handle(GetCategoryEditListQuery request, CancellationToken cancellationToken)
         {
             var categories = await this.repository.GetCategoriesAsync();
-            return categories.Select(this.mapper.Map).OrderBy(c => c.Name.Slovak).ToList().AsReadOnly();
+            return categories
+                .Select(this.mapper.Map)
+                .OrderBy(c => c.Name.Slovak)
+                .ToList()
+                .AsReadOnly();
         }
     }
 }

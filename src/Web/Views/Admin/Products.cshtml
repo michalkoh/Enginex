@@ -25,7 +25,7 @@
                         @foreach (var product in Model.Products)
                         {
                             <tr>
-                                <td>@product.Name.Slovak</td>
+                                <td><a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">@product.Name.Slovak</a></td>
                                 <td>@product.Type</td>
                                 <td>@product.Description?.Slovak</td>
                                 <td><a asp-controller="Admin" asp-action="EditProduct" asp-route-id="@product.Id">Upraviť</a></td>

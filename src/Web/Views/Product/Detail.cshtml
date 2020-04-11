@@ -1,9 +1,10 @@
-﻿@model Enginex.Web.ViewModels.Product.ProductRequestViewModel
+﻿@using Enginex.Application.FileUpload
+@model Enginex.Web.ViewModels.Product.ProductRequestViewModel
 
 <section class="ftco-menu">
     <div class="container-fluid">
         <div class="row d-md-flex">
-            <div class="col-lg-5 ftco-animate img f-menu-img mb-5 mb-md-0" style="background-image: url('@Url.Content(Model.Product.ImagePath)');">
+            <div class="col-lg-5 ftco-animate img f-menu-img mb-5 mb-md-0" style="background-image: url('@Url.Content($"~/{ImageFileUpload.ImageFolder}/{Model.Product.Image}")');">
             </div>
             <div class="col-lg-7 ftco-animate p-md-5">
                 <div class="row">

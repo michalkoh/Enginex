@@ -10,7 +10,7 @@
                 <div class="mb-5">
                     <span>@Localizer["ErrorDescription"]</span><br /><br />
                     <span class="text-danger">@ViewBag.ErrorMessage</span><br /><br />
-                    <span>@Localizer["ErrorSupportNotified"]</span>
+                    <span>@Localizer["ErrorSupportNotified"] <a asp-controller="Home" asp-action="Index">@Localizer["GoToHomePage"]</a></span>
                 </div>
             </div>
         </div>

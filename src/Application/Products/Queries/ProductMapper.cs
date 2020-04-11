@@ -1,4 +1,5 @@
-﻿using Enginex.Application.Localization;
+﻿using Dawn;
+using Enginex.Application.Localization;
 using Enginex.Application.Mapping;
 
 namespace Enginex.Application.Products.Queries
@@ -14,12 +15,14 @@ namespace Enginex.Application.Products.Queries
 
         public Product Map(Domain.Entities.Product product)
         {
+            Guard.Argument(product, nameof(product)).NotNull();
+
             return new Product(
                 product.Id,
                 product.Name.Translate(this.currentCulture),
                 product.Type,
-                product.Description?.Translate(this.currentCulture),
-                product.ImagePath,
+                product.Description.Translate(this.currentCulture),
+                product.Image,
                 product.Category.Id,
                 product.Category.Name.Translate(this.currentCulture));
         }

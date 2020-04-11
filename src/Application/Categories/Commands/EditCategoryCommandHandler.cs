@@ -1,19 +1,21 @@
 ﻿using Enginex.Domain;
 using Enginex.Domain.Data;
-using Enginex.Domain.Entities;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Localization;
 
 namespace Enginex.Application.Categories.Commands
 {
     public class EditCategoryCommandHandler : IRequestHandler<EditCategoryCommand>
     {
         private readonly IRepository repository;
+        private readonly IStringLocalizer<SharedResource> localizer;
 
-        public EditCategoryCommandHandler(IRepository repository)
+        public EditCategoryCommandHandler(IRepository repository, IStringLocalizer<SharedResource> localizer)
         {
             this.repository = repository;
+            this.localizer = localizer;
         }
 
         public async Task<Unit> Handle(EditCategoryCommand request, CancellationToken cancellationToken)
@@ -21,7 +23,7 @@ namespace Enginex.Application.Categories.Commands
             var category = await this.repository.GetCategoryAsync(request.Id);
             if (category is null)
             {
-                throw new BusinessException($"Kategória neexistuje.");
+                throw new BusinessException(this.localizer["CategoryNotFound", request.Id]);
             }
 
             category.Update(request.Name);

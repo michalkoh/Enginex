@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="GoToHomePage" xml:space="preserve">
+    <value>Návrat na hlavnú stránku.</value>
+  </data>
   <data name="NotFound" xml:space="preserve">
     <value>Požadovaná stránka neexistuje.</value>
   </data>
   <data name="NotFoundDescription" xml:space="preserve">
-    <value>Ľutujeme, no Vami požadovaná stránka neexistuje. Prejsť na </value>
-  </data>
-  <data name="NotFoundHomePage" xml:space="preserve">
-    <value>hlavnú stránku.</value>
+    <value>Ľutujeme, no Vami požadovaná stránka neexistuje. </value>
   </data>
 </root>

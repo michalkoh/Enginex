@@ -2,7 +2,7 @@
 
 namespace Enginex.Infrastructure.Migrations
 {
-    public partial class InitDb : Migration
+    public partial class InitDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,8 +12,8 @@ namespace Enginex.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name_sk = table.Column<string>(maxLength: 40, nullable: false),
-                    Name_en = table.Column<string>(maxLength: 40, nullable: false)
+                    Name_sk = table.Column<string>(maxLength: 40, nullable: true),
+                    Name_en = table.Column<string>(maxLength: 40, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -26,12 +26,12 @@ namespace Enginex.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name_sk = table.Column<string>(maxLength: 200, nullable: false),
-                    Name_en = table.Column<string>(maxLength: 200, nullable: false),
+                    Name_sk = table.Column<string>(maxLength: 200, nullable: true),
+                    Name_en = table.Column<string>(maxLength: 200, nullable: true),
                     Type = table.Column<string>(maxLength: 30, nullable: false),
                     Description_sk = table.Column<string>(maxLength: 2000, nullable: true),
                     Description_en = table.Column<string>(maxLength: 2000, nullable: true),
-                    ImagePath = table.Column<string>(maxLength: 60, nullable: false),
+                    Image = table.Column<string>(maxLength: 100, nullable: false),
                     CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

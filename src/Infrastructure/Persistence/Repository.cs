@@ -47,7 +47,7 @@ namespace Enginex.Infrastructure.Persistence
 
         public async Task<Product> GetProductAsync(int id)
         {
-            return await this.context.Products.FindAsync(id);
+            return await this.context.Products.Include(p => p.Category).SingleOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<IEnumerable<Product>> GetProductsAsync(ISpecification<Product> specification)

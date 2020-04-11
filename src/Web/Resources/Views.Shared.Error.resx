@@ -126,4 +126,7 @@
   <data name="ErrorSupportNotified" xml:space="preserve">
     <value>The support team is notified and we are working on the fix.</value>
   </data>
+  <data name="GoToHomePage" xml:space="preserve">
+    <value>Back to the home page.</value>
+  </data>
 </root>
