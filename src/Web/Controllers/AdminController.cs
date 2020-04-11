@@ -29,15 +29,15 @@ namespace Enginex.Web.Controllers
         public async Task<IActionResult> CreateProduct()
         {
             var categories = await Mediator.Send(new GetCategoryListQuery());
-            return View(new ProductEditViewModel(categories));
+            return View(new ProductCreateViewModel(categories));
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProduct(ProductEditViewModel productModel)
+        public async Task<IActionResult> CreateProduct(ProductCreateViewModel productModel)
         {
             if (ModelState.IsValid)
             {
-                await Mediator.Send(productModel.ToCreateCommand(this.environment.WebRootPath));
+                await Mediator.Send(productModel.ToCommand(this.environment.WebRootPath));
                 return RedirectToAction(nameof(Products));
             }
 
@@ -54,10 +54,35 @@ namespace Enginex.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditProduct(ProductEditViewModel productEditViewModel)
+        public async Task<IActionResult> EditProduct(ProductEditViewModel productModel)
         {
-            var categories = await Mediator.Send(new GetCategoryListQuery());
-            return View(new ProductEditViewModel());
+            if (ModelState.IsValid)
+            {
+                await Mediator.Send(productModel.ToCommand(this.environment.WebRootPath));
+                return RedirectToAction(nameof(Products));
+            }
+
+            productModel.Categories = await Mediator.Send(new GetCategoryListQuery());
+            return View(productModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var product = await Mediator.Send(new GetProductEditQuery(id));
+            return View(new ProductDeleteViewModel(product));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteProduct(ProductDeleteViewModel productModel)
+        {
+            if (ModelState.IsValid)
+            {
+                await Mediator.Send(productModel.ToCommand());
+                return RedirectToAction(nameof(Products));
+            }
+
+            return View(productModel);
         }
 
         [HttpGet]
@@ -70,15 +95,15 @@ namespace Enginex.Web.Controllers
         [HttpGet]
         public IActionResult CreateCategory()
         {
-            return View(new CategoryEditViewModel());
+            return View(new CategoryCreateViewModel());
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCategory(CategoryEditViewModel categoryModel)
+        public async Task<IActionResult> CreateCategory(CategoryCreateViewModel categoryModel)
         {
             if (ModelState.IsValid)
             {
-                await Mediator.Send(categoryModel.ToCreateCommand());
+                await Mediator.Send(categoryModel.ToCommand());
                 return RedirectToAction(nameof(Categories));
             }
 
@@ -97,7 +122,7 @@ namespace Enginex.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                await Mediator.Send(categoryModel.ToEditCommand());
+                await Mediator.Send(categoryModel.ToCommand());
                 return RedirectToAction(nameof(Categories));
             }
 
@@ -108,13 +133,13 @@ namespace Enginex.Web.Controllers
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var category = await Mediator.Send(new GetCategoryEditQuery(id));
-            return View(new CategoryEditViewModel(category));
+            return View(new CategoryDeleteViewModel(category));
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteCategory(CategoryEditViewModel categoryModel)
+        public async Task<IActionResult> DeleteCategory(CategoryDeleteViewModel categoryModel)
         {
-            await Mediator.Send(categoryModel.ToDeleteCommand());
+            await Mediator.Send(categoryModel.ToCommand());
             return RedirectToAction(nameof(Categories));
         }
     }

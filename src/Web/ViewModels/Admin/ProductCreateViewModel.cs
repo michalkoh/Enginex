@@ -1,6 +1,5 @@
 ﻿using Enginex.Application.FileUpload;
 using Enginex.Application.Products.Commands;
-using Enginex.Application.Products.Queries;
 using Enginex.Web.Resources;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
@@ -8,22 +7,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Enginex.Web.ViewModels.Admin
 {
-    public class ProductEditViewModel
+    public class ProductCreateViewModel
     {
-        public ProductEditViewModel(ProductEdit product, IReadOnlyList<Application.Categories.Queries.Category> categories)
+        public ProductCreateViewModel(IReadOnlyList<Application.Categories.Queries.Category> categories)
         {
-            Id = product.Id;
-            NameSlovak = product.Name.Slovak;
-            NameEnglish = product.Name.English;
-            Type = product.Type;
-            DescriptionSlovak = product.Description.Slovak;
-            DescriptionEnglish = product.Description.English;
+            NameSlovak = string.Empty;
+            NameEnglish = string.Empty;
+            Type = string.Empty;
             Image = null!;
-            SelectedCategoryId = product.CategoryId;
             Categories = categories;
         }
-
-        public int Id { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
         public string NameSlovak { get; set; }
@@ -38,6 +31,7 @@ namespace Enginex.Web.ViewModels.Admin
 
         public string? DescriptionEnglish { get; set; }
 
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
         public IFormFile Image { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
@@ -45,10 +39,9 @@ namespace Enginex.Web.ViewModels.Admin
 
         public IReadOnlyList<Application.Categories.Queries.Category> Categories { get; set; }
 
-        public EditProductCommand ToCommand(string imageRootFolder)
+        public CreateProductCommand ToCommand(string imageRootFolder)
         {
-            return new EditProductCommand(
-                Id,
+            return new CreateProductCommand(
                 new Domain.LocalString(NameSlovak, NameEnglish),
                 Type,
                 new ImageFileUpload(new Infrastructure.FileUpload.FormFile(Image), imageRootFolder),

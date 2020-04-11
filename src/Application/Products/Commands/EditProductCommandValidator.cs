@@ -2,9 +2,9 @@
 
 namespace Enginex.Application.Products.Commands
 {
-    public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
+    public class EditProductCommandValidator : AbstractValidator<EditProductCommand>
     {
-        public CreateProductCommandValidator()
+        public EditProductCommandValidator()
         {
             RuleFor(c => c.Name.Slovak)
                 .MaximumLength(200)
@@ -24,9 +24,6 @@ namespace Enginex.Application.Products.Commands
 
             RuleFor(c => c.Description.English)
                 .MaximumLength(2000);
-
-            RuleFor(c => c.Image)
-                .NotNull();
 
             RuleFor(c => c.CategoryId)
                 .NotEmpty();

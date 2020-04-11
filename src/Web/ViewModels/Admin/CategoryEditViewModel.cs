@@ -8,14 +8,7 @@ namespace Enginex.Web.ViewModels.Admin
 {
     public class CategoryEditViewModel
     {
-        public CategoryEditViewModel()
-        {
-            NameSlovak = string.Empty;
-            NameEnglish = string.Empty;
-        }
-
         public CategoryEditViewModel(CategoryEdit category)
-            : this()
         {
             Id = category.Id;
             NameSlovak = category.Name.Slovak;
@@ -30,19 +23,9 @@ namespace Enginex.Web.ViewModels.Admin
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
         public string NameEnglish { get; set; }
 
-        public CreateCategoryCommand ToCreateCommand()
-        {
-            return new CreateCategoryCommand(new LocalString(NameSlovak, NameEnglish));
-        }
-
-        public EditCategoryCommand ToEditCommand()
+        public EditCategoryCommand ToCommand()
         {
             return new EditCategoryCommand(Id, new LocalString(NameSlovak, NameEnglish));
-        }
-
-        public DeleteCategoryCommand ToDeleteCommand()
-        {
-            return new DeleteCategoryCommand(Id);
         }
     }
 }

@@ -29,7 +29,7 @@
                                 <td>@product.Type</td>
                                 <td>@product.Description?.Slovak</td>
                                 <td><a asp-controller="Admin" asp-action="EditProduct" asp-route-id="@product.Id">Upraviť</a></td>
-                                <td><a href="#">Zmazať</a></td>
+                                <td><a asp-controller="Admin" asp-action="DeleteProduct" asp-route-id="@product.Id">Zmazať</a></td>
                             </tr>
                         }
                         </tbody>
