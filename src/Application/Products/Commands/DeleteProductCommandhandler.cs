@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace Enginex.Application.Products.Commands
 {
-    public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand>
+    public class DeleteProductCommandhandler : IRequestHandler<DeleteProductCommand>
     {
         private readonly IRepository repository;
 
-        public DeleteProductCommandHandler(IRepository repository)
+        public DeleteProductCommandhandler(IRepository repository)
         {
             this.repository = repository;
         }

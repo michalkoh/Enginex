@@ -120,6 +120,9 @@
   <data name="CategoryNotFound" xml:space="preserve">
     <value>Kategória (Id: {0}) neexistuje.</value>
   </data>
+  <data name="ImageRequired" xml:space="preserve">
+    <value>Chýbajúci obrázok k produktu.</value>
+  </data>
   <data name="MaxCategoryCountReached" xml:space="preserve">
     <value>Maximálny povolený počet kategórií je {0}.</value>
   </data>

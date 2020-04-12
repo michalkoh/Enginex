@@ -70,6 +70,15 @@ namespace Enginex.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No product image to upload..
+        /// </summary>
+        internal static string ImageRequired {
+            get {
+                return ResourceManager.GetString("ImageRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Max. number of categories is {0}..
         /// </summary>
         internal static string MaxCategoryCountReached {

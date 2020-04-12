@@ -1,6 +1,6 @@
-﻿using Enginex.Application.FileUpload;
-using Enginex.Application.Products.Commands;
+﻿using Enginex.Application.Products.Commands;
 using Enginex.Application.Products.Queries;
+using Enginex.Domain.FileUpload;
 using Enginex.Web.Resources;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
@@ -10,7 +10,17 @@ namespace Enginex.Web.ViewModels.Admin
 {
     public class ProductEditViewModel
     {
+        public ProductEditViewModel()
+        {
+            NameSlovak = string.Empty;
+            NameEnglish = string.Empty;
+            Type = string.Empty;
+            Image = null!;
+            Categories = new List<Application.Categories.Queries.Category>(0);
+        }
+
         public ProductEditViewModel(ProductEdit product, IReadOnlyList<Application.Categories.Queries.Category> categories)
+            : this()
         {
             Id = product.Id;
             NameSlovak = product.Name.Slovak;
@@ -38,7 +48,7 @@ namespace Enginex.Web.ViewModels.Admin
 
         public string? DescriptionEnglish { get; set; }
 
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
         public int? SelectedCategoryId { get; set; }
@@ -51,7 +61,7 @@ namespace Enginex.Web.ViewModels.Admin
                 Id,
                 new Domain.LocalString(NameSlovak, NameEnglish),
                 Type,
-                new ImageFileUpload(new Infrastructure.FileUpload.FormFile(Image), imageRootFolder),
+                Image is null ? ImageFileUpload.None : new ImageFileUpload(new Infrastructure.FileUpload.FormFile(Image), imageRootFolder),
                 new Domain.LocalString(DescriptionSlovak ?? string.Empty, DescriptionEnglish ?? string.Empty),
                 SelectedCategoryId.GetValueOrDefault());
         }

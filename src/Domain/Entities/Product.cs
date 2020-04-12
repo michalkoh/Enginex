@@ -36,5 +36,22 @@
         public string Image { get; private set; }
 
         public Category Category { get; private set; }
+
+        public void Update(LocalString name, string type, LocalString description)
+        {
+            Name = name;
+            Type = type;
+            Description = description;
+        }
+
+        public void ChangeImage(string image)
+        {
+            Image = image;
+        }
+
+        public void ChangeCategory(Category category)
+        {
+            Category = category;
+        }
     }
 }

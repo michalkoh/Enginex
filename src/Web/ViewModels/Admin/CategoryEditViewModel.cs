@@ -8,7 +8,14 @@ namespace Enginex.Web.ViewModels.Admin
 {
     public class CategoryEditViewModel
     {
+        public CategoryEditViewModel()
+        {
+            NameSlovak = string.Empty;
+            NameEnglish = string.Empty;
+        }
+
         public CategoryEditViewModel(CategoryEdit category)
+            : this()
         {
             Id = category.Id;
             NameSlovak = category.Name.Slovak;

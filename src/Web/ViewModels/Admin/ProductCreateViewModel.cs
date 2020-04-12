@@ -1,5 +1,5 @@
-﻿using Enginex.Application.FileUpload;
-using Enginex.Application.Products.Commands;
+﻿using Enginex.Application.Products.Commands;
+using Enginex.Domain.FileUpload;
 using Enginex.Web.Resources;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;

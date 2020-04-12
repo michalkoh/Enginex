@@ -1,4 +1,4 @@
-﻿using Enginex.Domain;
+﻿using Enginex.Domain.FileUpload;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Threading;

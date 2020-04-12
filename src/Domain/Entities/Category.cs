@@ -25,7 +25,6 @@
 
         public void Update(LocalString name)
         {
-            // TODO Guard
             Name = name;
         }
     }

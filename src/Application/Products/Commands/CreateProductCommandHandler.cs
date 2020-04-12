@@ -2,9 +2,10 @@
 using Enginex.Domain.Data;
 using Enginex.Domain.Entities;
 using MediatR;
+using Microsoft.Extensions.Localization;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Localization;
 
 namespace Enginex.Application.Products.Commands
 {
@@ -25,6 +26,11 @@ namespace Enginex.Application.Products.Commands
             if (category is null)
             {
                 throw new BusinessException(this.localizer["CategoryNotFound", request.CategoryId]);
+            }
+
+            if (!request.Image.UploadPending)
+            {
+                throw new InvalidOperationException(this.localizer["ImageRequired"]);
             }
 
             var imageFileName = await request.Image.UploadAsync();
