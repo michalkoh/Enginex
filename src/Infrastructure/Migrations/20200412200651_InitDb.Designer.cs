@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Enginex.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200410131600_InitDB")]
-    partial class InitDB
+    [Migration("20200412200651_InitDb")]
+    partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -96,7 +96,7 @@ namespace Enginex.Infrastructure.Migrations
                     b.HasOne("Enginex.Domain.Entities.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.OwnsOne("Enginex.Domain.LocalString", "Description", b1 =>

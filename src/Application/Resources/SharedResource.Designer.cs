@@ -61,6 +61,15 @@ namespace Enginex.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Category containing products cannot be deleted..
+        /// </summary>
+        internal static string CategoryContainsProducts {
+            get {
+                return ResourceManager.GetString("CategoryContainsProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category (Id: {0}) was not found..
         /// </summary>
         internal static string CategoryNotFound {

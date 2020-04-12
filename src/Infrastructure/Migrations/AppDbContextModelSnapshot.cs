@@ -94,7 +94,7 @@ namespace Enginex.Infrastructure.Migrations
                     b.HasOne("Enginex.Domain.Entities.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.OwnsOne("Enginex.Domain.LocalString", "Description", b1 =>

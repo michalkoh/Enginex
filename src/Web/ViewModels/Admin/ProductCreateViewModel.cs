@@ -9,12 +9,18 @@ namespace Enginex.Web.ViewModels.Admin
 {
     public class ProductCreateViewModel
     {
-        public ProductCreateViewModel(IReadOnlyList<Application.Categories.Queries.Category> categories)
+        public ProductCreateViewModel()
         {
             NameSlovak = string.Empty;
             NameEnglish = string.Empty;
             Type = string.Empty;
             Image = null!;
+            Categories = new List<Application.Categories.Queries.Category>(0);
+        }
+
+        public ProductCreateViewModel(IReadOnlyList<Application.Categories.Queries.Category> categories)
+            : this()
+        {
             Categories = categories;
         }
 

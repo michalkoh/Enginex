@@ -2,7 +2,7 @@
 
 namespace Enginex.Infrastructure.Migrations
 {
-    public partial class InitDB : Migration
+    public partial class InitDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,8 +12,8 @@ namespace Enginex.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name_sk = table.Column<string>(maxLength: 40, nullable: true),
-                    Name_en = table.Column<string>(maxLength: 40, nullable: true)
+                    Name_sk = table.Column<string>(maxLength: 40, nullable: false),
+                    Name_en = table.Column<string>(maxLength: 40, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,8 +26,8 @@ namespace Enginex.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name_sk = table.Column<string>(maxLength: 200, nullable: true),
-                    Name_en = table.Column<string>(maxLength: 200, nullable: true),
+                    Name_sk = table.Column<string>(maxLength: 200, nullable: false),
+                    Name_en = table.Column<string>(maxLength: 200, nullable: false),
                     Type = table.Column<string>(maxLength: 30, nullable: false),
                     Description_sk = table.Column<string>(maxLength: 2000, nullable: true),
                     Description_en = table.Column<string>(maxLength: 2000, nullable: true),
@@ -42,7 +42,7 @@ namespace Enginex.Infrastructure.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

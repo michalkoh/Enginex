@@ -45,6 +45,11 @@ namespace Enginex.Infrastructure.Persistence.EntityConfigurations
                 .IsRequired()
                 .HasColumnName("Image")
                 .HasMaxLength(100);
+
+            builder
+                .HasOne(p => p.Category)
+                .WithMany()
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

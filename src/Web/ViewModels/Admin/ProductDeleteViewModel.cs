@@ -5,7 +5,13 @@ namespace Enginex.Web.ViewModels.Admin
 {
     public class ProductDeleteViewModel
     {
+        public ProductDeleteViewModel()
+        {
+            Name = string.Empty;
+        }
+
         public ProductDeleteViewModel(ProductEdit product)
+            : this()
         {
             Id = product.Id;
             Name = product.Name.Slovak;

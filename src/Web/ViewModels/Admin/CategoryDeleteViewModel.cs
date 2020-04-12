@@ -5,7 +5,13 @@ namespace Enginex.Web.ViewModels.Admin
 {
     public class CategoryDeleteViewModel
     {
+        public CategoryDeleteViewModel()
+        {
+            Name = string.Empty;
+        }
+
         public CategoryDeleteViewModel(CategoryEdit category)
+            : this()
         {
             Id = category.Id;
             Name = category.Name.Slovak;
