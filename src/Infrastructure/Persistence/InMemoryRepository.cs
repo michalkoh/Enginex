@@ -22,12 +22,12 @@ namespace Enginex.Infrastructure.Persistence
 
             this.products = new List<Product>()
             {
-                new Product(1, new LocalString("Frezka vertikalna", "Vertical milling machine"), "FA 4 V", "~/images/products/02.jpg", LocalString.Empty, category1),
-                new Product(2, new LocalString("Bruska na otvory", "Hole grinder"), "Si 125x175", "~/images/products/03.jpg", LocalString.Empty, category1),
-                new Product(3, new LocalString("Bruska na zavity", "Thread grinder"), "5822 M", "~/images/products/04.jpg", LocalString.Empty, category1),
-                new Product(4, new LocalString("Bruska rovinna", "Surface grinding machine"), "BLOHM HFS 9", "~/images/products/05.jpg", LocalString.Empty, category1),
-                new Product(5, new LocalString("Tabulove noznice", "Table shears"), "CNTA 3150/10", "~/images/products/06.jpg", LocalString.Empty, category2),
-                new Product(6, new LocalString("Ohybacka plechu", "Sheet bender"), "CIDAN K 25-20", "~/images/products/07.jpg", LocalString.Empty, category2),
+                new Product(1, new LocalString("Frezka vertikalna", "Vertical milling machine"), "FA 4 V", "02.jpg", LocalString.Empty, category1),
+                new Product(2, new LocalString("Bruska na otvory", "Hole grinder"), "Si 125x175", "03.jpg", LocalString.Empty, category1),
+                new Product(3, new LocalString("Bruska na zavity", "Thread grinder"), "5822 M", "04.jpg", LocalString.Empty, category1),
+                new Product(4, new LocalString("Bruska rovinna", "Surface grinding machine"), "BLOHM HFS 9", "05.jpg", LocalString.Empty, category1),
+                new Product(5, new LocalString("Tabulove noznice", "Table shears"), "CNTA 3150/10", "06.jpg", LocalString.Empty, category2),
+                new Product(6, new LocalString("Ohybacka plechu", "Sheet bender"), "CIDAN K 25-20", "07.jpg", LocalString.Empty, category2),
             };
         }
 

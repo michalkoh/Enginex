@@ -1,10 +1,11 @@
 ﻿using Enginex.Domain.Entities;
 using Enginex.Infrastructure.Persistence.EntityConfigurations;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Enginex.Infrastructure.Persistence
 {
-    internal class AppDbContext : DbContext
+    internal class AppDbContext : IdentityDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)

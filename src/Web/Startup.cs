@@ -19,10 +19,12 @@ namespace Enginex.Web
     public class Startup
     {
         private readonly IConfiguration configuration;
+        private readonly IWebHostEnvironment env;
 
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             this.configuration = configuration;
+            this.env = env;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -31,7 +33,7 @@ namespace Enginex.Web
         {
             services
                 .AddApplication()
-                .AddInfrastructure(this.configuration)
+                .AddInfrastructure(this.env.IsStaging() ? string.Empty : this.configuration.GetConnectionString("EnginexDbConnection"))
                 .AddLocalization(options => options.ResourcesPath = "Resources")
                 .AddControllersWithViews()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
@@ -65,9 +67,9 @@ namespace Enginex.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
+            if (this.env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -75,18 +77,16 @@ namespace Enginex.Web
             {
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
                 app.UseExceptionHandler("/Error");
-
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                //// app.UseHsts();
+                app.UseHsts();
             }
 
             app.UseRequestLocalization();
             ////app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            app.UseRouting();
+            app.UseAuthentication();
             ////app.UseAuthorization();
-
+            app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
