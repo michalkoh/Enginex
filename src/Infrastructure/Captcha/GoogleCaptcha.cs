@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Enginex.Infrastructure.Captcha
 {
-    internal class GoogleCaptcha : ICaptcha
+    public class GoogleCaptcha : ICaptcha
     {
         private readonly IOptions<GoogleCaptchaSettings> captchaSettings;
 

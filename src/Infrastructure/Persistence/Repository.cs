@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Enginex.Infrastructure.Persistence
 {
-    internal class Repository : IRepository
+    public class Repository : IRepository
     {
         private readonly AppDbContext context;
 

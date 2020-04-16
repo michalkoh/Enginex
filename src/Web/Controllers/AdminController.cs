@@ -2,12 +2,14 @@
 using Enginex.Application.Products.Queries;
 using Enginex.Domain.Data;
 using Enginex.Web.ViewModels.Admin;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace Enginex.Web.Controllers
 {
+    [Authorize]
     public class AdminController : BaseController
     {
         private readonly IWebHostEnvironment environment;
@@ -15,6 +17,12 @@ namespace Enginex.Web.Controllers
         public AdminController(IWebHostEnvironment environment)
         {
             this.environment = environment;
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
         }
 
         [HttpGet]

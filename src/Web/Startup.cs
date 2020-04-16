@@ -1,13 +1,17 @@
 using Enginex.Application;
-using Enginex.Infrastructure;
+using Enginex.Domain;
+using Enginex.Domain.Data;
 using Enginex.Infrastructure.Captcha;
 using Enginex.Infrastructure.Email;
+using Enginex.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,17 +31,40 @@ namespace Enginex.Web
             this.env = env;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // Infrastructure
+            services.AddSingleton<IEmailSender, EmailSender>();
+            services.AddSingleton<ICaptcha, GoogleCaptcha>();
             services
                 .AddApplication()
-                .AddInfrastructure(this.env.IsStaging() ? string.Empty : this.configuration.GetConnectionString("EnginexDbConnection"))
                 .AddLocalization(options => options.ResourcesPath = "Resources")
                 .AddControllersWithViews()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .AddDataAnnotationsLocalization();
+
+            if (this.env.IsStaging())
+            {
+                services
+                    .AddTransient<IRepository, InMemoryRepository>();
+            }
+            else
+            {
+                services
+                    .AddTransient<IRepository, Repository>()
+                    .AddDbContextPool<AppDbContext>(options => options.UseSqlServer(this.configuration.GetConnectionString("EnginexDbConnection")))
+                    .AddIdentity<IdentityUser, IdentityRole>()
+                    .AddEntityFrameworkStores<AppDbContext>();
+            }
+
+            services
+                .AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    var googleAuthNSection = this.configuration.GetSection("Authentication:Google");
+                    options.ClientId = googleAuthNSection["ClientId"];
+                    options.ClientSecret = googleAuthNSection["ClientSecret"];
+                });
 
             var supportedCultures = new[]
             {
@@ -66,7 +93,6 @@ namespace Enginex.Web
                 .Configure<GoogleCaptchaSettings>(this.configuration.GetSection("GoogleCaptchaSettings"));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
             if (this.env.IsDevelopment())
@@ -84,9 +110,11 @@ namespace Enginex.Web
             ////app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            app.UseAuthentication();
-            ////app.UseAuthorization();
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
