@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Enginex.Web.ViewModels.Admin;
-using Microsoft.AspNetCore.Authorization;
+﻿using Enginex.Web.ViewModels.Admin;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Enginex.Web.Controllers
 {
@@ -42,7 +42,7 @@ namespace Enginex.Web.Controllers
             var externalLogins = (await this.signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             var loginViewModel = new LoginViewModel(returnUrl, externalLogins);
 
-            if (remoteError == null)
+            if (remoteError != null)
             {
                 ModelState.AddModelError(string.Empty, $"Nastala chyba pri prihlasovaní: {remoteError}");
                 return View("Login", loginViewModel);
@@ -63,6 +63,9 @@ namespace Enginex.Web.Controllers
             }
 
             var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+            ModelState.AddModelError(string.Empty, $"Prístup pre '{email}' bol zamietnutý.");
+            return View("Login", loginViewModel);
+
             ////if (email != null)
             ////{
             ////    var user = await this.userManager.FindByEmailAsync(email);
@@ -83,10 +86,16 @@ namespace Enginex.Web.Controllers
             ////    return LocalRedirect(returnUrl);
             ////}
 
-            ViewBag.ErrorTitle = $"Email claim not received from: {info.LoginProvider}";
-            ViewBag.ErrorMessage = "Please contact support on Pragim@PragimTech.com";
+            ////ViewBag.ErrorMessage = "Please contact support on Pragim@PragimTech.com";
 
-            return View("Error");
+            ////return View("Error");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
