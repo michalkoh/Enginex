@@ -21,7 +21,7 @@ namespace Enginex.Application.Products.Queries
 
         public async Task<Page<ProductEdit>> Handle(GetProductEditListQuery request, CancellationToken cancellationToken)
         {
-            var products = (await this.repository.GetProductsAsync(new AllProducts())).ToList();
+            var products = (await this.repository.GetProductsAsync(new ProductsInCategory(request.CategoryId))).ToList();
             return new Page<ProductEdit>(
                 products
                     .OrderBy(p => p.Name.Slovak)

@@ -25,12 +25,12 @@ namespace Enginex.Web.Controllers
             return View();
         }
 
-        [HttpGet]
         public async Task<IActionResult> Products(int? categoryId, int? page)
         {
             var pageArgument = new PageArgument(page ?? 1);
-            var productPage = await Mediator.Send(new GetProductEditListQuery(pageArgument));
-            return View(new ProductEditListViewModel(productPage, pageArgument));
+            var productPage = await Mediator.Send(new GetProductEditListQuery(pageArgument, categoryId));
+            var categories = await Mediator.Send(new GetCategoryListQuery());
+            return View(new ProductEditListViewModel(productPage, pageArgument, categories, categoryId));
         }
 
         [HttpGet]

@@ -94,7 +94,7 @@ namespace Enginex.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
-            await signInManager.SignOutAsync();
+            await this.signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
     }
