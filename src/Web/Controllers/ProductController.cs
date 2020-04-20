@@ -29,11 +29,12 @@ namespace Enginex.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Detail(int id)
+        public async Task<IActionResult> Detail(int productId)
         {
             return View(new ProductRequestViewModel()
             {
-                Product = await Mediator.Send(new GetProductQuery(id))
+                Product = await Mediator.Send(new GetProductQuery(productId)),
+                Request = new RequestViewModel() { ProductId = productId }
             });
         }
 
@@ -56,7 +57,7 @@ namespace Enginex.Web.Controllers
                 }
             }
 
-            requestViewModel.Product = await Mediator.Send(new GetProductQuery(requestViewModel.Product.Id));
+            requestViewModel.Product = await Mediator.Send(new GetProductQuery(requestViewModel.Request.ProductId));
             return View(requestViewModel);
         }
     }

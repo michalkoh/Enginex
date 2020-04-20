@@ -18,7 +18,7 @@ namespace Enginex.Web.ViewModels.Product
         {
             return new SendRequestCommand()
             {
-                ProductId = Product.Id,
+                ProductId = Request.ProductId,
                 ProductUrl = productUrl,
                 Email = Request.Email ?? string.Empty,
                 Message = Request.Message ?? string.Empty

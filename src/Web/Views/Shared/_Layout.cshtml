@@ -6,7 +6,7 @@
 
 <html>
     <head>
-        <title>@(string.IsNullOrEmpty(ViewBag.Title) ? "Enginex" : $"{ViewBag.Title} - Enginex")</title>
+        <title>@((ViewBag.Title == null) ? "Enginex" : $"{ViewBag.Title} - Enginex")</title>
         <meta charset="utf-8">
         <link rel="icon" href="~/images/favicon.ico">
         <link rel="shortcut icon" href="#">

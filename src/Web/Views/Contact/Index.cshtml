@@ -1,5 +1,7 @@
 ﻿@model Enginex.Web.ViewModels.Contact.ContactViewModel
 
+@{ ViewBag.Title = Localizer["Title"].Value; }
+
 <section class="contact-section">
     <div class="container mt-5">
         <div class="row block-9">
@@ -107,8 +109,8 @@
 @section Scripts {
     <script src="https://www.google.com/recaptcha/api.js?render=6Lf039sUAAAAAG5ZJugKssan2d7v2oQ4wIrfCJ3v"></script>
     <script>
-        grecaptcha.ready(function() {
-            grecaptcha.execute('6Lf039sUAAAAAG5ZJugKssan2d7v2oQ4wIrfCJ3v', { action: 'contact_us' }).then(function(token) {
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6Lf039sUAAAAAG5ZJugKssan2d7v2oQ4wIrfCJ3v', { action: 'contact_us' }).then(function (token) {
                 $("#CaptchaToken").val(token);
             });
         });
