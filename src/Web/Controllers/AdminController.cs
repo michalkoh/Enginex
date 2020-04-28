@@ -3,7 +3,6 @@ using Enginex.Application.Products.Queries;
 using Enginex.Domain.Data;
 using Enginex.Web.ViewModels.Admin;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -12,13 +11,6 @@ namespace Enginex.Web.Controllers
     [Authorize]
     public class AdminController : BaseController
     {
-        private readonly IWebHostEnvironment environment;
-
-        public AdminController(IWebHostEnvironment environment)
-        {
-            this.environment = environment;
-        }
-
         [HttpGet]
         public IActionResult Index()
         {
@@ -45,7 +37,7 @@ namespace Enginex.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                await Mediator.Send(productModel.ToCommand(this.environment.WebRootPath));
+                await Mediator.Send(productModel.ToCommand());
                 return RedirectToAction(nameof(Products));
             }
 
@@ -66,7 +58,7 @@ namespace Enginex.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                await Mediator.Send(productModel.ToCommand(this.environment.WebRootPath));
+                await Mediator.Send(productModel.ToCommand());
                 return RedirectToAction(nameof(Products));
             }
 

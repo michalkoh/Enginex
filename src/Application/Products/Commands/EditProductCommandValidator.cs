@@ -15,8 +15,7 @@ namespace Enginex.Application.Products.Commands
                 .NotEmpty();
 
             RuleFor(c => c.Type)
-                .MaximumLength(30)
-                .NotEmpty();
+                .MaximumLength(30);
 
             RuleFor(c => c.Description.Slovak)
                 .MaximumLength(200);

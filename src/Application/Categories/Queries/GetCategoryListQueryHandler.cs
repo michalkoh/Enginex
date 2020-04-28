@@ -24,7 +24,6 @@ namespace Enginex.Application.Categories.Queries
             var categories = await this.repository.GetCategoriesAsync();
             return categories
                 .Select(c => this.mapper.Map(c))
-                .OrderBy(c => c.Name)
                 .ToList()
                 .AsReadOnly();
         }

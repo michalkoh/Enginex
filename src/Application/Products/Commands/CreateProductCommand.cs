@@ -1,12 +1,12 @@
 ﻿using Enginex.Domain;
-using Enginex.Domain.FileUpload;
+using Enginex.Domain.FileService;
 using MediatR;
 
 namespace Enginex.Application.Products.Commands
 {
     public class CreateProductCommand : IRequest
     {
-        public CreateProductCommand(LocalString name, string type, IImageFileUpload image, LocalString description, int categoryId)
+        public CreateProductCommand(LocalString name, string type, IFile image, LocalString description, int categoryId)
         {
             Name = name;
             Type = type;
@@ -19,7 +19,7 @@ namespace Enginex.Application.Products.Commands
 
         public string Type { get; }
 
-        public IImageFileUpload Image { get; }
+        public IFile Image { get; }
 
         public LocalString Description { get; }
 

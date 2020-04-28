@@ -23,7 +23,7 @@ namespace Enginex.Application.Products.Queries
         public async Task<IReadOnlyList<Product>> Handle(GetProductListQuery request, CancellationToken cancellationToken)
         {
             var products = await this.repository.GetProductsAsync(new ProductsInCategory(request.CategoryId));
-            return products.Select(this.mapper.Map).ToList().AsReadOnly();
+            return products.OrderBy(p => p.Name.Slovak).Select(this.mapper.Map).ToList().AsReadOnly();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Enginex.Domain;
 using Enginex.Domain.Data;
+using Enginex.Domain.FileService;
 using MediatR;
 using Microsoft.Extensions.Localization;
 using System.Threading;
@@ -10,11 +11,13 @@ namespace Enginex.Application.Products.Commands
     public class EditProductCommandHandler : IRequestHandler<EditProductCommand>
     {
         private readonly IRepository repository;
+        private readonly IFileUpload fileUpload;
         private readonly IStringLocalizer<SharedResource> localizer;
 
-        public EditProductCommandHandler(IRepository repository, IStringLocalizer<SharedResource> localizer)
+        public EditProductCommandHandler(IRepository repository, IFileUpload fileUpload, IStringLocalizer<SharedResource> localizer)
         {
             this.repository = repository;
+            this.fileUpload = fileUpload;
             this.localizer = localizer;
         }
 
@@ -28,9 +31,10 @@ namespace Enginex.Application.Products.Commands
 
             product.Update(request.Name, request.Type, request.Description);
 
-            if (request.Image.UploadPending)
+            if (request.Image != null)
             {
-                var image = await request.Image.UploadAsync(product.Image);
+                this.fileUpload.DeleteImage(product.Image);
+                var image = await this.fileUpload.UploadImageAsync(request.Image);
                 product.ChangeImage(image);
             }
 

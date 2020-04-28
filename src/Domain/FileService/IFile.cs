@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Enginex.Domain.FileUpload
+namespace Enginex.Domain.FileService
 {
     public interface IFile
     {

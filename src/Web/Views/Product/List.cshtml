@@ -1,4 +1,4 @@
-﻿@using Enginex.Domain.FileUpload
+﻿@using Enginex.Domain.FileService
 @using Enginex.Web.Components
 @model Enginex.Web.ViewModels.Product.ProductListViewModel
 
@@ -15,7 +15,7 @@
             {
                 var product = Model.Products[i];
                 var isRightAlligned = i % 6 > 2;
-                var imagePath = $@"~/{ImageFileUpload.ImageFolder}/{product.Image}";
+                var imagePath = $@"~/{FileUpload.ImageFolder}/{product.Image}";
 
                 <div class="col-lg-4 d-flex ftco-animate">
                     <div class="services-wrap d-flex">

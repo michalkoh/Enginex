@@ -1,6 +1,5 @@
 ﻿using Enginex.Application.Products.Commands;
 using Enginex.Application.Products.Queries;
-using Enginex.Domain.FileUpload;
 using Enginex.Web.Resources;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
@@ -41,8 +40,7 @@ namespace Enginex.Web.ViewModels.Admin
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
         public string NameEnglish { get; set; }
 
-        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
-        public string Type { get; set; }
+        public string? Type { get; set; }
 
         public string? DescriptionSlovak { get; set; }
 
@@ -55,13 +53,13 @@ namespace Enginex.Web.ViewModels.Admin
 
         public IReadOnlyList<Application.Categories.Queries.Category> Categories { get; set; }
 
-        public EditProductCommand ToCommand(string imageRootFolder)
+        public EditProductCommand ToCommand()
         {
             return new EditProductCommand(
                 Id,
                 new Domain.LocalString(NameSlovak, NameEnglish),
-                Type,
-                Image is null ? ImageFileUpload.None : new ImageFileUpload(new Infrastructure.FileUpload.FormFile(Image), imageRootFolder),
+                Type ?? string.Empty,
+                Image is null ? null : new Infrastructure.FileUpload.FormFile(Image),
                 new Domain.LocalString(DescriptionSlovak ?? string.Empty, DescriptionEnglish ?? string.Empty),
                 SelectedCategoryId.GetValueOrDefault());
         }

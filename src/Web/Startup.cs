@@ -1,6 +1,7 @@
 using Enginex.Application;
 using Enginex.Domain;
 using Enginex.Domain.Data;
+using Enginex.Domain.FileService;
 using Enginex.Infrastructure.Captcha;
 using Enginex.Infrastructure.Email;
 using Enginex.Infrastructure.Persistence;
@@ -46,16 +47,19 @@ namespace Enginex.Web
             if (this.env.IsStaging())
             {
                 services
-                    .AddTransient<IRepository, InMemoryRepository>();
+                    .AddDbContextPool<AppDbContext>(options => options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=EFProviders.InMemory;Trusted_Connection=True;ConnectRetryCount=0"));
             }
             else
             {
                 services
-                    .AddTransient<IRepository, Repository>()
-                    .AddDbContextPool<AppDbContext>(options => options.UseSqlServer(this.configuration.GetConnectionString("EnginexDbConnection")))
-                    .AddIdentity<IdentityUser, IdentityRole>()
-                    .AddEntityFrameworkStores<AppDbContext>();
+                    .AddDbContextPool<AppDbContext>(options => options.UseSqlServer(this.configuration.GetConnectionString("EnginexDbConnection")));
             }
+
+            services
+                .AddTransient<IFileUpload, FileUpload>(provider => new FileUpload(this.env.WebRootPath))
+                .AddTransient<IRepository, Repository>()
+                .AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
 
             services
                 .AddAuthentication()
