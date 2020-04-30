@@ -11,14 +11,24 @@ namespace Enginex.Web.Controllers
 
         protected IMediator Mediator => this.mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
-        protected void ConfirmationMessage(LocalizedString localizedString)
+        protected void ConfirmationMessage(LocalizedString localizedMessage)
         {
-            TempData["Info"] = localizedString.Value;
+            ConfirmationMessage(localizedMessage.Value);
         }
 
-        protected void ErrorMessage(LocalizedString localizedString)
+        protected void ConfirmationMessage(string message)
         {
-            TempData["Error"] = localizedString.Value;
+            TempData["Info"] = message;
+        }
+
+        protected void ErrorMessage(LocalizedString localizedError)
+        {
+            ErrorMessage(localizedError.Value);
+        }
+
+        protected void ErrorMessage(string error)
+        {
+            TempData["Error"] = error;
         }
     }
 }

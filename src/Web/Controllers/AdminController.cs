@@ -38,6 +38,7 @@ namespace Enginex.Web.Controllers
             if (ModelState.IsValid)
             {
                 await Mediator.Send(productModel.ToCommand());
+                ConfirmationMessage("Produkt bol pridaný.");
                 return RedirectToAction(nameof(Products));
             }
 
@@ -59,6 +60,7 @@ namespace Enginex.Web.Controllers
             if (ModelState.IsValid)
             {
                 await Mediator.Send(productModel.ToCommand());
+                ConfirmationMessage("Produkt bol upravený.");
                 return RedirectToAction(nameof(Products));
             }
 
@@ -79,6 +81,7 @@ namespace Enginex.Web.Controllers
             if (ModelState.IsValid)
             {
                 await Mediator.Send(productModel.ToCommand());
+                ConfirmationMessage("Produkt bol zmazaný.");
                 return RedirectToAction(nameof(Products));
             }
 
@@ -104,6 +107,7 @@ namespace Enginex.Web.Controllers
             if (ModelState.IsValid)
             {
                 await Mediator.Send(categoryModel.ToCommand());
+                ConfirmationMessage("Kategória bola pridaná.");
                 return RedirectToAction(nameof(Categories));
             }
 
@@ -123,6 +127,7 @@ namespace Enginex.Web.Controllers
             if (ModelState.IsValid)
             {
                 await Mediator.Send(categoryModel.ToCommand());
+                ConfirmationMessage("Kategória bola upravená.");
                 return RedirectToAction(nameof(Categories));
             }
 
@@ -140,6 +145,7 @@ namespace Enginex.Web.Controllers
         public async Task<IActionResult> DeleteCategory(CategoryDeleteViewModel categoryModel)
         {
             await Mediator.Send(categoryModel.ToCommand());
+            ConfirmationMessage("Kategória bola zmazaná.");
             return RedirectToAction(nameof(Categories));
         }
     }
