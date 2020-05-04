@@ -5,12 +5,20 @@ using Enginex.Web.ViewModels.Admin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace Enginex.Web.Controllers
 {
     [Authorize]
     public class AdminController : BaseController
     {
+        private readonly ILogger logger;
+
+        public AdminController(ILogger logger)
+        {
+            this.logger = logger;
+        }
+
         [HttpGet]
         public IActionResult Index()
         {

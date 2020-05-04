@@ -16,6 +16,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 using System.Collections.Generic;
 using System.Globalization;
 
@@ -44,18 +45,8 @@ namespace Enginex.Web
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .AddDataAnnotationsLocalization();
 
-            if (this.env.IsStaging())
-            {
-                services
-                    .AddDbContextPool<AppDbContext>(options => options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=EFProviders.InMemory;Trusted_Connection=True;ConnectRetryCount=0"));
-            }
-            else
-            {
-                services
-                    .AddDbContextPool<AppDbContext>(options => options.UseSqlServer(this.configuration.GetConnectionString("EnginexDbConnection")));
-            }
-
             services
+                .AddDbContextPool<AppDbContext>(options => options.UseSqlServer(this.configuration.GetConnectionString("EnginexDbConnection")))
                 .AddTransient<IFileUpload, FileUpload>(provider => new FileUpload(this.env.WebRootPath))
                 .AddTransient<IRepository, Repository>()
                 .AddIdentity<IdentityUser, IdentityRole>()
@@ -114,6 +105,7 @@ namespace Enginex.Web
             ////app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            //// app.UseSerilogRequestLogging();
             app.UseRouting();
 
             app.UseAuthentication();

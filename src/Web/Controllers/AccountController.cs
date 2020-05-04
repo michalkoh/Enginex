@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace Enginex.Web.Controllers
 {
@@ -12,11 +13,13 @@ namespace Enginex.Web.Controllers
     {
         private readonly SignInManager<IdentityUser> signInManager;
         private readonly UserManager<IdentityUser> userManager;
+        private readonly ILogger logger;
 
-        public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, ILogger logger)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
+            this.logger = logger;
         }
 
         [HttpGet]
@@ -59,6 +62,7 @@ namespace Enginex.Web.Controllers
 
             if (signInResult.Succeeded)
             {
+                this.logger.Information("Madafaka user signed in.");
                 return LocalRedirect(returnUrl);
             }
 
