@@ -49,7 +49,8 @@ Link: <a href=""{request.ProductUrl}"">{request.ProductUrl}</a>
 <br/>
 
 ---------------------------------------------------<br/>
-Toto je automaticky generovaná správa - neodpovedajte na ňu!";
+Toto je automaticky generovaná správa - neodpovedajte na ňu!
+Pre odpoveď použite adresu: <a href=""mailto:{request.Email}"">{request.Email}</a>";
         }
     }
 }

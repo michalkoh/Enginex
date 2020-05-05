@@ -1,11 +1,10 @@
 ﻿using Enginex.Web.ViewModels.Admin;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Serilog;
 
 namespace Enginex.Web.Controllers
 {
@@ -40,6 +39,8 @@ namespace Enginex.Web.Controllers
 
         public async Task<IActionResult> ExternalLoginCallback(string? returnUrl = null, string? remoteError = null)
         {
+            this.logger.Information("Trying to authorize...");
+
             returnUrl ??= Url.Content("~/");
 
             var externalLogins = (await this.signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
@@ -48,6 +49,7 @@ namespace Enginex.Web.Controllers
             if (remoteError != null)
             {
                 ModelState.AddModelError(string.Empty, $"Nastala chyba pri prihlasovaní: {remoteError}");
+                this.logger.Error(remoteError);
                 return View("Login", loginViewModel);
             }
 
@@ -55,19 +57,20 @@ namespace Enginex.Web.Controllers
             if (info == null)
             {
                 ModelState.AddModelError(string.Empty, "Nepodarilo sa získať prihlasovacie údaje od externého poskytovateľa.");
+                this.logger.Error("Unable to get external login info.");
                 return View("Login", loginViewModel);
             }
 
             var signInResult = await this.signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
 
             if (signInResult.Succeeded)
             {
-                this.logger.Information("Madafaka user signed in.");
+                this.logger.Information($"User '{email}' has been successfully authorized.");
                 return LocalRedirect(returnUrl);
             }
 
-            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
-            ModelState.AddModelError(string.Empty, $"Prístup pre '{email}' bol zamietnutý.");
+            this.logger.Warning($"User '{email}' has not been authorized.");
             return View("Login", loginViewModel);
 
             ////if (email != null)

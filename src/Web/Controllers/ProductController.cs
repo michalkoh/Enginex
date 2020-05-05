@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace Enginex.Web.Controllers
 {
@@ -12,11 +13,13 @@ namespace Enginex.Web.Controllers
     {
         private readonly IStringLocalizer<ProductController> localizer;
         private readonly ICaptcha captcha;
+        private readonly ILogger logger;
 
-        public ProductController(IStringLocalizer<ProductController> localizer, ICaptcha captcha)
+        public ProductController(IStringLocalizer<ProductController> localizer, ICaptcha captcha, ILogger logger)
         {
             this.localizer = localizer;
             this.captcha = captcha;
+            this.logger = logger;
         }
 
         [HttpGet]
@@ -49,10 +52,12 @@ namespace Enginex.Web.Controllers
                     var command = requestViewModel.ToCommand(Request.GetDisplayUrl());
                     await Mediator.Send(command);
                     ConfirmationMessage(this.localizer["RequestSent"]);
+                    this.logger.Information($"Product request from '{requestViewModel.Request.Email}' has been sent.");
                     return RedirectToAction(nameof(Detail), requestViewModel.Product.Id);
                 }
                 else
                 {
+                    this.logger.Error("Failed due to invalid CAPTCHA.");
                     ErrorMessage(this.localizer["InvalidCaptcha"]);
                 }
             }

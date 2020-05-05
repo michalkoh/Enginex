@@ -47,6 +47,7 @@ namespace Enginex.Web.Controllers
             {
                 await Mediator.Send(productModel.ToCommand());
                 ConfirmationMessage("Produkt bol pridaný.");
+                this.logger.Information($"New product '{productModel.NameSlovak}' has been successfully created.");
                 return RedirectToAction(nameof(Products));
             }
 
@@ -69,6 +70,7 @@ namespace Enginex.Web.Controllers
             {
                 await Mediator.Send(productModel.ToCommand());
                 ConfirmationMessage("Produkt bol upravený.");
+                this.logger.Information($"The product '{productModel.NameSlovak}' has been successfully updated.");
                 return RedirectToAction(nameof(Products));
             }
 
@@ -90,6 +92,7 @@ namespace Enginex.Web.Controllers
             {
                 await Mediator.Send(productModel.ToCommand());
                 ConfirmationMessage("Produkt bol zmazaný.");
+                this.logger.Information($"The product '{productModel.Name}' has been successfully deleted.");
                 return RedirectToAction(nameof(Products));
             }
 
@@ -116,6 +119,7 @@ namespace Enginex.Web.Controllers
             {
                 await Mediator.Send(categoryModel.ToCommand());
                 ConfirmationMessage("Kategória bola pridaná.");
+                this.logger.Information($"The category '{categoryModel.NameSlovak}' has been successfully created.");
                 return RedirectToAction(nameof(Categories));
             }
 
@@ -136,6 +140,7 @@ namespace Enginex.Web.Controllers
             {
                 await Mediator.Send(categoryModel.ToCommand());
                 ConfirmationMessage("Kategória bola upravená.");
+                this.logger.Information($"The category '{categoryModel.NameSlovak}' has been successfully updated.");
                 return RedirectToAction(nameof(Categories));
             }
 
@@ -154,6 +159,7 @@ namespace Enginex.Web.Controllers
         {
             await Mediator.Send(categoryModel.ToCommand());
             ConfirmationMessage("Kategória bola zmazaná.");
+            this.logger.Information($"The category '{categoryModel.Name}' has been successfully deleted.");
             return RedirectToAction(nameof(Categories));
         }
     }

@@ -30,7 +30,8 @@ Mail: <a href=""mailto:{request.Email}"">{request.Email}</a><br/>
 <br/>
 
 ---------------------------------------------------<br/>
-DÔLEŽITÉ: Na túto správu neodpovedajte priamo, ale použite mail: <a href=""mailto:{request.Email}"">{request.Email}</a>";
+Toto je automaticky generovaná správa - neodpovedajte na ňu!
+Pre odpoveď použite adresu: <a href=""mailto:{request.Email}"">{request.Email}</a>";
         }
     }
 }

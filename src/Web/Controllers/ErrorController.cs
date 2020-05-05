@@ -22,8 +22,8 @@ namespace Enginex.Web.Controllers
         [Route("Error")]
         public IActionResult ErrorHandler()
         {
-            // TODO log and send mail
             var exceptionDetails = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+            this.logger.Fatal($"Path: {exceptionDetails.Path} Exception: {exceptionDetails.Error}");
             ViewBag.ErrorMessage = exceptionDetails?.Error?.Message;
             return View("Error");
         }

@@ -3,6 +3,7 @@ using Enginex.Web.ViewModels.Contact;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace Enginex.Web.Controllers
 {
@@ -10,11 +11,13 @@ namespace Enginex.Web.Controllers
     {
         private readonly IStringLocalizer<ContactController> localizer;
         private readonly ICaptcha captcha;
+        private readonly ILogger logger;
 
-        public ContactController(IStringLocalizer<ContactController> localizer, ICaptcha captcha)
+        public ContactController(IStringLocalizer<ContactController> localizer, ICaptcha captcha, ILogger logger)
         {
             this.localizer = localizer;
             this.captcha = captcha;
+            this.logger = logger;
         }
 
         public ViewResult Index()
@@ -33,10 +36,12 @@ namespace Enginex.Web.Controllers
                     var command = contactViewModel.ToCommand();
                     await Mediator.Send(command);
                     ConfirmationMessage(this.localizer["EmailSent"]);
+                    this.logger.Information($"Contact request from '{contactViewModel.Email}' has been sent.");
                     return RedirectToAction(nameof(Index));
                 }
                 else
                 {
+                    this.logger.Error("Failed to send an email message due to invalid CAPTCHA.");
                     ErrorMessage(this.localizer["InvalidCaptcha"]);
                 }
             }
