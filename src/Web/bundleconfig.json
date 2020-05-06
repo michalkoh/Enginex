@@ -1,0 +1,25 @@
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/css/animate.css",
+      "wwwroot/css/aos.css",
+      "wwwroot/css/bootstrap.min.css",
+      "wwwroot/css/bootstrap-datepicker.css",
+      "wwwroot/css/cookiealert.css",
+      "wwwroot/css/flaticon.css",
+      "wwwroot/css/icomoon.css",
+      "wwwroot/css/ionicons.min.css",
+      "wwwroot/css/jquery.timepicker.css",
+      "wwwroot/css/magnific-popup.css",
+      "wwwroot/css/open-iconic-bootstrap.min.css",
+      "wwwroot/css/owl.carousel.min.css",
+      "wwwroot/css/owl.theme.default.min.css",
+      "wwwroot/css/style.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  }
+]
