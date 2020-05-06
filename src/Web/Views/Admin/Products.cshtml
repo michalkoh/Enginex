@@ -58,7 +58,6 @@
             var select = document.getElementById("categories");
             var option = select.options[select.selectedIndex];
             var selectedCategoryQuery = option.value !== "" ? "/" + option.value : "";
-            // document.form1.action = "/admin/products" + selectedCategoryQuery;
             document.form1.action = url + selectedCategoryQuery;
             document.form1.submit();
         }

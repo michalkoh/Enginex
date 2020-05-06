@@ -1,11 +1,12 @@
 ﻿using Enginex.Application.Products.Queries;
 using Enginex.Domain;
+using Enginex.Domain.Data;
 using Enginex.Web.ViewModels.Product;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using System.Threading.Tasks;
 using Serilog;
+using System.Threading.Tasks;
 
 namespace Enginex.Web.Controllers
 {
@@ -23,22 +24,17 @@ namespace Enginex.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List(int? categoryId)
+        public async Task<IActionResult> List(int? categoryId, int? page)
         {
-            return View(new ProductListViewModel()
-            {
-                Products = await Mediator.Send(new GetProductListQuery(categoryId))
-            });
+            var pageArgument = new PageArgument(page ?? 1, 12);
+            var productPage = await Mediator.Send(new GetProductListQuery(pageArgument, categoryId));
+            return View(new ProductListViewModel(productPage, pageArgument));
         }
 
         [HttpGet]
         public async Task<IActionResult> Detail(int id)
         {
-            return View(new ProductRequestViewModel()
-            {
-                Product = await Mediator.Send(new GetProductQuery(id)),
-                Request = new RequestViewModel() { ProductId = id }
-            });
+            return View(new ProductRequestViewModel(await Mediator.Send(new GetProductQuery(id))));
         }
 
         [HttpPost]

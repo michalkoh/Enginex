@@ -1,14 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using Enginex.Domain.Data;
 using MediatR;
 
 namespace Enginex.Application.Products.Queries
 {
-    public class GetProductListQuery : IRequest<IReadOnlyList<Product>>
+    public class GetProductListQuery : IRequest<Page<Product>>
     {
-        public GetProductListQuery(int? categoryId)
+        public GetProductListQuery(PageArgument pageArgument, int? categoryId)
         {
+            PageArgument = pageArgument;
             CategoryId = categoryId;
         }
+
+        public PageArgument PageArgument { get; }
 
         public int? CategoryId { get; }
     }

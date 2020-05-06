@@ -42,18 +42,21 @@ namespace Enginex.Web.TagHelpers
         {
             var urlHelper = this.urlHelperFactory.GetUrlHelper(ViewContext);
             var result = new TagBuilder("div");
-            for (var i = 1; i <= PageModel.TotalPages; i++)
+            if (PageModel.TotalPages > 1)
             {
-                var tag = new TagBuilder("a");
-                tag.Attributes["href"] = urlHelper.Action(new UrlActionContext() { Action = PageAction, Values = new { page = i } });
-                if (PageClassEnabled)
+                for (var i = 1; i <= PageModel.TotalPages; i++)
                 {
-                    tag.AddCssClass(PageClass);
-                    tag.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassNormal);
-                }
+                    var tag = new TagBuilder("a");
+                    tag.Attributes["href"] = urlHelper.Action(new UrlActionContext() { Action = PageAction, Values = new { page = i } });
+                    if (PageClassEnabled)
+                    {
+                        tag.AddCssClass(PageClass);
+                        tag.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassNormal);
+                    }
 
-                tag.InnerHtml.AppendHtml(i.ToString() + " ");
-                result.InnerHtml.AppendHtml(tag);
+                    tag.InnerHtml.AppendHtml(i.ToString() + " ");
+                    result.InnerHtml.AppendHtml(tag);
+                }
             }
 
             output.Content.AppendHtml(result.InnerHtml);

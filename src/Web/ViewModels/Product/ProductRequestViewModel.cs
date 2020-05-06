@@ -10,6 +10,13 @@ namespace Enginex.Web.ViewModels.Product
             Request = new RequestViewModel();
         }
 
+        public ProductRequestViewModel(Application.Products.Queries.Product product)
+            : this()
+        {
+            Product = product;
+            Request = new RequestViewModel() { ProductId = product.Id };
+        }
+
         public Application.Products.Queries.Product Product { get; set; }
 
         public RequestViewModel Request { get; set; }
