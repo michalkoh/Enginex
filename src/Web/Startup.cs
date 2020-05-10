@@ -16,7 +16,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Serilog;
 using System.Collections.Generic;
 using System.Globalization;
 
@@ -71,7 +70,8 @@ namespace Enginex.Web
                 .Configure<CookiePolicyOptions>(options =>
                 {
                     options.CheckConsentNeeded = context => false;
-                    options.MinimumSameSitePolicy = SameSiteMode.None;
+                    options.MinimumSameSitePolicy = SameSiteMode.Lax;
+                    options.Secure = CookieSecurePolicy.SameAsRequest;
                 })
                 .Configure<RequestLocalizationOptions>(options =>
                 {

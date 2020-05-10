@@ -20,8 +20,6 @@ namespace Enginex.Infrastructure.Email
 
         public async Task SendEmailAsync(string email, string subject, string message)
         {
-            Contract.Requires(!string.IsNullOrEmpty(email));
-
             try
             {
                 var mimeMessage = new MimeMessage();
