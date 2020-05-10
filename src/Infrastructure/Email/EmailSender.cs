@@ -4,7 +4,6 @@ using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using System;
-using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 
 namespace Enginex.Infrastructure.Email
@@ -25,7 +24,11 @@ namespace Enginex.Infrastructure.Email
                 var mimeMessage = new MimeMessage();
                 mimeMessage.From.Add(new MailboxAddress(this.emailSettings.SenderName, this.emailSettings.Login));
                 mimeMessage.From.Add(new MailboxAddress(email));
-                mimeMessage.To.Add(new MailboxAddress(this.emailSettings.To));
+                foreach (var toAddress in this.emailSettings.To.Split(';'))
+                {
+                    mimeMessage.To.Add(new MailboxAddress(toAddress));
+                }
+
                 mimeMessage.Subject = subject;
 
                 mimeMessage.Body = new TextPart("html")
