@@ -1,11 +1,13 @@
 ﻿using Enginex.Application.Categories.Queries;
 using Enginex.Application.Products.Queries;
+using Enginex.Domain;
 using Enginex.Domain.Data;
 using Enginex.Web.ViewModels.Admin;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using Serilog;
+using System.Threading.Tasks;
 
 namespace Enginex.Web.Controllers
 {

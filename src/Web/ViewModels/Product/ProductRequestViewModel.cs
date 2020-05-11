@@ -21,13 +21,14 @@ namespace Enginex.Web.ViewModels.Product
 
         public RequestViewModel Request { get; set; }
 
-        public SendRequestCommand ToCommand(string productUrl)
+        public SendRequestCommand ToCommand(string to, string productUrl)
         {
             return new SendRequestCommand()
             {
                 ProductId = Request.ProductId,
                 ProductUrl = productUrl,
-                Email = Request.Email ?? string.Empty,
+                From = Request.Email ?? string.Empty,
+                To = to,
                 Message = Request.Message ?? string.Empty
             };
         }

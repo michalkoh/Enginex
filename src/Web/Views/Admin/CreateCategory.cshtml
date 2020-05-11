@@ -11,6 +11,7 @@
                 </div>
                 <div class="mb-3">
                     <form asp-controller="Admin" asp-action="CreateCategory" method="post" class="contact-form">
+                        <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="form-group">
                             <label asp-for="NameSlovak">Názov (sk)</label>
                             <div class="text-danger"><span asp-validation-for="NameSlovak"></span></div>

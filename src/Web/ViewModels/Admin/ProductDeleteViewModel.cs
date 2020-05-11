@@ -8,6 +8,7 @@ namespace Enginex.Web.ViewModels.Admin
         public ProductDeleteViewModel()
         {
             Name = string.Empty;
+            Type = string.Empty;
         }
 
         public ProductDeleteViewModel(ProductEdit product)
@@ -15,11 +16,14 @@ namespace Enginex.Web.ViewModels.Admin
         {
             Id = product.Id;
             Name = product.Name.Slovak;
+            Type = product.Type;
         }
 
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        public string Type { get; set; }
 
         public DeleteProductCommand ToCommand()
         {

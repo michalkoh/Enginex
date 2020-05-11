@@ -1,9 +1,11 @@
 ﻿using Enginex.Domain;
+using Enginex.Infrastructure.Email;
 using Enginex.Web.ViewModels.Contact;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using Serilog;
+using System.Threading.Tasks;
 
 namespace Enginex.Web.Controllers
 {
@@ -11,12 +13,14 @@ namespace Enginex.Web.Controllers
     {
         private readonly IStringLocalizer<ContactController> localizer;
         private readonly ICaptcha captcha;
+        private readonly IOptions<EnginexEmailSettings> enginexEmail;
         private readonly ILogger logger;
 
-        public ContactController(IStringLocalizer<ContactController> localizer, ICaptcha captcha, ILogger logger)
+        public ContactController(IStringLocalizer<ContactController> localizer, ICaptcha captcha, IOptions<EnginexEmailSettings> enginexEmail, ILogger logger)
         {
             this.localizer = localizer;
             this.captcha = captcha;
+            this.enginexEmail = enginexEmail;
             this.logger = logger;
         }
 
@@ -33,7 +37,7 @@ namespace Enginex.Web.Controllers
             {
                 if (await this.captcha.IsValid(contactViewModel.CaptchaToken, HttpContext.Connection.RemoteIpAddress.ToString()))
                 {
-                    var command = contactViewModel.ToCommand();
+                    var command = contactViewModel.ToCommand(this.enginexEmail.Value.Email);
                     await Mediator.Send(command);
                     ConfirmationMessage(this.localizer["EmailSent"]);
                     this.logger.Information($"Contact request from '{contactViewModel.Email}' has been sent.");

@@ -29,7 +29,7 @@ namespace Enginex.Application.Request.Commands
                 throw new BusinessException(this.localizer["ProductNotFound", request.ProductId]);
             }
 
-            await this.emailSender.SendEmailAsync(request.Email, FormatSubject(product), FormatMessage(product, request));
+            await this.emailSender.SendEmailAsync(request.From, request.To, FormatSubject(product), FormatMessage(product, request));
             return Unit.Value;
         }
 
@@ -44,13 +44,13 @@ namespace Enginex.Application.Request.Commands
 {request.Message}
 <br /><br/>
 Produkt: {product.Name.Slovak} {product.Type}<br/>
-E-mail: <a href=""mailto:{request.Email}"">{request.Email}</a><br/>
+E-mail: <a href=""mailto:{request.From}"">{request.From}</a><br/>
 Link: <a href=""{request.ProductUrl}"">{request.ProductUrl}</a>
 <br/>
 
 ---------------------------------------------------<br/>
 Toto je automaticky generovaná správa - neodpovedajte na ňu!
-Pre odpoveď použite adresu: <a href=""mailto:{request.Email}"">{request.Email}</a>";
+Pre odpoveď použite adresu: <a href=""mailto:{request.From}"">{request.From}</a>";
         }
     }
 }

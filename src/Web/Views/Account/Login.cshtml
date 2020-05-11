@@ -1,4 +1,4 @@
-﻿@model Enginex.Web.ViewModels.Admin.LoginViewModel 
+﻿@model Enginex.Web.ViewModels.Account.LoginViewModel 
 <section>
     <div class="container mt-5">
         <div class="row block-9">
@@ -9,7 +9,7 @@
                     </div>
                 </div>
                 <div class="mb-5 mt-2">
-                    <form method="post" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+                    <form method="post" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
                         <div asp-validation-summary="All" class="text-danger"></div>
                         <div>
                             @foreach (var provider in Model.ExternalLogins)

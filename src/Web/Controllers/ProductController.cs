@@ -1,10 +1,12 @@
 ﻿using Enginex.Application.Products.Queries;
 using Enginex.Domain;
 using Enginex.Domain.Data;
+using Enginex.Infrastructure.Email;
 using Enginex.Web.ViewModels.Product;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
 using Serilog;
 using System.Threading.Tasks;
 
@@ -14,12 +16,14 @@ namespace Enginex.Web.Controllers
     {
         private readonly IStringLocalizer<ProductController> localizer;
         private readonly ICaptcha captcha;
+        private readonly IOptions<EnginexEmailSettings> enginexEmail;
         private readonly ILogger logger;
 
-        public ProductController(IStringLocalizer<ProductController> localizer, ICaptcha captcha, ILogger logger)
+        public ProductController(IStringLocalizer<ProductController> localizer, ICaptcha captcha, IOptions<EnginexEmailSettings> enginexEmail, ILogger logger)
         {
             this.localizer = localizer;
             this.captcha = captcha;
+            this.enginexEmail = enginexEmail;
             this.logger = logger;
         }
 
@@ -45,7 +49,7 @@ namespace Enginex.Web.Controllers
             {
                 if (await this.captcha.IsValid(requestViewModel.Request.CaptchaToken, HttpContext.Connection.RemoteIpAddress.ToString()))
                 {
-                    var command = requestViewModel.ToCommand(Request.GetDisplayUrl());
+                    var command = requestViewModel.ToCommand(this.enginexEmail.Value.Email, Request.GetDisplayUrl());
                     await Mediator.Send(command);
                     ConfirmationMessage(this.localizer["RequestSent"]);
                     this.logger.Information($"Product request from '{requestViewModel.Request.Email}' has been sent.");

@@ -6,13 +6,16 @@ namespace Enginex.Application.Email.Commands
     {
         public SendEmailCommand()
         {
-            Email = string.Empty;
+            From = string.Empty;
+            To = string.Empty;
             Name = string.Empty;
             Subject = string.Empty;
             Message = string.Empty;
         }
 
-        public string Email { get; set; }
+        public string From { get; set; }
+
+        public string To { get; set; }
 
         public string Name { get; set; }
 

@@ -17,14 +17,23 @@ namespace Enginex.Infrastructure.Email
             this.emailSettings = emailSettings.Value;
         }
 
-        public async Task SendEmailAsync(string email, string subject, string message)
+        public Task SendEmailAsync(string to, string subject, string message)
+        {
+            return SendEmailAsync(string.Empty, to, subject, message);
+        }
+
+        public async Task SendEmailAsync(string from, string to, string subject, string message)
         {
             try
             {
                 var mimeMessage = new MimeMessage();
                 mimeMessage.From.Add(new MailboxAddress(this.emailSettings.SenderName, this.emailSettings.Login));
-                mimeMessage.From.Add(new MailboxAddress(email));
-                foreach (var toAddress in this.emailSettings.To.Split(';'))
+                if (from != string.Empty)
+                {
+                    mimeMessage.From.Add(new MailboxAddress(from));
+                }
+
+                foreach (var toAddress in to.Split(';'))
                 {
                     mimeMessage.To.Add(new MailboxAddress(toAddress));
                 }

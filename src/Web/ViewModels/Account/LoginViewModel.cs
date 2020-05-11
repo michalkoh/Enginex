@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Authentication;
 
-namespace Enginex.Web.ViewModels.Admin
+namespace Enginex.Web.ViewModels.Account
 {
     public class LoginViewModel
     {

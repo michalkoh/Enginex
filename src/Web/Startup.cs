@@ -1,3 +1,4 @@
+using System;
 using Enginex.Application;
 using Enginex.Domain;
 using Enginex.Domain.Data;
@@ -48,8 +49,15 @@ namespace Enginex.Web
                 .AddDbContextPool<AppDbContext>(options => options.UseSqlServer(this.configuration.GetConnectionString("EnginexDbConnection")))
                 .AddTransient<IFileUpload, FileUpload>(provider => new FileUpload(this.env.WebRootPath))
                 .AddTransient<IRepository, Repository>()
-                .AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<AppDbContext>();
+                .AddIdentity<IdentityUser, IdentityRole>(options =>
+                {
+                    options.SignIn.RequireConfirmedEmail = true;
+
+                    options.Lockout.MaxFailedAccessAttempts = 5;
+                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+                })
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
 
             services
                 .AddAuthentication()
@@ -85,6 +93,7 @@ namespace Enginex.Web
                 })
                 .Configure<RouteOptions>(options => options.LowercaseUrls = true)
                 .Configure<EmailSettings>(this.configuration.GetSection("EmailSettings"))
+                .Configure<EnginexEmailSettings>(this.configuration.GetSection("EnginexEmailSettings"))
                 .Configure<GoogleCaptchaSettings>(this.configuration.GetSection("GoogleCaptchaSettings"));
         }
 

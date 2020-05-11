@@ -21,11 +21,12 @@ namespace Enginex.Web.ViewModels.Contact
 
         public string? CaptchaToken { get; set; }
 
-        public SendEmailCommand ToCommand()
+        public SendEmailCommand ToCommand(string to)
         {
             return new SendEmailCommand()
             {
-                Email = Email ?? string.Empty,
+                From = Email ?? string.Empty,
+                To = to,
                 Name = Name ?? string.Empty,
                 Subject = Subject ?? string.Empty,
                 Message = Message ?? string.Empty

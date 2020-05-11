@@ -6,9 +6,8 @@ namespace Enginex.Application.Email.Commands
     {
         public SendEmailCommandValidator()
         {
-            RuleFor(c => c.Email)
+            RuleFor(c => c.From)
                 .NotEmpty()
-                .MaximumLength(40)
                 .EmailAddress();
 
             RuleFor(c => c.Name)

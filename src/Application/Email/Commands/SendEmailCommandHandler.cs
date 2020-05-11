@@ -16,7 +16,7 @@ namespace Enginex.Application.Email.Commands
 
         public async Task<Unit> Handle(SendEmailCommand request, CancellationToken cancellationToken)
         {
-            await this.emailSender.SendEmailAsync(request.Email, request.Subject, FormatMessage(request));
+            await this.emailSender.SendEmailAsync(request.From, request.To, request.Subject, FormatMessage(request));
             return Unit.Value;
         }
 
@@ -26,12 +26,12 @@ namespace Enginex.Application.Email.Commands
 {request.Message}
 <br /><br/>
 Meno: {request.Name}<br/>
-Mail: <a href=""mailto:{request.Email}"">{request.Email}</a><br/>
+Mail: <a href=""mailto:{request.From}"">{request.From}</a><br/>
 <br/>
 
 ---------------------------------------------------<br/>
 Toto je automaticky generovaná správa - neodpovedajte na ňu!
-Pre odpoveď použite adresu: <a href=""mailto:{request.Email}"">{request.Email}</a>";
+Pre odpoveď použite adresu: <a href=""mailto:{request.From}"">{request.From}</a>";
         }
     }
 }

@@ -6,7 +6,6 @@
         {
             MailServer = string.Empty;
             SenderName = string.Empty;
-            To = string.Empty;
             Login = string.Empty;
             Password = string.Empty;
         }
@@ -16,8 +15,6 @@
         public int MailPort { get; set; }
 
         public string SenderName { get; set; }
-
-        public string To { get; set; }
 
         public string Login { get; set; }
 

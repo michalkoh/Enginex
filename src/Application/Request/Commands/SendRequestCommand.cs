@@ -6,12 +6,15 @@ namespace Enginex.Application.Request.Commands
     {
         public SendRequestCommand()
         {
-            Email = string.Empty;
+            From = string.Empty;
+            To = string.Empty;
             Message = string.Empty;
             ProductUrl = string.Empty;
         }
 
-        public string Email { get; set; }
+        public string From { get; set; }
+
+        public string To { get; set; }
 
         public string Message { get; set; }
 
