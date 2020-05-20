@@ -11,7 +11,7 @@ namespace Enginex.Application.Categories.Commands
 {
     public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand>
     {
-        private const int CategoriesMaxCount = 5;
+        private const int CategoriesMaxCount = 6;
 
         private readonly IRepository repository;
         private readonly IStringLocalizer<SharedResource> localizer;
