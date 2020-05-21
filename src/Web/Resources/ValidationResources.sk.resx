@@ -120,6 +120,9 @@
   <data name="InvalidEmail" xml:space="preserve">
     <value>Emailová adresa je neplatná.</value>
   </data>
+  <data name="PositiveNumbersOnly" xml:space="preserve">
+    <value>Povolené sú len pozitívné čísla.</value>
+  </data>
   <data name="RequiredField" xml:space="preserve">
     <value>Povinné pole.</value>
   </data>

@@ -25,7 +25,6 @@
                             <tr>
                                 <th scope="col">Názov</th>
                                 <th scope="col">Typ</th>
-                                <th scope="col">Popis</th>
                                 <th scope="col">Upraviť</th>
                                 <th scope="col">Zmazať</th>
                             </tr>
@@ -36,7 +35,6 @@
                                 <tr>
                                     <td><a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">@product.Name.Slovak</a></td>
                                     <td>@product.Type</td>
-                                    <td>@product.Description?.Slovak</td>
                                     <td><a asp-controller="Admin" asp-action="EditProduct" asp-route-id="@product.Id">Upraviť</a></td>
                                     <td><a asp-controller="Admin" asp-action="DeleteProduct" asp-route-id="@product.Id">Zmazať</a></td>
                                 </tr>

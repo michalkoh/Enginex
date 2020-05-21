@@ -23,6 +23,11 @@
                             <input asp-for="NameEnglish" class="form-control">
                         </div>
                         <div class="form-group">
+                            <label asp-for="Order">Poradie (pri zobrazení na stránke)</label>
+                            <div><span asp-validation-for="Order" class="text-danger"></span></div>
+                            <input asp-for="Order" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <input type="submit" value="Uložiť" class="btn btn-primary py-3 px-5">
                             <a asp-controller="Admin" asp-action="Categories" class="btn btn-primary py-3 px-5">Späť</a>
                         </div>

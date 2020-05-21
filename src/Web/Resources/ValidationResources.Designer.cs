@@ -70,6 +70,15 @@ namespace Enginex.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only positive numbers are allowed..
+        /// </summary>
+        public static string PositiveNumbersOnly {
+            get {
+                return ResourceManager.GetString("PositiveNumbersOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Required field..
         /// </summary>
         public static string RequiredField {

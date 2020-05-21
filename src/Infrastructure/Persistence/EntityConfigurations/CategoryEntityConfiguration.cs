@@ -23,6 +23,10 @@ namespace Enginex.Infrastructure.Persistence.EntityConfigurations
                         .IsRequired()
                         .HasMaxLength(40);
                 });
+
+            builder.Property(c => c.Order)
+                .IsRequired()
+                .HasColumnName("Order");
         }
     }
 }

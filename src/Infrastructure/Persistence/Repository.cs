@@ -23,7 +23,7 @@ namespace Enginex.Infrastructure.Persistence
 
         public async Task<IEnumerable<Category>> GetCategoriesAsync()
         {
-            return await this.context.Categories.ToListAsync();
+            return await this.context.Categories.OrderBy(c => c.Order).ToListAsync();
         }
 
         public async Task AddCategoryAsync(Category category)

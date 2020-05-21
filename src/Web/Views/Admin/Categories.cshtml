@@ -24,6 +24,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">Názov</th>
+                                <th scope="col">Poradie</th>
                                 <th scope="col">Upraviť</th>
                                 <th scope="col">Zmazať</th>
                             </tr>
@@ -33,6 +34,7 @@
                             {
                                 <tr>
                                     <td>@category.Name.Slovak</td>
+                                    <td>@category.Order</td>
                                     <td><a asp-controller="Admin" asp-action="EditCategory" asp-route-id="@category.Id">Upraviť</a></td>
                                 <td><a asp-controller="Admin" asp-action="DeleteCategory" asp-route-id="@category.Id">Zmazať</a></td>
                                 </tr>
