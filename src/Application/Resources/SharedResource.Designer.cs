@@ -79,6 +79,15 @@ namespace Enginex.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Category with this order is already defined..
+        /// </summary>
+        internal static string CategoryOrderMustBeUnique {
+            get {
+                return ResourceManager.GetString("CategoryOrderMustBeUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No product image to upload..
         /// </summary>
         internal static string ImageRequired {

@@ -123,6 +123,9 @@
   <data name="CategoryNotFound" xml:space="preserve">
     <value>Kategória (Id: {0}) neexistuje.</value>
   </data>
+  <data name="CategoryOrderMustBeUnique" xml:space="preserve">
+    <value>Kategória s týmto poradím už existuje.</value>
+  </data>
   <data name="ImageRequired" xml:space="preserve">
     <value>Chýbajúci obrázok k produktu.</value>
   </data>

@@ -9,7 +9,7 @@ namespace Enginex.Application.Categories.Queries
         {
             Guard.Argument(category, nameof(category)).NotNull();
 
-            return new CategoryEdit(category.Id, category.Name);
+            return new CategoryEdit(category.Id, category.Name, category.Order);
         }
     }
 }

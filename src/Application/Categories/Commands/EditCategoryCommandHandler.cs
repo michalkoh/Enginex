@@ -1,4 +1,5 @@
-﻿using Enginex.Domain;
+﻿using System.Linq;
+using Enginex.Domain;
 using Enginex.Domain.Data;
 using MediatR;
 using System.Threading;
@@ -26,7 +27,13 @@ namespace Enginex.Application.Categories.Commands
                 throw new BusinessException(this.localizer["CategoryNotFound", request.Id]);
             }
 
-            category.Update(request.Name);
+            var categories = await this.repository.GetCategoriesAsync();
+            if (categories.Any(c => request.Order == c.Order))
+            {
+                throw new BusinessException(this.localizer["CategoryOrderMustBeUnique"]);
+            }
+
+            category.Update(request.Name, request.Order);
             await this.repository.UpdateCategoryAsync(category);
 
             return Unit.Value;
