@@ -20,6 +20,7 @@ namespace Enginex.Web.ViewModels.Admin
             Id = category.Id;
             NameSlovak = category.Name.Slovak;
             NameEnglish = category.Name.English;
+            Order = category.Order;
         }
 
         public int Id { get; set; }
@@ -30,9 +31,13 @@ namespace Enginex.Web.ViewModels.Admin
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
         public string NameEnglish { get; set; }
 
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
+        [Range(1, 999, ErrorMessageResourceName = "PositiveNumbersOnly", ErrorMessageResourceType = typeof(ValidationResources))]
+        public ushort Order { get; set; }
+
         public EditCategoryCommand ToCommand()
         {
-            return new EditCategoryCommand(Id, new LocalString(NameSlovak, NameEnglish));
+            return new EditCategoryCommand(Id, new LocalString(NameSlovak, NameEnglish), Order);
         }
     }
 }

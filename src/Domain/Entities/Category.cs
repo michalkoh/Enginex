@@ -2,16 +2,11 @@
 {
     public class Category : Entity
     {
-        public Category(int id, LocalString name)
-            : this(name)
-        {
-            Id = id;
-        }
-
-        public Category(LocalString name)
+        public Category(LocalString name, ushort order)
             : this()
         {
             Name = name;
+            Order = order;
         }
 
         private Category()
@@ -23,9 +18,12 @@
 
         public LocalString Name { get; private set; }
 
-        public void Update(LocalString name)
+        public ushort Order { get; private set; }
+
+        public void Update(LocalString name, ushort order)
         {
             Name = name;
+            Order = order;
         }
     }
 }

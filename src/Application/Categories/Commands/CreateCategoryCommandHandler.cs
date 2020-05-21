@@ -30,7 +30,12 @@ namespace Enginex.Application.Categories.Commands
                 throw new BusinessException(this.localizer["MaxCategoryCountReached", CategoriesMaxCount]);
             }
 
-            var category = new Category(request.Name);
+            if (categories.Any(c => request.Order == c.Order))
+            {
+                throw new BusinessException(this.localizer["CategoryOrderMustBeUnique"]);
+            }
+
+            var category = new Category(request.Name, request.Order);
             await this.repository.AddCategoryAsync(category);
 
             return Unit.Value;

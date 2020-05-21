@@ -2,12 +2,6 @@
 {
     public class Product : Entity
     {
-        public Product(int id, LocalString name, string type, string image, LocalString description, Category category)
-            : this(name, type, image, description, category)
-        {
-            Id = id;
-        }
-
         public Product(LocalString name, string type, string image, LocalString description, Category category)
             : this()
         {

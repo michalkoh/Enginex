@@ -19,9 +19,13 @@ namespace Enginex.Web.ViewModels.Admin
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
         public string NameEnglish { get; set; }
 
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(ValidationResources))]
+        [Range(1, 999, ErrorMessageResourceName = "PositiveNumbersOnly", ErrorMessageResourceType = typeof(ValidationResources))]
+        public ushort Order { get; set; }
+
         public CreateCategoryCommand ToCommand()
         {
-            return new CreateCategoryCommand(new LocalString(NameSlovak, NameEnglish));
+            return new CreateCategoryCommand(new LocalString(NameSlovak, NameEnglish), Order);
         }
     }
 }

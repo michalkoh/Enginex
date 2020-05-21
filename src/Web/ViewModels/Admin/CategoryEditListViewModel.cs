@@ -14,7 +14,7 @@ namespace Enginex.Web.ViewModels.Admin
             : this()
         {
             Categories = categories;
-            CanCreateCategory = categories.Count < 5;
+            CanCreateCategory = categories.Count < 6;
         }
 
         public bool CanCreateCategory { get; set; }
