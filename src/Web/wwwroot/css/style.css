@@ -456,8 +456,8 @@ pre {
 
 .container {
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 5px;
+  padding-left: 5px;
   margin-right: auto;
   margin-left: auto; }
   @media (min-width: 576px) {
@@ -471,7 +471,7 @@ pre {
       max-width: 960px; } }
   @media (min-width: 1200px) {
     .container {
-      max-width: 1140px; } }
+      max-width: 1200px; } }
 
 .container-fluid {
   width: 100%;
@@ -8536,7 +8536,7 @@ textarea.form-control {
     margin-bottom: 0; }
   .ftco-menu .nav-pills .nav-link {
     border-radius: 0;
-    margin-bottom: 0;
+    margin-bottom: 5px;
     color: #fac564;
     font-size: 18px;
     font-weight: 400;
