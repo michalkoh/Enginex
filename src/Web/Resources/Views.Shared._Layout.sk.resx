@@ -126,6 +126,15 @@
   <data name="Home" xml:space="preserve">
     <value>Domov</value>
   </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>Enginex spol. s r.o. Košice. Veľkoobchodný predaj kovoobrábacích a tvárniacich strojov a náhradných dielov.</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Predaj kovoobrábacích strojov, ponuka obrábacích strojov, opravy strojov, CNC stroje.</value>
+  </data>
+  <data name="MetaKeywords" xml:space="preserve">
+    <value>obrábacie stroje, stroje, sústruhy, CNC sústruhy, CNC, brúsky, lisy, hydraulické, kovoobrábanie, ohýbačky, ozubené stroje, kovoobrábacie stroje</value>
+  </data>
   <data name="Offer" xml:space="preserve">
     <value>Naša ponuka</value>
   </data>

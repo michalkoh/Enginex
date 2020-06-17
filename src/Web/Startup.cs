@@ -111,7 +111,7 @@ namespace Enginex.Web
             }
 
             app.UseRequestLocalization();
-            ////app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             //// app.UseSerilogRequestLogging();

@@ -126,6 +126,15 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>Enginex Košice. Wholesale of metalworking and forming machines and spare parts.</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Selling metalworking machines, offering machine tools, repair of machines, CNC machines.</value>
+  </data>
+  <data name="MetaKeywords" xml:space="preserve">
+    <value>machine tools, machinery, lathes, CNC lathes, CNC, grinding machines, presses, hydraulic, metalworking, bending machines, gear machines, gear tooling</value>
+  </data>
   <data name="Offer" xml:space="preserve">
     <value>Our offer</value>
   </data>

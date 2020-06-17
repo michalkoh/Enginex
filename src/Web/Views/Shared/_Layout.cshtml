@@ -1,15 +1,25 @@
 ﻿@using Enginex.Web.Components
 @using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Localization
 @inject SignInManager<IdentityUser> SignInManager
 
 <!DOCTYPE html>
 
-<html>
+@{
+    var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
+    var requestCulture = requestCultureFeature.RequestCulture;
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="@requestCulture.Culture.Name">
     <head>
-        <title>@((ViewBag.Title == null) ? "Enginex" : $"{ViewBag.Title} - Enginex")</title>
-        <meta charset="utf-8">
+        <title>@((ViewBag.Title == null) ? Localizer["HomeTitle"].Value : $"{ViewBag.Title} - Enginex")</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link rel="icon" href="~/images/favicon.ico">
+
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="@Localizer["MetaDescription"]">
+        <meta name="keywords" content="@Localizer["MetaKeywords"]">
+        <meta name="robots" content="index, follow">
 
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
@@ -57,7 +67,7 @@
                         var controller = ViewContext.RouteData.Values["Controller"].ToString();
                     }
                     <li class="nav-item @(controller == "Home" ? "active" : "")"><a asp-controller="Home" asp-action="Index" class="nav-link">@Localizer["Home"]</a></li>
-                    <li class="nav-item @(controller == "Product" ? "active" : "")"><a asp-controller="Product" asp-action="List" asp-route-categoryId="" class="nav-link">@Localizer["Offer"]</a></li>
+                    <li class="nav-item @(controller == "Product" ? "active" : "")"><a asp-controller="Product" asp-action="List" class="nav-link">@Localizer["Offer"]</a></li>
                     <li class="nav-item @(controller == "About" ? "active" : "")"><a asp-controller="About" asp-action="Index" class="nav-link">@Localizer["About"]</a></li>
                     <li class="nav-item @(controller == "Contact" ? "active" : "")"><a asp-controller="Contact" asp-action="Index" class="nav-link">@Localizer["Contact"]</a></li>
                     @if (SignInManager.IsSignedIn(User))
