@@ -35,7 +35,7 @@ namespace Enginex.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (await this.captcha.IsValid(contactViewModel.CaptchaToken, HttpContext.Connection.RemoteIpAddress.ToString()))
+                if (await this.captcha.IsValid(contactViewModel.CaptchaToken, HttpContext.Connection.RemoteIpAddress?.ToString()))
                 {
                     var command = contactViewModel.ToCommand(this.enginexEmail.Value.Email);
                     await Mediator.Send(command);

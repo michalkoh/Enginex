@@ -45,7 +45,7 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <nav class="navbar navbar-dark bg-dark ftco-navbar-light p-0 px-4">
-            <div class="row ml-auto"><span>Prihlásený ako @User.Identity.Name!</span>
+            <div class="row ml-auto"><span>Prihlásený ako @User.Identity!.Name</span>
                 <form method="post" asp-controller="Account" asp-action="Logout">
                     <button type="submit" class="btn btn-link py-0">
                         Odhlásiť
@@ -64,7 +64,7 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     @{
-                        var controller = ViewContext.RouteData.Values["Controller"].ToString();
+                        var controller = ViewContext.RouteData.Values["Controller"]!.ToString();
                     }
                     <li class="nav-item @(controller == "Home" ? "active" : "")"><a asp-controller="Home" asp-action="Index" class="nav-link">@Localizer["Home"]</a></li>
                     <li class="nav-item @(controller == "Product" ? "active" : "")"><a asp-controller="Product" asp-action="List" class="nav-link">@Localizer["Offer"]</a></li>
