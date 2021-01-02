@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
+using System;
 
 namespace Enginex.Web.Controllers
 {
@@ -9,7 +10,7 @@ namespace Enginex.Web.Controllers
     {
         private IMediator? mediator;
 
-        protected IMediator Mediator => this.mediator ??= HttpContext.RequestServices.GetService<IMediator>();
+        protected IMediator Mediator => this.mediator ??= HttpContext.RequestServices.GetService<IMediator>() ?? throw new InvalidOperationException();
 
         protected void ConfirmationMessage(LocalizedString localizedMessage)
         {

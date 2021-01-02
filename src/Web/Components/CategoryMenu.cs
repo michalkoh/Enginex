@@ -26,7 +26,7 @@ namespace Enginex.Web.Components
 
         private int? ParseSelectedCategoryId()
         {
-            return int.TryParse((string)RouteData.Values["categoryId"], out var categoryId) ? (int?)categoryId : null;
+            return int.TryParse(RouteData.Values["categoryId"] as string, out var categoryId) ? (int?)categoryId : null;
         }
     }
 }

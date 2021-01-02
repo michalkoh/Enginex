@@ -50,7 +50,7 @@ namespace Enginex.Web.Controllers
         {
             this.logger.Information("Trying to authorize...");
 
-            returnUrl ??= Url.Content("~/");
+            returnUrl ??= Url.Content("~/") ?? string.Empty;
 
             var externalLogins = (await this.signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             var loginViewModel = new LoginViewModel(returnUrl, externalLogins);
