@@ -28,7 +28,7 @@ namespace Enginex.Application.Categories.Commands
             }
 
             var categories = await this.repository.GetCategoriesAsync();
-            if (categories.Any(c => request.Order == c.Order))
+            if (categories.Any(c => request.Order == c.Order && request.Id != c.Id))
             {
                 throw new BusinessException(this.localizer["CategoryOrderMustBeUnique"]);
             }
