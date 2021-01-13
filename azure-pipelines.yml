@@ -15,6 +15,17 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+
+- task: gitversion/execute@0
+  inputs:
+    updateAssemblyInfo: true
+
+- script: echo %Action%%BuildVersion%
+  displayName: 'Set build version'
+  env:
+    Action: '##vso[build.updatebuildnumber]'
+    BuildVersion: $(GitVersion.SemVer)
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
