@@ -30,12 +30,12 @@ namespace Enginex.Infrastructure.Email
                 mimeMessage.From.Add(new MailboxAddress(this.emailSettings.SenderName, this.emailSettings.Login));
                 if (from != string.Empty)
                 {
-                    mimeMessage.From.Add(new MailboxAddress(from));
+                    mimeMessage.From.Add(new MailboxAddress(from, from));
                 }
 
                 foreach (var toAddress in to.Split(';'))
                 {
-                    mimeMessage.To.Add(new MailboxAddress(toAddress));
+                    mimeMessage.To.Add(new MailboxAddress(toAddress, toAddress));
                 }
 
                 mimeMessage.Subject = subject;

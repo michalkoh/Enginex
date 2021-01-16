@@ -40,7 +40,7 @@ namespace Enginex.Infrastructure.Captcha
                     var captchaResponseJson = await verify.Content.ReadAsStringAsync();
                     var options = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
                     var captchaResult = JsonSerializer.Deserialize<CaptchaResponse>(captchaResponseJson, options);
-                    return captchaResult.Success && captchaResult.Action == "contact_us" && captchaResult.Score > 0.7;
+                    return captchaResult != null && captchaResult.Success && captchaResult.Action == "contact_us" && captchaResult.Score > 0.7;
                 }
             }
             catch (Exception)

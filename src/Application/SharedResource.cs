@@ -11,6 +11,6 @@ namespace Enginex.Application
             this.localizer = localizer;
         }
 
-        public string this[string index] => this.localizer[index];
+        public string? this[string index] => this.localizer[index];
     }
 }
