@@ -1,10 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>Enginex.Web</AssemblyName>
-    <Version>1.2.3.4</Version>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <AssemblyCompany>Enginex</AssemblyCompany>
+    <AssemblyProduct>Enginex Company Web Site</AssemblyProduct>
+    <Version>1.0.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <RootNamespace>Enginex.Web</RootNamespace>
     <Nullable>enable</Nullable>
     <UserSecretsId>016fd172-5065-41b9-a869-21a998d1da6b</UserSecretsId>

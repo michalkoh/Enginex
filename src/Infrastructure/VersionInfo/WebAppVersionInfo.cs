@@ -10,9 +10,12 @@ namespace Enginex.Infrastructure.VersionInfo
         private WebAppVersionInfo()
         {
             TargetFramework = string.Empty;
+            AssemblyInformationalVersion = string.Empty;
         }
 
         public string TargetFramework { get; private set; }
+
+        public string AssemblyInformationalVersion { get; private set; }
 
         public static WebAppVersionInfo Load(Assembly assembly)
         {
@@ -20,7 +23,8 @@ namespace Enginex.Infrastructure.VersionInfo
 
             return new WebAppVersionInfo()
             {
-                TargetFramework = GetTargetFramework(assembly)
+                TargetFramework = GetTargetFramework(assembly),
+                AssemblyInformationalVersion = GetAssemblyInformationalVersion(assembly)
             };
         }
 
@@ -31,6 +35,15 @@ namespace Enginex.Infrastructure.VersionInfo
                 .SingleOrDefault() as TargetFrameworkAttribute;
 
             return targetFrameworkAttribute?.FrameworkName ?? string.Empty;
+        }
+
+        private static string GetAssemblyInformationalVersion(Assembly assembly)
+        {
+            var assemblyInformationalVersionAttribute = assembly
+                .GetCustomAttributes(typeof(AssemblyInformationalVersionAttribute), false)
+                .SingleOrDefault() as AssemblyInformationalVersionAttribute;
+
+            return assemblyInformationalVersionAttribute?.InformationalVersion ?? string.Empty;
         }
     }
 }

@@ -25,7 +25,11 @@ namespace Enginex.Web.Controllers
         public IActionResult Index()
         {
             var webAppInfo = WebAppVersionInfo.Load(Assembly.GetExecutingAssembly());
-            return View(new WebAppViewModel() { TargetFramework = webAppInfo.TargetFramework });
+            return View(new WebAppViewModel()
+            {
+                TargetFramework = webAppInfo.TargetFramework,
+                AssemblyInformationalVersion = webAppInfo.AssemblyInformationalVersion
+            });
         }
 
         public async Task<IActionResult> Products(int? categoryId, int? page)
