@@ -1,12 +1,12 @@
 ﻿using Enginex.Application.Categories.Queries;
 using Enginex.Application.Products.Queries;
-using Enginex.Domain;
 using Enginex.Domain.Data;
+using Enginex.Infrastructure.VersionInfo;
 using Enginex.Web.ViewModels.Admin;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Enginex.Web.Controllers
@@ -24,7 +24,12 @@ namespace Enginex.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var webAppInfo = WebAppVersionInfo.Load(Assembly.GetExecutingAssembly());
+            return View(new WebAppViewModel()
+            {
+                TargetFramework = webAppInfo.TargetFramework,
+                AssemblyInformationalVersion = webAppInfo.AssemblyInformationalVersion
+            });
         }
 
         public async Task<IActionResult> Products(int? categoryId, int? page)

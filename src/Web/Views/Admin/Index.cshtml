@@ -1,4 +1,6 @@
-﻿<section>
+﻿@model Enginex.Web.ViewModels.Admin.WebAppViewModel
+
+<section>
     <div class="container mt-5">
         <div class="row block-9">
             <div class="col-lg-12 ftco-animate">
@@ -13,6 +15,10 @@
                         <li><a asp-controller="Admin" asp-action="Products">Produkty</a></li>
                         <li><a asp-controller="Account" asp-action="Users">Administrátori</a></li>
                     </ul>
+                </div>
+                <div class="d-flex flex-row-reverse">
+                    <div class="p-2 small">Target framework: <strong>@Model.TargetFramework</strong></div>
+                    <div class="p-2 small">Version: <strong>@Model.AssemblyInformationalVersion</strong></div>
                 </div>
             </div>
         </div>

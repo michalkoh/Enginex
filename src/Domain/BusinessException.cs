@@ -8,12 +8,12 @@ namespace Enginex.Domain
         {
         }
 
-        public BusinessException(string message)
+        public BusinessException(string? message)
             : base(message)
         {
         }
 
-        public BusinessException(string message, Exception inner)
+        public BusinessException(string? message, Exception inner)
             : base(message, inner)
         {
         }
