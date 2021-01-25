@@ -15,7 +15,15 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+
+- task: gitversion/setup@0
+  inputs:
+    versionSpec: '5.x'
+
 - task: gitversion/execute@0
+  displayName: Determine Version
+  inputs:
+      useConfigFile: true
 
 - script: echo %Action%%BuildVersion%
   displayName: 'Set build version'
