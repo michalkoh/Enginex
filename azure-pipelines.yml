@@ -15,10 +15,9 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-
 - task: gitversion/execute@0
   inputs:
-    updateAssemblyInfo: true
+    useConfigFile: true
 
 - script: echo %Action%%BuildVersion%
   displayName: 'Set build version'
