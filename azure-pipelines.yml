@@ -22,8 +22,6 @@ steps:
 
 - task: gitversion/execute@0
   displayName: Determine Version
-  inputs:
-      useConfigFile: true
 
 - script: echo %Action%%BuildVersion%
   displayName: 'Set build version'
