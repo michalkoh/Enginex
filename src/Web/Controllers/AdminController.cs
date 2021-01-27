@@ -28,7 +28,7 @@ namespace Enginex.Web.Controllers
             return View(new WebAppViewModel()
             {
                 TargetFramework = webAppInfo.TargetFramework,
-                AssemblyInformationalVersion = webAppInfo.AssemblyInformationalVersion
+                AssemblyVersion = webAppInfo.AssemblyVersion
             });
         }
 

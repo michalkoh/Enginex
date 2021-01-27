@@ -5,11 +5,11 @@
         public WebAppViewModel()
         {
             TargetFramework = string.Empty;
-            AssemblyInformationalVersion = string.Empty;
+            AssemblyVersion = string.Empty;
         }
 
         public string TargetFramework { get; set; }
 
-        public string AssemblyInformationalVersion { get; set; }
+        public string AssemblyVersion { get; set; }
     }
 }
