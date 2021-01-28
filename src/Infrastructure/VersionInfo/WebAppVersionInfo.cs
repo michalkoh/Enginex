@@ -37,13 +37,9 @@ namespace Enginex.Infrastructure.VersionInfo
             return targetFrameworkAttribute?.FrameworkName ?? string.Empty;
         }
 
-        private static string GetAssemblyVersion(ICustomAttributeProvider assembly)
+        private static string GetAssemblyVersion(Assembly assembly)
         {
-            var assemblyInformationalVersionAttribute = assembly
-                .GetCustomAttributes(typeof(AssemblyVersionAttribute), false)
-                .SingleOrDefault() as AssemblyVersionAttribute;
-
-            return assemblyInformationalVersionAttribute?.Version ?? string.Empty;
+            return assembly.GetName().Version.ToString();
         }
     }
 }
