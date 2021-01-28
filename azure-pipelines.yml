@@ -27,7 +27,7 @@ steps:
   displayName: 'Set build version'
   env:
     Action: '##vso[build.updatebuildnumber]'
-    BuildVersion: $(GitVersion.SemVer) + $(GitVersion.PreReleaseTag)
+    BuildVersion: $(GitVersion.SemVer).$(GitVersion.PreReleaseTag)
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
@@ -39,7 +39,7 @@ steps:
   displayName: 'dotnet build'
   inputs:
     command: 'build'
-    arguments: '-c $(buildConfiguration) -p:AssemblyVersion:$(GitVersion.SemVer) --no-restore'
+    arguments: '-c $(buildConfiguration) -p:AssemblyVersion=$(GitVersion.SemVer) --no-restore'
 
 # - task: DotNetCoreCLI@2
 #   inputs:
