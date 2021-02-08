@@ -20,14 +20,14 @@ steps:
   inputs:
     versionSpec: '5.x'
 
-- task: gitversion/execute@0
-  displayName: Determine Version
+# - task: gitversion/execute@0
+#   displayName: Determine Version
 
-- script: echo %Action%%BuildVersion%
-  displayName: 'Set build version'
-  env:
-    Action: '##vso[build.updatebuildnumber]'
-    BuildVersion: $(GitVersion.SemVer).$(GitVersion.PreReleaseTag)
+# - script: echo %Action%%BuildVersion%
+#   displayName: 'Set build version'
+#   env:
+#     Action: '##vso[build.updatebuildnumber]'
+#     BuildVersion: $(GitVersion.SemVer).$(GitVersion.PreReleaseTag)
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
