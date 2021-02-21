@@ -39,7 +39,7 @@ steps:
   displayName: 'dotnet build'
   inputs:
     command: 'build'
-    arguments: '-c $(buildConfiguration) -p:AssemblyVersion=$(GitVersion.SemVer) --no-restore'
+    arguments: '-c $(buildConfiguration) -p:AssemblyVersion=2.3.4.5 --no-restore'
 
 # - task: DotNetCoreCLI@2
 #   inputs:
