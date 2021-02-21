@@ -39,7 +39,24 @@ namespace Enginex.Infrastructure.VersionInfo
 
         private static string GetAssemblyVersion(Assembly assembly)
         {
-            return assembly.GetName().Version.ToString();
+            var assemblyVersionAttribute = assembly
+                .GetCustomAttributes(typeof(AssemblyVersionAttribute), false)
+                .SingleOrDefault() as AssemblyVersionAttribute;
+
+            var assemblyFileVersionAttribute = assembly
+                .GetCustomAttributes(typeof(AssemblyFileVersionAttribute), false)
+                .SingleOrDefault() as AssemblyFileVersionAttribute;
+
+            var assemblyInformationalVersionAttribute = assembly
+                .GetCustomAttributes(typeof(AssemblyInformationalVersionAttribute), false)
+                .SingleOrDefault() as AssemblyInformationalVersionAttribute;
+
+            return $"FullName: {assembly.FullName}; Version: {assembly.GetName().Version}; " +
+                   $"AssemblyVersionAttribute: {assemblyVersionAttribute?.Version};" +
+                   $"AssemblyFileVersionAttribute: {assemblyFileVersionAttribute?.Version};" +
+                   $"AssemblyInformationalVersionAttribute: {assemblyInformationalVersionAttribute?.InformationalVersion}";
+
+            //// return assembly.GetName().Version.ToString();
         }
     }
 }

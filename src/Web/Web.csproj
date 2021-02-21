@@ -5,9 +5,6 @@
     <AssemblyName>Enginex.Web</AssemblyName>
     <AssemblyCompany>Enginex</AssemblyCompany>
     <AssemblyProduct>Enginex Company Web Site</AssemblyProduct>
-    <Version>1.1.0.0</Version>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.1.1.0</FileVersion>
     <RootNamespace>Enginex.Web</RootNamespace>
     <Nullable>enable</Nullable>
     <UserSecretsId>016fd172-5065-41b9-a869-21a998d1da6b</UserSecretsId>
