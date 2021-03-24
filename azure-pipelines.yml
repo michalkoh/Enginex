@@ -39,7 +39,7 @@ steps:
   displayName: 'dotnet build'
   inputs:
     command: 'build'
-    arguments: '-c $(buildConfiguration) -p:AssemblyVersion=2.3.4.5 --no-restore'
+    arguments: '-c $(buildConfiguration) --no-restore'
 
 # - task: DotNetCoreCLI@2
 #   inputs:
@@ -53,7 +53,7 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
-    arguments: '--configuration $(buildConfiguration) --output $(build.artifactStagingDirectory)'
+    arguments: '--configuration $(buildConfiguration)  -p:AssemblyVersion=2.3.4.5 --output $(build.artifactStagingDirectory)'
     zipAfterPublish: true
 
 - task: PublishBuildArtifacts@1
