@@ -7,10 +7,10 @@
 
 @{
     var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
-    var requestCulture = requestCultureFeature.RequestCulture;
+    var requestCulture = requestCultureFeature?.RequestCulture;
 }
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="@requestCulture.Culture.Name">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="@requestCulture?.Culture.Name">
     <head>
         <title>@((ViewBag.Title == null) ? Localizer["HomeTitle"].Value : $"{ViewBag.Title} - Enginex")</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>

@@ -8,7 +8,7 @@ namespace Enginex.Web.Components
     {
         public IViewComponentResult Invoke()
         {
-            var result = CookieRequestCultureProvider.ParseCookieValue(Request.Cookies[CookieRequestCultureProvider.DefaultCookieName]);
+            var result = CookieRequestCultureProvider.ParseCookieValue(Request.Cookies[CookieRequestCultureProvider.DefaultCookieName] ?? string.Empty);
             var currentCulture = "sk";
             if (result != null && result.Cultures.Any())
             {

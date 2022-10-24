@@ -1,4 +1,6 @@
-﻿using Enginex.Domain.Data;
+﻿using Dawn;
+using Enginex.Domain;
+using Enginex.Domain.Data;
 using Enginex.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -18,7 +20,9 @@ namespace Enginex.Infrastructure.Persistence
 
         public async Task<Category> GetCategoryAsync(int id)
         {
-            return await this.context.Categories.FindAsync(id);
+            Guard.Argument(id, nameof(id)).NotZero();
+
+            return await this.context.Categories.FindAsync(id) ?? throw new BusinessException();
         }
 
         public async Task<IEnumerable<Category>> GetCategoriesAsync()
@@ -28,26 +32,33 @@ namespace Enginex.Infrastructure.Persistence
 
         public async Task AddCategoryAsync(Category category)
         {
-            // TODO Gruad argument
+            Guard.Argument(category, nameof(category)).NotNull();
+
             this.context.Categories.Add(category);
             await this.context.SaveChangesAsync();
         }
 
         public async Task UpdateCategoryAsync(Category category)
         {
+            Guard.Argument(category, nameof(category)).NotNull();
+
             this.context.Categories.Update(category);
             await this.context.SaveChangesAsync();
         }
 
         public async Task DeleteCategoryAsync(Category category)
         {
+            Guard.Argument(category, nameof(category)).NotNull();
+
             this.context.Categories.Remove(category);
             await this.context.SaveChangesAsync();
         }
 
         public async Task<Product> GetProductAsync(int id)
         {
-            return await this.context.Products.Include(p => p.Category).SingleOrDefaultAsync(p => p.Id == id);
+            Guard.Argument(id, nameof(id)).NotZero();
+
+            return await this.context.Products.Include(p => p.Category).SingleOrDefaultAsync(p => p.Id == id) ?? throw new BusinessException();
         }
 
         public async Task<IEnumerable<Product>> GetProductsAsync(ISpecification<Product> specification)
@@ -57,19 +68,24 @@ namespace Enginex.Infrastructure.Persistence
 
         public async Task AddProductAsync(Product product)
         {
-            // TODO Gruad argument
+            Guard.Argument(product, nameof(product)).NotNull();
+
             this.context.Products.Add(product);
             await this.context.SaveChangesAsync();
         }
 
         public async Task UpdateProductAsync(Product product)
         {
+            Guard.Argument(product, nameof(product)).NotNull();
+
             this.context.Products.Update(product);
             await this.context.SaveChangesAsync();
         }
 
         public async Task DeleteProductAsync(Product product)
         {
+            Guard.Argument(product, nameof(product)).NotNull();
+
             this.context.Products.Remove(product);
             await this.context.SaveChangesAsync();
         }
